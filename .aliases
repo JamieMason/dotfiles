@@ -159,8 +159,32 @@ alias osx-update="sudo softwareupdate -iva"
 alias osx-updates="sudo softwareupdate -l"
 
 # ------------------------------------
-# npm/yarn Aliases (*_fn are defined in .functions)
+# npm/yarn Aliases
 # ------------------------------------
+
+function npm_or_yarn {
+  [ -f "$PWD/yarn.lock" ] && echo "yarn" || echo "npm"
+}
+
+function yd_fn {
+  [ $(npm_or_yarn) == "yarn" ] && echo "yarn add -EW" || echo "npm install --save --save-exact"
+}
+
+function ydd_fn {
+  [ $(npm_or_yarn) == "yarn" ] && echo "yarn add -DEW" || echo "npm install --save-dev --save-exact"
+}
+
+function yu_fn {
+  [ $(npm_or_yarn) == "yarn" ] && echo "yarn remove -W" || echo "npm uninstall --save"
+}
+
+function yg_fn {
+  [ $(npm_or_yarn) == "yarn" ] && echo "yarn global add" || echo "npm install -g"
+}
+
+function ygu_fn {
+  [ $(npm_or_yarn) == "yarn" ] && echo "yarn global remove" || echo "npm uninstall -g"
+}
 
 # [Y]arn [C]lean (delete generated artefacts not stored in Git, and lockfiles)
 alias yc="rm -f ./package-lock.json ./yarn.lock; git clean -dfX"
