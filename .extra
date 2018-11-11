@@ -27,3 +27,6 @@ export NODE_PATH=`which node`
 npm config set --global init-author-email "$USER_EMAIL"
 npm config set --global init-author-name "$USER_NAME"
 npm config set --global init-author-url "$USER_URL"
+
+# rust
+source $HOME/.cargo/env

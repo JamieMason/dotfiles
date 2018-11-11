@@ -158,6 +158,3 @@ code --install-extension wmaurer.change-case
 
 # Install Rust
 curl https://sh.rustup.rs -sSf | sh -s -- -y
-
-# Enable rustup tab completion
-rustup completions bash > /etc/bash_completion.d/rustup.bash-completion
