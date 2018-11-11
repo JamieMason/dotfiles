@@ -159,25 +159,41 @@ alias osx-update="sudo softwareupdate -iva"
 alias osx-updates="sudo softwareupdate -l"
 
 # ------------------------------------
-# npm Aliases
+# npm/yarn Aliases (*_fn are defined in .functions)
 # ------------------------------------
 
-alias npmb="npm run build"
-alias npmd="npm install --save --save-exact"
-alias npmdd="npm install --save-dev --save-exact"
-alias npmf="npm run format"
-alias npmg="npm install -g"
-alias npmgu="npm uninstall -g"
-alias npmi="npm install"
-alias npml="npm run lint --loglevel silent"
-alias npmls="npm ls --s --depth=0"
-alias npmp="npm run preview"
-alias npmr="npm run"
-alias npmrm="rm -rf ./node_modules ./package-lock.json; npm install"
-alias npms="npm start"
-alias npmt="npm test --loglevel silent"
-alias npmu="npm uninstall --save"
-alias npmw="npm run watch"
+# [Y]arn [C]lean (delete generated artefacts not stored in Git, and lockfiles)
+alias yc="rm -f ./package-lock.json ./yarn.lock; git clean -dfX"
+# [Y]arn [C]lean [I]nstall (delete everything, then reinstall)
+alias yci="yc; yi"
+# [Y]arn [D]ependency (install dependency)
+alias yd="$(yd_fn)"
+# [Y]arn [D]ev [D]ependency (install dev dependency)
+alias ydd="$(ydd_fn)"
+# [Y]arn [U]ninstall (uninstall dependency)
+alias yu="$(yu_fn)"
+# [Y]arn [G]lobal install
+alias yg="$(yg_fn)"
+# [Y]arn [G]lobal [U]ninstall
+alias ygu="$(ygu_fn)"
+# [Y]arn [I]nstall
+alias yi="$(npm_or_yarn) install"
+# [Y]arn [LS] (list all immediate dependencies)
+alias yls="npm ls --s --depth=0"
+# [Y]arn [R]un
+alias yr="$(npm_or_yarn) run"
+# [Y]arn [B]uild
+alias yb="yr build"
+# [Y]arn [F]ormat
+alias yf="yr format"
+# [Y]arn [L]int
+alias yl="yr lint"
+# [Y]arn [S]tart
+alias ys="yr start"
+# [Y]arn [T]est
+alias yt="yr test"
+# [Y]arn [W]atch
+alias yw="yr watch"
 
 # ------------------------------------
 # Git Aliases

@@ -248,6 +248,18 @@ function tre() {
 # FUNCTIONS
 # ------------------------------------
 
+# return 1 if global command line program installed, else 0
+# example
+# echo "node: $(program_is_installed node)"
+function program_is_installed {
+  # set to 1 initially
+  local return_=1
+  # set to 0 if not found
+  type $1 >/dev/null 2>&1 || { local return_=0; }
+  # return value
+  echo "$return_"
+}
+
 # create a file and parent directories
 # mkfile "foo/bar/baz.txt"
 function mkfile() {
@@ -255,17 +267,42 @@ function mkfile() {
 }
 
 # Clone a GitHub project and cd to it
-function github() {
+function gh() {
   user_name="$1"
   repo_name="$2"
   git clone "git@github.com:$user_name/$repo_name.git" && cd "$repo_name"
 }
 
 # Clone a specific branch of a GitHub project and cd to it
-function github_branch() {
+function ghb() {
   user_name="$1"
   repo_name="$2"
   branch_name="$3"
   git clone "git@github.com:$user_name/$repo_name.git" -b "$branch_name" "$repo_name" && cd "$repo_name"
 }
 
+# the following are used in .aliases
+
+function npm_or_yarn {
+  [ -f "$PWD/yarn.lock" ] && echo "yarn" || echo "npm"
+}
+
+function yd_fn {
+  [ $(npm_or_yarn) == "yarn" ] && echo "yarn add -EW" || echo "npm install --save --save-exact"
+}
+
+function ydd_fn {
+  [ $(npm_or_yarn) == "yarn" ] && echo "yarn add -DEW" || echo "npm install --save-dev --save-exact"
+}
+
+function yu_fn {
+  [ $(npm_or_yarn) == "yarn" ] && echo "yarn remove -W" || echo "npm uninstall --save"
+}
+
+function yg_fn {
+  [ $(npm_or_yarn) == "yarn" ] && echo "yarn global add" || echo "npm install -g"
+}
+
+function ygu_fn {
+  [ $(npm_or_yarn) == "yarn" ] && echo "yarn global remove" || echo "npm uninstall -g"
+}
