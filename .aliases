@@ -273,3 +273,5 @@ alias grm='git rebase master'
 alias gs='git status'
 # undo
 alias gu='git reset --hard && git clean -df'
+# update from master
+alias gufm='git checkout master && git fetch && git reset --hard origin/master && git checkout - && git rebase master'
