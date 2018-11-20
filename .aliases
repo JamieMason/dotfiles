@@ -248,7 +248,9 @@ alias gf='git fetch --prune'
 # search code in git history
 alias git-search='git log -p | grep --context=4'
 # show the commit history
-alias gl="git log --use-mailmap --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%aN>%Creset' --abbrev-commit"
+alias gl="git log --use-mailmap --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%aN>%Creset'"
+# git list contributors
+alias glc="git log --use-mailmap --no-merges --pretty=format:'%aN <%aE>' | sort | uniq"
 # grep git log
 alias glfm="gl | grep"
 # parseable git log
