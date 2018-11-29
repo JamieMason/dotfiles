@@ -178,14 +178,6 @@ function yu_fn {
   [ $(npm_or_yarn) == "yarn" ] && echo "yarn remove -W" || echo "npm uninstall --save"
 }
 
-function yg_fn {
-  [ $(npm_or_yarn) == "yarn" ] && echo "yarn global add" || echo "npm install -g"
-}
-
-function ygu_fn {
-  [ $(npm_or_yarn) == "yarn" ] && echo "yarn global remove" || echo "npm uninstall -g"
-}
-
 # [Y]arn [C]lean (delete generated artefacts not stored in Git, and lockfiles)
 alias yc="rm -f ./package-lock.json ./yarn.lock; git clean -dfX"
 # [Y]arn [C]lean [I]nstall (delete everything, then reinstall)
@@ -197,9 +189,9 @@ alias ydd="$(ydd_fn)"
 # [Y]arn [U]ninstall (uninstall dependency)
 alias yu="$(yu_fn)"
 # [Y]arn [G]lobal install
-alias yg="$(yg_fn)"
+alias yg="npm install -g"
 # [Y]arn [G]lobal [U]ninstall
-alias ygu="$(ygu_fn)"
+alias ygu="npm uninstall -g"
 # [Y]arn [I]nstall
 alias yi="$(npm_or_yarn) install"
 # [Y]arn [LS] (list all immediate dependencies)
