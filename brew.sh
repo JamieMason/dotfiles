@@ -88,10 +88,13 @@ brew cask install alfred
 brew cask install bitbar
 brew cask install caffeine
 brew cask install charles
+brew cask install cheatsheet
 brew cask install cleanmymac
 brew cask install codekit
 brew cask install dash
 brew cask install dashlane
+brew cask install docker-toolbox
+brew cask install dropbox
 brew cask install firefox
 brew cask install flux
 brew cask install franz
@@ -99,39 +102,50 @@ brew cask install gitup
 brew cask install google-chrome
 brew cask install imagealpha
 brew cask install imageoptim
+brew cask install insomnia
 brew cask install iterm2-beta
+brew cask install keycastr
+brew cask install lastfm
 brew cask install libreoffice
+brew cask install licecap
 brew cask install macdown
 brew cask install opera
+brew cask install postman
 brew cask install shades
 brew cask install skype
+brew cask install slack
+brew cask install slimbatterymonitor
 brew cask install slowy
 brew cask install spectacle
 brew cask install spotify
+brew cask install station
+brew cask install stretchly
+brew cask install sublime-text
 brew cask install tower
 brew cask install ui-browser
+brew cask install vanilla
 brew cask install virtualbox
 brew cask install visual-studio-code
 
 # Install QuickLook plugins
 brew cask install qlcolorcode
-brew cask install qlstephen
-brew cask install qlmarkdown
-brew cask install quicklook-json
 brew cask install qlimagesize
-brew cask install webpquicklook
-brew cask install suspicious-package
-brew cask install quicklookase
+brew cask install qlmarkdown
+brew cask install qlstephen
 brew cask install qlvideo
+brew cask install quicklook-json
+brew cask install quicklookase
+brew cask install suspicious-package
+brew cask install webpquicklook
 
 # Remove outdated versions from the cask cellar.
 brew cask cleanup
 
 # Install VS Code Extensions
-code --install-extension akamud.vscode-caniuse
+code --install-extension alefragnani.numbered-bookmarks
 code --install-extension andys8.jest-snippets
 code --install-extension angryobject.react-pure-to-class-vscode
-code --install-extension apollographql.vscode-apollo
+code --install-extension anweber.vscode-tidyhtml
 code --install-extension auiworks.amvim
 code --install-extension bibhasdn.unique-lines
 code --install-extension christian-kohler.npm-intellisense
@@ -144,16 +158,17 @@ code --install-extension eamodio.gitlens
 code --install-extension eg2.tslint
 code --install-extension esbenp.prettier-vscode
 code --install-extension idleberg.applescript
-code --install-extension kisstkondoros.vscode-codemetrics
+code --install-extension jaredkent.laserwave
 code --install-extension kumar-harsh.graphql-for-vscode
 code --install-extension leizongmin.node-module-intellisense
 code --install-extension ms-vscode.sublime-keybindings
+code --install-extension ms-vsliveshare.vsliveshare
 code --install-extension msjsdiag.debugger-for-chrome
 code --install-extension PKief.material-icon-theme
 code --install-extension rust-lang.rust
 code --install-extension searKing.preview-vscode
-code --install-extension teabyii.ayu
-code --install-extension wix.vscode-import-cost
+code --install-extension shyykoserhiy.vscode-spotify
+code --install-extension VisualStudioExptTeam.vscodeintellicode
 code --install-extension wmaurer.change-case
 
 # Install Rust
