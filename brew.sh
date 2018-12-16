@@ -171,5 +171,8 @@ code --install-extension shyykoserhiy.vscode-spotify
 code --install-extension VisualStudioExptTeam.vscodeintellicode
 code --install-extension wmaurer.change-case
 
+# Configure VS Code
+cp -f ./init/settings.json "$HOME/Library/Application Support/Code/User/settings.json"
+
 # Install Rust
 curl https://sh.rustup.rs -sSf | sh -s -- -y
