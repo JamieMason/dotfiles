@@ -159,45 +159,31 @@ alias osx-update="sudo softwareupdate -iva"
 alias osx-updates="sudo softwareupdate -l"
 
 # ------------------------------------
-# npm/yarn Aliases
+# yarn Aliases
 # ------------------------------------
 
-function npm_or_yarn {
-  [ -f "$PWD/yarn.lock" ] && echo "yarn" || echo "npm"
-}
-
-function yd_fn {
-  [ $(npm_or_yarn) == "yarn" ] && echo "yarn add -EW" || echo "npm install --save --save-exact"
-}
-
-function ydd_fn {
-  [ $(npm_or_yarn) == "yarn" ] && echo "yarn add -DEW" || echo "npm install --save-dev --save-exact"
-}
-
-function yu_fn {
-  [ $(npm_or_yarn) == "yarn" ] && echo "yarn remove -W" || echo "npm uninstall --save"
-}
-
+# [Y]arn
+alias y="yarn"
 # [Y]arn [C]lean (delete generated artefacts not stored in Git, and lockfiles)
 alias yc="rm -f ./package-lock.json ./yarn.lock; git clean -dfX"
 # [Y]arn [C]lean [I]nstall (delete everything, then reinstall)
 alias yci="yc; yi"
 # [Y]arn [D]ependency (install dependency)
-alias yd="$(yd_fn)"
+alias yd="yarn add -EW"
 # [Y]arn [D]ev [D]ependency (install dev dependency)
-alias ydd="$(ydd_fn)"
+alias ydd="yarn add -DEW"
 # [Y]arn [U]ninstall (uninstall dependency)
-alias yu="$(yu_fn)"
+alias yu="yarn remove -W"
 # [Y]arn [G]lobal install
 alias yg="npm install -g"
 # [Y]arn [G]lobal [U]ninstall
 alias ygu="npm uninstall -g"
 # [Y]arn [I]nstall
-alias yi="$(npm_or_yarn) install"
+alias yi="yarn install"
 # [Y]arn [LS] (list all immediate dependencies)
 alias yls="npm ls --s --depth=0"
 # [Y]arn [R]un
-alias yr="$(npm_or_yarn) run"
+alias yr="yarn run"
 # [Y]arn [B]uild
 alias yb="yr build"
 # [Y]arn [F]ormat
