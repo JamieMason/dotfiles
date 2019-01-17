@@ -178,6 +178,8 @@ alias yu="yarn remove -W"
 alias yg="npm install -g"
 # [Y]arn [G]lobal [U]ninstall
 alias ygu="npm uninstall -g"
+# [Y]arn [H]ome
+alias yh="npm home"
 # [Y]arn [I]nstall
 alias yi="yarn install"
 # [Y]arn [LS] (list all immediate dependencies)
