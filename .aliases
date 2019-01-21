@@ -198,6 +198,8 @@ alias ys="yr start"
 alias yt="yr test"
 # [Y]arn [W]atch
 alias yw="yr watch"
+# [B]uild [L]int [T]est
+alias blt="npm run build && npm run lint && npm run test"
 
 # ------------------------------------
 # Git Aliases
