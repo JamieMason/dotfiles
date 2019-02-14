@@ -9,24 +9,22 @@ ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/
 brew update
 
 # Upgrade any already-installed formulae.
-brew upgrade --all
+brew upgrade
 
 # Install GNU core utilities (those that come with macOS are outdated).
 # Don’t forget to add `$(brew --prefix coreutils)/libexec/gnubin` to `$PATH`.
 brew install coreutils
 ln -s /usr/local/bin/gsha256sum /usr/local/bin/sha256sum
-
 # Install some other useful utilities like `sponge`.
 brew install moreutils
 # Install GNU `find`, `locate`, `updatedb`, and `xargs`, `g`-prefixed.
 brew install findutils
 # Install GNU `sed`, overwriting the built-in `sed`.
-brew install gnu-sed --with-default-names
+brew install gnu-sed
 # Install Bash 4.
 # Note: don’t forget to add `/usr/local/bin/bash` to `/etc/shells` before
 # running `chsh`.
 brew install bash
-brew tap homebrew/versions
 brew install bash-completion2
 
 # Switch to using brew-installed bash as default shell
@@ -62,14 +60,14 @@ export NVM_DIR="$HOME/.nvm"
 . "$(brew --prefix nvm)/nvm.sh"
 [ -s "$NVM_DIR/nvm.sh"  ] && . "$NVM_DIR/nvm.sh"
 
-read -p "Install node LTS and latest npm (y/n)?" CONT
+read -p "Install node LTS and latest npm (y/n)? " CONT
 if [ "$CONT" = "y" ]; then
   nvm install --lts --latest-npm
   nvm alias default "$(node -v)"
   sudo chown -R $(whoami) $(npm config get prefix)/{lib/node_modules,bin,share}
 fi
 
-read -p "Install useful global npm packages (y/n)?" CONT
+read -p "Install useful global npm packages (y/n)? " CONT
 if [ "$CONT" = "y" ]; then
   npm i -g commit-release
   npm i -g fixpack
