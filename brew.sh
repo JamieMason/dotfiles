@@ -134,7 +134,6 @@ brew cask cleanup
 
 # Install VS Code Extensions
 code --install-extension andys8.jest-snippets
-code --install-extension angryobject.react-pure-to-class-vscode
 code --install-extension bibhasdn.unique-lines
 code --install-extension christian-kohler.npm-intellisense
 code --install-extension CoenraadS.bracket-pair-colorizer
@@ -150,7 +149,6 @@ code --install-extension jaredkent.laserwave
 code --install-extension kisstkondoros.vscode-codemetrics
 code --install-extension kumar-harsh.graphql-for-vscode
 code --install-extension leizongmin.node-module-intellisense
-code --install-extension ms-vscode.sublime-keybindings
 code --install-extension ms-vsliveshare.vsliveshare
 code --install-extension msjsdiag.debugger-for-chrome
 code --install-extension PKief.material-icon-theme
@@ -159,7 +157,6 @@ code --install-extension searKing.preview-vscode
 code --install-extension shyykoserhiy.vscode-spotify
 code --install-extension VisualStudioExptTeam.vscodeintellicode
 code --install-extension vscodevim.vim
-code --install-extension wix.glean
 code --install-extension wix.vscode-import-cost
 code --install-extension wmaurer.change-case
 
