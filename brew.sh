@@ -80,7 +80,6 @@ if [ "$CONT" = "y" ]; then
 fi
 
 # install cask
-brew install caskroom/cask/brew-cask
 brew tap caskroom/versions
 
 # Install useful casks.
