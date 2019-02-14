@@ -158,6 +158,13 @@ sudo systemsetup -settimezone "Europe/London" > /dev/null
 # Disable auto-correct
 defaults write NSGlobalDomain NSAutomaticSpellingCorrectionEnabled -bool false
 
+# Default to British Keyboard layout
+sudo defaults write /Library/Preferences/com.apple.HIToolbox AppleCurrentKeyboardLayoutInputSourceID "com.apple.keylayout.British"
+sudo defaults write /Library/Preferences/com.apple.HIToolbox AppleDefaultAsciiInputSource -dict InputSourceKind "Keyboard Layout" "KeyboardLayout ID" -int 2 "KeyboardLayout Name" "British - Pro"
+sudo defaults write /Library/Preferences/com.apple.HIToolbox AppleEnabledInputSources -array '{ InputSourceKind = "Keyboard Layout"; "KeyboardLayout ID" = 2; "KeyboardLayout Name" = "British"; }'
+sudo defaults write /Library/Preferences/com.apple.HIToolbox AppleInputSourceHistory -array '{ InputSourceKind = "Keyboard Layout"; "KeyboardLayout ID" = 2; "KeyboardLayout Name" = "British"; }'
+sudo defaults write /Library/Preferences/com.apple.HIToolbox AppleSelectedInputSources -array '{ InputSourceKind = "Keyboard Layout"; "KeyboardLayout ID" = 2; "KeyboardLayout Name" = "British"; }'
+
 ###############################################################################
 # Screen                                                                      #
 ###############################################################################
