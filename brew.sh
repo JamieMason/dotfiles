@@ -88,12 +88,10 @@ brew cask install alfred
 brew cask install bitbar
 brew cask install caffeine
 brew cask install charles
-brew cask install cheatsheet
 brew cask install cleanmymac
 brew cask install codekit
 brew cask install dash
 brew cask install dashlane
-brew cask install docker-toolbox
 brew cask install dropbox
 brew cask install firefox
 brew cask install flux
@@ -105,9 +103,7 @@ brew cask install imageoptim
 brew cask install insomnia
 brew cask install iterm2-beta
 brew cask install keycastr
-brew cask install lastfm
 brew cask install libreoffice
-brew cask install licecap
 brew cask install macdown
 brew cask install opera
 brew cask install postman
@@ -115,11 +111,8 @@ brew cask install shades
 brew cask install skype
 brew cask install slack
 brew cask install slimbatterymonitor
-brew cask install slowy
 brew cask install spectacle
 brew cask install spotify
-brew cask install station
-brew cask install stretchly
 brew cask install sublime-text
 brew cask install tower
 brew cask install ui-browser
