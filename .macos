@@ -420,6 +420,10 @@ defaults write com.apple.Safari SendDoNotTrackHTTPHeader -bool true
 # Update extensions automatically
 defaults write com.apple.Safari InstallExtensionUpdatesAutomatically -bool true
 
+# Configure DuckDuckGo as main search engine
+defaults write NSGlobalDomain NSPreferredWebServices.NSWebServicesProviderWebSearch.NSDefaultDisplayName -string "DuckDuckGo"
+defaults write NSGlobalDomain NSPreferredWebServices.NSWebServicesProviderWebSearch.NSProviderIdentifier -string "com.duckduckgo"
+
 ###############################################################################
 # Mail                                                                        #
 ###############################################################################
