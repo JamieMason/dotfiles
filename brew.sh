@@ -70,12 +70,13 @@ fi
 read -p "Install useful global npm packages (y/n)? " CONT
 if [ "$CONT" = "y" ]; then
   npm i -g commit-release
-  npm i -g fixpack
   npm i -g http-server
   npm i -g lebab
   npm i -g npm-check-updates
   npm i -g prettier
   npm i -g rimraf
+  npm i -g svgo
+  npm i -g syncpack
 fi
 
 # install cask
