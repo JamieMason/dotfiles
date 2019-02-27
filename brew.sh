@@ -185,7 +185,6 @@ duti -s com.microsoft.VSCode .exports all
 duti -s com.microsoft.VSCode .extra all
 duti -s com.microsoft.VSCode .functions all
 duti -s com.microsoft.VSCode .gdbinit all
-duti -s com.microsoft.VSCode .gif all
 duti -s com.microsoft.VSCode .git-commit-template all
 duti -s com.microsoft.VSCode .gitattributes all
 duti -s com.microsoft.VSCode .gitconfig all
@@ -226,7 +225,6 @@ duti -s com.microsoft.VSCode .otf all
 duti -s com.microsoft.VSCode .pack all
 duti -s com.microsoft.VSCode .pem all
 duti -s com.microsoft.VSCode .placeholder all
-duti -s com.microsoft.VSCode .png all
 duti -s com.microsoft.VSCode .prettierignore all
 duti -s com.microsoft.VSCode .prettierrc all
 duti -s com.microsoft.VSCode .sample all
@@ -248,8 +246,6 @@ duti -s com.microsoft.VSCode .txt all
 duti -s com.microsoft.VSCode .vim all
 duti -s com.microsoft.VSCode .vimrc all
 duti -s com.microsoft.VSCode .wgetrc all
-duti -s com.microsoft.VSCode .woff all
-duti -s com.microsoft.VSCode .woff2 all
 duti -s com.microsoft.VSCode .xml all
 duti -s com.microsoft.VSCode .yarnrc all
 duti -s com.microsoft.VSCode .yml all
