@@ -207,8 +207,10 @@ alias blt="npm run build && npm run lint && npm run test"
 
 # stage files
 alias ga='git add -A'
+# list local branches
+alias gb='git branch'
 # list all local and remote branches
-alias gb='git fetch && git branch -a'
+alias gba='git fetch && git branch -a'
 # delete local branch, eg. `gbd quicktest`
 alias gbd='git branch -D'
 # delete remote branch, eg. `gbdr quicktest`
@@ -243,18 +245,26 @@ alias glp="git log --pretty=format:'%h|%s|%an' --abbrev-commit"
 alias gls="gl --max-count=15 --no-merges"
 # eg `gm develop`
 alias gm='git merge --no-ff'
-# eg `gpl develop`
+# git pull
 alias gpl='git pull origin --tags'
+# git pull current branch
+alias gplc='gpl $(gcb)'
+# git pull develop
 alias gpld='gpl develop'
+# git pull master
 alias gplm='gpl master'
-# eg `gps develop`
+# git push
 alias gps='git push origin --tags'
+# git push current branch
+alias gpsc='gps $(gcb)'
+# git push develop
 alias gpsd='gps develop'
+# git push master
 alias gpsm='gps master'
 # eg `gr develop`
 alias gr='git rebase'
-alias grd='git rebase develop'
-alias grm='git rebase master'
+alias grd='gr develop'
+alias grm='gr master'
 # show all (un)staged and untracked files
 alias gs='git status'
 # undo
