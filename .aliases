@@ -223,6 +223,8 @@ alias gbn='git checkout -b'
 alias gc='git checkout'
 # amend previous commit
 alias gca='git commit --amend'
+# get name of current branch
+alias gcb='git branch | grep \* | cut -d " " -f2'
 # eg `gcm 'fixed stuff'`
 alias gcm='git commit -m'
 # look for changes to remote branches
