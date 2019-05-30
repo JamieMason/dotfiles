@@ -218,7 +218,7 @@ alias gbdr='git push origin --delete --no-verify'
 # delete local and remote branch
 alias gbda='gbd && gbdr'
 # list latest remote branches
-alias gbl='git for-each-ref --sort=-committerdate refs/remotes/ --format="%(HEAD) %(refname:short)|%(objectname:short)|%(contents:subject)|%(authorname)|%(committerdate:relative)" | column -t -s "|"'
+alias gbl='git for-each-ref --sort=-committerdate refs/remotes/ --format="%(HEAD) %(committerdate:relative)|%(objectname:short)|%(refname:short)|%(authorname) %(authoremail)" | column -t -s "|"'
 # create a new branch, eg. `gbn feature_pmpsht`
 alias gbn='git checkout -b'
 # eg `gc master`
