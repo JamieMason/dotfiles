@@ -135,30 +135,33 @@ brew cask cleanup
 
 # Install VS Code Extensions
 code --install-extension andys8.jest-snippets
+code --install-extension annsk.alignment
+code --install-extension anweber.vscode-tidyhtml
+code --install-extension auiworks.amvim
 code --install-extension bibhasdn.unique-lines
 code --install-extension christian-kohler.npm-intellisense
+code --install-extension cmstead.jsrefactor
 code --install-extension CoenraadS.bracket-pair-colorizer
 code --install-extension cssho.vscode-svgviewer
 code --install-extension dakara.transformer
 code --install-extension dbaeumer.vscode-eslint
 code --install-extension dzannotti.vscode-babel-coloring
 code --install-extension eamodio.gitlens
-code --install-extension eg2.tslint
 code --install-extension esbenp.prettier-vscode
+code --install-extension GitHub.vscode-pull-request-github
 code --install-extension idleberg.applescript
 code --install-extension jaredkent.laserwave
-code --install-extension kisstkondoros.vscode-codemetrics
+code --install-extension krizzdewizz.vscode-typescript-ast-explorer
 code --install-extension kumar-harsh.graphql-for-vscode
-code --install-extension leizongmin.node-module-intellisense
-code --install-extension ms-vsliveshare.vsliveshare
+code --install-extension ms-vscode.vscode-typescript-tslint-plugin
 code --install-extension msjsdiag.debugger-for-chrome
 code --install-extension PKief.material-icon-theme
 code --install-extension rust-lang.rust
+code --install-extension sburg.vscode-javascript-booster
 code --install-extension searKing.preview-vscode
 code --install-extension shyykoserhiy.vscode-spotify
+code --install-extension stkb.rewrap
 code --install-extension VisualStudioExptTeam.vscodeintellicode
-code --install-extension vscodevim.vim
-code --install-extension wix.vscode-import-cost
 code --install-extension wmaurer.change-case
 
 # Configure VS Code
