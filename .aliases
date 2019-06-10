@@ -200,6 +200,10 @@ alias yt="yr test"
 alias yw="yr watch"
 # [B]uild [L]int [T]est
 alias blt="npm run build && npm run lint && npm run test"
+# [B]uild [L]int
+alias bl="npm run build && npm run lint"
+# [B]uild [T]est
+alias bt="npm run build && npm run test"
 
 # ------------------------------------
 # Git Aliases
