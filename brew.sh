@@ -68,16 +68,15 @@ read -p "Install useful global npm packages (y/n)? " CONT
 if [ "$CONT" = "y" ]; then
   npm i -g commit-release
   npm i -g http-server
+  npm i -g jscodeshift
   npm i -g lebab
   npm i -g npm-check-updates
   npm i -g prettier
-  npm i -g rimraf
   npm i -g svgo
   npm i -g syncpack
+  npm i -g updates
+  npm i -g yarn
 fi
-
-# install cask
-brew tap caskroom/versions
 
 # Install useful casks.
 brew cask install alfred
@@ -87,7 +86,6 @@ brew cask install charles
 brew cask install cleanmymac
 brew cask install codekit
 brew cask install dash
-brew cask install dashlane
 brew cask install dropbox
 brew cask install firefox
 brew cask install flux
@@ -115,6 +113,9 @@ brew cask install ui-browser
 brew cask install vanilla
 brew cask install virtualbox
 brew cask install visual-studio-code
+
+# Cask version of Dashlane is buggy
+open https://www.dashlane.com/download
 
 # Install QuickLook plugins
 brew cask install qlcolorcode
