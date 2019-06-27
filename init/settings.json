@@ -1,5 +1,7 @@
 {
+  "[javascript]": { "editor.defaultFormatter": "esbenp.prettier-vscode" },
   "editor.codeLens": false,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
   "editor.fontFamily": "'Operator Mono', Menlo, Monaco, 'Courier New', monospace",
   "editor.fontSize": 14,
   "editor.formatOnPaste": false,
@@ -11,6 +13,7 @@
   "editor.renderWhitespace": "all",
   "editor.rulers": [80, 100, 120],
   "editor.snippetSuggestions": "top",
+  "editor.suggestSelection": "first",
   "editor.tabSize": 2,
   "eslint.autoFixOnSave": true,
   "explorer.autoReveal": true,
@@ -19,6 +22,7 @@
   "explorer.openEditors.visible": 0,
   "extensions.autoUpdate": true,
   "extensions.ignoreRecommendations": true,
+  "files.defaultLanguage": "typescript",
   "files.insertFinalNewline": true,
   "files.trimTrailingWhitespace": true,
   "gitlens.advanced.messages": {
@@ -33,6 +37,7 @@
   },
   "javascript.preferences.importModuleSpecifier": "relative",
   "javascript.updateImportsOnFileMove.enabled": "always",
+  "javascript.validate.enable": false,
   "material-icon-theme.activeIconPack": "react",
   "material-icon-theme.showUpdateMessage": false,
   "prettier.printWidth": 100,
@@ -58,9 +63,11 @@
     "**/yarn.lock": true
   },
   "terminal.external.osxExec": "iTerm.app",
+  "terminal.integrated.copyOnSelection": true,
   "terminal.integrated.cursorStyle": "line",
   "terminal.integrated.fontSize": 15,
   "typescript.updateImportsOnFileMove.enabled": "always",
+  "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
   "window.zoomLevel": 0,
   "workbench.colorTheme": "LaserWave",
   "workbench.editor.labelFormat": "long",
