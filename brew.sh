@@ -146,6 +146,7 @@ if [ "$CONT" = "y" ]; then
   code --install-extension anweber.vscode-tidyhtml
   code --install-extension auiworks.amvim
   code --install-extension bibhasdn.unique-lines
+  code --install-extension bierner.markdown-preview-github-styles
   code --install-extension christian-kohler.npm-intellisense
   code --install-extension cmstead.jsrefactor
   code --install-extension CoenraadS.bracket-pair-colorizer
