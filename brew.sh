@@ -155,7 +155,6 @@ if [ "$CONT" = "y" ]; then
   code --install-extension dzannotti.vscode-babel-coloring
   code --install-extension eamodio.gitlens
   code --install-extension esbenp.prettier-vscode
-  code --install-extension GitHub.vscode-pull-request-github
   code --install-extension idleberg.applescript
   code --install-extension jaredkent.laserwave
   code --install-extension krizzdewizz.vscode-typescript-ast-explorer
