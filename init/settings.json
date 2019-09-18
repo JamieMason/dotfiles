@@ -3,7 +3,7 @@
   "editor.codeLens": false,
   "editor.defaultFormatter": "esbenp.prettier-vscode",
   "editor.fontFamily": "'Operator Mono', Menlo, Monaco, 'Courier New', monospace",
-  "editor.fontSize": 14,
+  "editor.fontSize": 16,
   "editor.formatOnPaste": false,
   "editor.formatOnSave": true,
   "editor.formatOnType": false,
@@ -22,6 +22,12 @@
   "explorer.openEditors.visible": 0,
   "extensions.autoUpdate": true,
   "extensions.ignoreRecommendations": true,
+  "files.associations": {
+    ".lintstagedrc": "json",
+    ".stylelintrc": "json",
+    ".tylerrc": "json",
+    ".prettierrc": "json"
+  },
   "files.defaultLanguage": "typescript",
   "files.insertFinalNewline": true,
   "files.trimTrailingWhitespace": true,

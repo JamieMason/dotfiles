@@ -95,7 +95,6 @@ if [ "$CONT" = "y" ]; then
   brew cask install google-chrome
   brew cask install imagealpha
   brew cask install imageoptim
-  brew cask install insomnia
   brew cask install iterm2-beta
   brew cask install keycastr
   brew cask install libreoffice
@@ -105,13 +104,11 @@ if [ "$CONT" = "y" ]; then
   brew cask install shades
   brew cask install skype
   brew cask install slack
-  brew cask install slimbatterymonitor
   brew cask install spectacle
   brew cask install spotify
   brew cask install sublime-text
   brew cask install tower
   brew cask install ui-browser
-  brew cask install vanilla
   brew cask install virtualbox
   brew cask install visual-studio-code
 
@@ -144,8 +141,10 @@ if [ "$CONT" = "y" ]; then
   code --install-extension andys8.jest-snippets
   code --install-extension annsk.alignment
   code --install-extension anweber.vscode-tidyhtml
+  code --install-extension ardenivanov.svelte-intellisense
   code --install-extension auiworks.amvim
   code --install-extension bibhasdn.unique-lines
+  code --install-extension bierner.lit-html
   code --install-extension bierner.markdown-preview-github-styles
   code --install-extension christian-kohler.npm-intellisense
   code --install-extension cmstead.jsrefactor
@@ -157,6 +156,7 @@ if [ "$CONT" = "y" ]; then
   code --install-extension eamodio.gitlens
   code --install-extension esbenp.prettier-vscode
   code --install-extension idleberg.applescript
+  code --install-extension JamesBirtles.svelte-vscode
   code --install-extension jaredkent.laserwave
   code --install-extension krizzdewizz.vscode-typescript-ast-explorer
   code --install-extension kumar-harsh.graphql-for-vscode
@@ -168,11 +168,15 @@ if [ "$CONT" = "y" ]; then
   code --install-extension searKing.preview-vscode
   code --install-extension shyykoserhiy.vscode-spotify
   code --install-extension stkb.rewrap
+  code --install-extension Tyriar.lorem-ipsum
   code --install-extension VisualStudioExptTeam.vscodeintellicode
+  code --install-extension WakaTime.vscode-wakatime
   code --install-extension wmaurer.change-case
 
   # Configure VS Code
   cp -f ./init/settings.json "$HOME/Library/Application Support/Code/User/settings.json"
+  cp -f ./init/JamieMason.code-snippets "$HOME/Library/Application Support/Code/User/snippets/JamieMason.code-snippets"
+
   duti -s com.microsoft.VSCode .aliases all
   duti -s com.microsoft.VSCode .babelrc all
   duti -s com.microsoft.VSCode .bash_profile all
