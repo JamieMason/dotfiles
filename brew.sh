@@ -158,6 +158,7 @@ if [ "$CONT" = "y" ]; then
   code --install-extension idleberg.applescript
   code --install-extension JamesBirtles.svelte-vscode
   code --install-extension jaredkent.laserwave
+  code --install-extension johnpapa.vscode-peacock
   code --install-extension krizzdewizz.vscode-typescript-ast-explorer
   code --install-extension kumar-harsh.graphql-for-vscode
   code --install-extension ms-vscode.vscode-typescript-tslint-plugin
