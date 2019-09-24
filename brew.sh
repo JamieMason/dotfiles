@@ -152,7 +152,6 @@ if [ "$CONT" = "y" ]; then
   code --install-extension cssho.vscode-svgviewer
   code --install-extension dakara.transformer
   code --install-extension dbaeumer.vscode-eslint
-  code --install-extension ddot.vscode-ast
   code --install-extension dzannotti.vscode-babel-coloring
   code --install-extension eamodio.gitlens
   code --install-extension esbenp.prettier-vscode
@@ -160,6 +159,7 @@ if [ "$CONT" = "y" ]; then
   code --install-extension JamesBirtles.svelte-vscode
   code --install-extension jaredkent.laserwave
   code --install-extension johnpapa.vscode-peacock
+  code --install-extension krizzdewizz.vscode-typescript-ast-explorer
   code --install-extension kumar-harsh.graphql-for-vscode
   code --install-extension ms-vscode.vscode-typescript-tslint-plugin
   code --install-extension msjsdiag.debugger-for-chrome
