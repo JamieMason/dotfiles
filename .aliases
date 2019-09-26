@@ -270,7 +270,7 @@ alias gr='git rebase'
 alias grd='gr develop'
 alias grm='gr master'
 # show all (un)staged and untracked files
-alias gs='git status'
+alias gs='git status -sb'
 # undo
 alias gu='git reset --hard && git clean -df'
 # update from master
