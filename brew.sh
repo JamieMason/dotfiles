@@ -47,6 +47,7 @@ brew install git-standup
 brew install hub
 brew install git-cal
 brew install nvm
+brew install pup
 brew install tree
 
 # Remove outdated versions from the cellar.
