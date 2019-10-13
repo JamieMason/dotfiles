@@ -153,18 +153,19 @@ if [ "$CONT" = "y" ]; then
   code --install-extension cssho.vscode-svgviewer
   code --install-extension dakara.transformer
   code --install-extension dbaeumer.vscode-eslint
+  code --install-extension dsznajder.es7-react-js-snippets
   code --install-extension dzannotti.vscode-babel-coloring
   code --install-extension eamodio.gitlens
   code --install-extension esbenp.prettier-vscode
   code --install-extension idleberg.applescript
   code --install-extension JamesBirtles.svelte-vscode
   code --install-extension jaredkent.laserwave
-  code --install-extension johnpapa.vscode-peacock
   code --install-extension krizzdewizz.vscode-typescript-ast-explorer
   code --install-extension kumar-harsh.graphql-for-vscode
   code --install-extension ms-vscode.vscode-typescript-tslint-plugin
   code --install-extension msjsdiag.debugger-for-chrome
   code --install-extension PKief.material-icon-theme
+  code --install-extension Prisma.prisma
   code --install-extension rust-lang.rust
   code --install-extension sburg.vscode-javascript-booster
   code --install-extension searKing.preview-vscode
@@ -174,6 +175,7 @@ if [ "$CONT" = "y" ]; then
   code --install-extension VisualStudioExptTeam.vscodeintellicode
   code --install-extension WakaTime.vscode-wakatime
   code --install-extension wmaurer.change-case
+  code --install-extension yzhang.markdown-all-in-one
 
   # Configure VS Code
   cp -f ./init/settings.json "$HOME/Library/Application Support/Code/User/settings.json"
