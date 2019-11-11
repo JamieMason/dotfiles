@@ -1,5 +1,9 @@
 #!/usr/bin/env bash
 
+# Remove all Dock Icons
+defaults write com.apple.dock persistent-apps -array
+killall Dock
+
 # Install command-line tools using Homebrew.
 
 # install homebrew
