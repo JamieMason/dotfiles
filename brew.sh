@@ -100,7 +100,7 @@ if [ "$CONT" = "y" ]; then
   brew cask install google-chrome
   brew cask install imagealpha
   brew cask install imageoptim
-  brew cask install iterm2-beta
+  brew cask install iterm2
   brew cask install keycastr
   brew cask install libreoffice
   brew cask install macdown
