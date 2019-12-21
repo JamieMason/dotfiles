@@ -315,12 +315,21 @@ function new_repo() {
   npm init -y
   git init
   HUB_PROTOCOL=https GITHUB_TOKEN=$GCA_ACCESS_TOKEN hub create -p JamieMason/$NAME
-  echo '*.log' > .gitignore
-  echo '*.log.*' > .gitignore
-  echo 'coverage' > .gitignore
-  echo 'dist' > .gitignore
-  echo 'node_modules' > .gitignore
-  echo "# $NAME" > README.md
-  echo "" > README.md
+  echo '*.log' >> .gitignore
+  echo '*.log.*' >> .gitignore
+  echo 'coverage' >> .gitignore
+  echo 'dist' >> .gitignore
+  echo 'node_modules' >> .gitignore
+  echo "# $NAME" >> README.md
+  echo "" >> README.md
   syncpack format
+}
+
+# Create a new Shell Script
+function new_script() {
+  FILE_PATH=$1
+  mkdir -p -- $(dirname "$FILE_PATH") && touch -- "$FILE_PATH"
+  echo '#!/usr/bin/env bash' >> "$FILE_PATH"
+  echo '' >> "$FILE_PATH"
+  chmod +x "$FILE_PATH"
 }
