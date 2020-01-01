@@ -89,10 +89,9 @@ if [ "$CONT" = "y" ]; then
   brew cask install bitbar
   brew cask install caffeine
   brew cask install charles
+  brew cask install cheatsheet
   brew cask install cleanmymac
-  brew cask install codekit
   brew cask install dash
-  brew cask install dropbox
   brew cask install firefox
   brew cask install flux
   brew cask install franz
@@ -100,10 +99,10 @@ if [ "$CONT" = "y" ]; then
   brew cask install google-chrome
   brew cask install imagealpha
   brew cask install imageoptim
+  brew cask install istumbler
   brew cask install iterm2
   brew cask install keycastr
   brew cask install libreoffice
-  brew cask install macdown
   brew cask install opera
   brew cask install postman
   brew cask install shades
