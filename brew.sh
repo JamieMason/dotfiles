@@ -101,6 +101,7 @@ if [ "$CONT" = "y" ]; then
   brew cask install imageoptim
   brew cask install istumbler
   brew cask install iterm2
+  brew cask install kap
   brew cask install keycastr
   brew cask install libreoffice
   brew cask install opera
