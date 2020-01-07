@@ -4,73 +4,81 @@
 defaults write com.apple.dock persistent-apps -array
 killall Dock
 
-# Install command-line tools using Homebrew.
+read -p "Install brew? (Enter y or n) " INSTALL_BREW
+read -p "Install useful brew formulas? (Enter y or n) " INSTALL_BREW_FORMALAS
+read -p "Install nvm, Node.js, and npm? (Enter y or n) " INSTALL_NODE_LTS
+read -p "Install useful global npm packages? (Enter y or n) " INSTALL_NPM_DEPS
+read -p "Install useful casks? (Enter y or n) " INSTALL_CASKS
+read -p "Install VS Code Extensions? (Enter y or n) " INSTALL_VS_CODE_EXTENSIONS
+read -p "Install Rust? (Enter y or n) " INSTALL_RUST
 
-# install homebrew
-ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+if [ "$INSTALL_BREW" = "y" ]; then
+  # install homebrew
+  ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 
-# Make sure we’re using the latest Homebrew.
-brew update
+  # Make sure we’re using the latest Homebrew.
+  brew update
 
-# Upgrade any already-installed formulae.
-brew upgrade
+  # Upgrade any already-installed formulae.
+  brew upgrade
+fi
 
-# Install GNU core utilities (those that come with macOS are outdated).
-# Don’t forget to add `$(brew --prefix coreutils)/libexec/gnubin` to `$PATH`.
-brew install coreutils
-ln -s /usr/local/bin/gsha256sum /usr/local/bin/sha256sum
-# Install some other useful utilities like `sponge`.
-brew install moreutils
-# Install GNU `find`, `locate`, `updatedb`, and `xargs`, `g`-prefixed.
-brew install findutils
-# Install GNU `sed`, overwriting the built-in `sed`.
-brew install gnu-sed
-# Install Bash 4.
-# Note: don’t forget to add `/usr/local/bin/bash` to `/etc/shells` before
-# running `chsh`.
-brew install bash
-brew install bash-completion2
+if [ "$INSTALL_BREW_FORMALAS" = "y" ]; then
+  # Install GNU core utilities (those that come with macOS are outdated).
+  # Don’t forget to add `$(brew --prefix coreutils)/libexec/gnubin` to `$PATH`.
+  brew install coreutils
+  ln -s /usr/local/bin/gsha256sum /usr/local/bin/sha256sum
+  # Install some other useful utilities like `sponge`.
+  brew install moreutils
+  # Install GNU `find`, `locate`, `updatedb`, and `xargs`, `g`-prefixed.
+  brew install findutils
+  # Install GNU `sed`, overwriting the built-in `sed`.
+  brew install gnu-sed
+  # Install Bash 4.
+  # Note: don’t forget to add `/usr/local/bin/bash` to `/etc/shells` before
+  # running `chsh`.
+  brew install bash
+  brew install bash-completion2
 
-# Switch to using brew-installed bash as default shell
-if ! fgrep -q '/usr/local/bin/bash' /etc/shells; then
-  echo '/usr/local/bin/bash' | sudo tee -a /etc/shells;
-  chsh -s /usr/local/bin/bash;
-fi;
+  # Switch to using brew-installed bash as default shell
+  if ! fgrep -q '/usr/local/bin/bash' /etc/shells; then
+    echo '/usr/local/bin/bash' | sudo tee -a /etc/shells;
+    chsh -s /usr/local/bin/bash;
+  fi;
 
-# Install `wget` with IRI support.
-brew install wget --with-iri
+  # Install `wget` with IRI support.
+  brew install wget --with-iri
 
-# Install more recent versions of some macOS tools.
-brew install vim --override-system-vi
+  # Install more recent versions of some macOS tools.
+  brew install vim --override-system-vi
 
-# Install other useful binaries.
-brew install duti
-brew install git
-brew install git-extras
-brew install git-standup
-brew install hub
-brew install git-cal
-brew install nvm
-brew install pup
-brew install tree
+  # Install other useful binaries.
+  brew install duti
+  brew install git
+  brew install git-extras
+  brew install git-standup
+  brew install hub
+  brew install git-cal
+  brew install pup
+  brew install tree
 
-# Remove outdated versions from the cellar.
-brew cleanup
+  # Remove outdated versions from the cellar.
+  brew cleanup
+fi
 
-# install latest LTS node
-export NVM_DIR="$HOME/.nvm"
-. "$(brew --prefix nvm)/nvm.sh"
-[ -s "$NVM_DIR/nvm.sh"  ] && . "$NVM_DIR/nvm.sh"
+if [ "$INSTALL_NODE_LTS" = "y" ]; then
+  brew install nvm
+  # install latest LTS node
+  export NVM_DIR="$HOME/.nvm"
+  . "$(brew --prefix nvm)/nvm.sh"
+  [ -s "$NVM_DIR/nvm.sh"  ] && . "$NVM_DIR/nvm.sh"
 
-read -p "Install Node.js LTS and latest npm (y/n)? " CONT
-if [ "$CONT" = "y" ]; then
   nvm install --lts --latest-npm
   nvm alias default "$(node -v)"
   sudo chown -R $(whoami) $(npm config get prefix)/{lib/node_modules,bin,share}
 fi
 
-read -p "Install useful global npm packages (y/n)? " CONT
-if [ "$CONT" = "y" ]; then
+if [ "$INSTALL_NPM_DEPS" = "y" ]; then
   npm i -g commit-release
   npm i -g http-server
   npm i -g jscodeshift
@@ -83,8 +91,7 @@ if [ "$CONT" = "y" ]; then
   npm i -g yarn
 fi
 
-read -p "Install useful casks (y/n)? " CONT
-if [ "$CONT" = "y" ]; then
+if [ "$INSTALL_CASKS" = "y" ]; then
   brew cask install alfred
   brew cask install bitbar
   brew cask install caffeine
@@ -135,8 +142,7 @@ if [ "$CONT" = "y" ]; then
   brew cask cleanup
 fi
 
-read -p "Install VS Code Extensions (y/n)? " CONT
-if [ "$CONT" = "y" ]; then
+if [ "$INSTALL_VS_CODE_EXTENSIONS" = "y" ]; then
   # Crudely remove any not in this list by removing all
   for i in $(code --list-extensions); do
     echo "code --uninstall-extension $i"
@@ -271,8 +277,7 @@ if [ "$CONT" = "y" ]; then
   duti -s com.microsoft.VSCode .yml all
 fi
 
-read -p "Install Rust (y/n)? " CONT
-if [ "$CONT" = "y" ]; then
+if [ "$INSTALL_RUST" = "y" ]; then
   curl https://sh.rustup.rs -sSf | sh -s -- -y
   rustup update
 fi
