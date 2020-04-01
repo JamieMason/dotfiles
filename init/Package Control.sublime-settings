@@ -1,0 +1,33 @@
+{
+  "bootstrapped": true,
+  "in_process_packages": [],
+  "installed_packages": [
+    "ApplySyntax",
+    "AutoFileName",
+    "ayu",
+    "Babel",
+    "Case Conversion",
+    "Color Highlighter",
+    "CSS Format",
+    "DocBlockr",
+    "EditorConfig",
+    "Emmet",
+    "Git",
+    "GitGutter",
+    "GraphQL",
+    "HTMLBeautify",
+    "Jasmine Matchers ES6 Snippets",
+    "JsPrettier",
+    "JSX",
+    "Markdown Preview",
+    "Package Control",
+    "PackageResourceViewer",
+    "Sass",
+    "SideBarEnhancements",
+    "SublimeLinter",
+    "Text Pastry",
+    "TypeScript",
+    "Vintageous",
+    "WordCount"
+  ]
+}

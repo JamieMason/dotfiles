@@ -118,7 +118,7 @@ if [ "$INSTALL_CASKS" = "y" ]; then
   brew cask install slack
   brew cask install spectacle
   brew cask install spotify
-  brew cask install sublime-text
+  brew cask install sublime-text-dev
   brew cask install tower
   brew cask install ui-browser
   brew cask install virtualbox

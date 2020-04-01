@@ -196,13 +196,13 @@ function getcertnames() {
   fi;
 }
 
-# `s` with no arguments opens the current directory in VS Code, otherwise
+# `s` with no arguments opens the current directory in Sublime Text, otherwise
 # opens the given location
 function s() {
   if [ $# -eq 0 ]; then
-    code .;
+    subl .;
   else
-    code "$@";
+    subl "$@";
   fi;
 }
 
