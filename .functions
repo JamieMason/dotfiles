@@ -333,3 +333,7 @@ function new_script() {
   echo '' >> "$FILE_PATH"
   chmod +x "$FILE_PATH"
 }
+
+function get_yarn_resolutions {
+  yarn audit --json | grep '"type":"auditAdvisory"' | jq -r '{(.data.advisory.module_name):.data.advisory.patched_versions}' | jq -s add
+}
