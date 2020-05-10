@@ -61,6 +61,7 @@ if [ "$INSTALL_BREW_FORMALAS" = "y" ]; then
   brew install git-cal
   brew install pup
   brew install tree
+  brew install nektos/tap/act
 
   # Remove outdated versions from the cellar.
   brew cleanup
