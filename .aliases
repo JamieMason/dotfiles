@@ -289,4 +289,10 @@ alias gu='git reset --hard && git clean -df'
 alias gufm='git checkout master && git fetch && git reset --hard origin/master && git checkout - && git rebase master'
 
 # because I can *never* remember this
-alias shebang="echo '#!/usr/bin/env bash'"
+alias shebang="echo '#!/usr/bin/env bash' | pbcopy"
+
+# Rust/Cargo
+alias cr="cargo run"
+alias ct="cargo test"
+alias cb="cargo bench"
+alias cf="cargo fmt"
