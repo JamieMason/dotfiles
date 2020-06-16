@@ -88,7 +88,6 @@ if [ "$INSTALL_NPM_DEPS" = "y" ]; then
   npm i -g prettier
   npm i -g svgo
   npm i -g syncpack
-  npm i -g updates
   npm i -g yarn
 fi
 
@@ -100,9 +99,9 @@ if [ "$INSTALL_CASKS" = "y" ]; then
   brew cask install cheatsheet
   brew cask install cleanmymac
   brew cask install dash
+  brew cask install discord
   brew cask install firefox
   brew cask install flux
-  brew cask install franz
   brew cask install gitup
   brew cask install google-chrome
   brew cask install imagealpha
@@ -112,32 +111,16 @@ if [ "$INSTALL_CASKS" = "y" ]; then
   brew cask install kap
   brew cask install keycastr
   brew cask install libreoffice
-  brew cask install opera
   brew cask install postman
-  brew cask install shades
-  brew cask install skype
   brew cask install slack
   brew cask install spectacle
   brew cask install spotify
   brew cask install sublime-text-dev
   brew cask install tower
-  brew cask install ui-browser
-  brew cask install virtualbox
   brew cask install visual-studio-code
 
   # Cask version of Dashlane is buggy
   open https://www.dashlane.com/download
-
-  # Install QuickLook plugins
-  brew cask install qlcolorcode
-  brew cask install qlimagesize
-  brew cask install qlmarkdown
-  brew cask install qlstephen
-  brew cask install qlvideo
-  brew cask install quicklook-json
-  brew cask install quicklookase
-  brew cask install suspicious-package
-  brew cask install webpquicklook
 
   # Remove outdated versions from the cask cellar.
   brew cask cleanup
