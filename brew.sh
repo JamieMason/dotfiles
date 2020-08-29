@@ -80,15 +80,17 @@ if [ "$INSTALL_NODE_LTS" = "y" ]; then
 fi
 
 if [ "$INSTALL_NPM_DEPS" = "y" ]; then
-  npm i -g commit-release
-  npm i -g http-server
-  npm i -g jscodeshift
-  npm i -g lebab
-  npm i -g npm-check-updates
-  npm i -g prettier
-  npm i -g svgo
-  npm i -g syncpack
-  npm i -g yarn
+  npm i -g \
+    commit-release \
+    find-unused-exports \
+    http-server \
+    lebab \
+    npm-check-updates \
+    organize-imports-cli \
+    prettier \
+    svgo \
+    syncpack \
+    yarn
 fi
 
 if [ "$INSTALL_CASKS" = "y" ]; then
