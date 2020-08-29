@@ -139,7 +139,6 @@ if [ "$INSTALL_VS_CODE_EXTENSIONS" = "y" ]; then
   code --install-extension Asuka.insertnumbers
   code --install-extension auiworks.amvim
   code --install-extension bibhasdn.unique-lines
-  code --install-extension bierner.lit-html
   code --install-extension bierner.markdown-preview-github-styles
   code --install-extension cmstead.jsrefactor
   code --install-extension CoenraadS.bracket-pair-colorizer
@@ -149,23 +148,15 @@ if [ "$INSTALL_VS_CODE_EXTENSIONS" = "y" ]; then
   code --install-extension dsznajder.es7-react-js-snippets
   code --install-extension eamodio.gitlens
   code --install-extension esbenp.prettier-vscode
-  code --install-extension idleberg.applescript
   code --install-extension JamesBirtles.svelte-vscode
   code --install-extension jaredkent.laserwave
-  code --install-extension krizzdewizz.vscode-typescript-ast-explorer
   code --install-extension kumar-harsh.graphql-for-vscode
-  code --install-extension ms-vscode.vscode-typescript-tslint-plugin
-  code --install-extension ms-vsliveshare.vsliveshare
   code --install-extension msjsdiag.debugger-for-chrome
   code --install-extension PKief.material-icon-theme
-  code --install-extension Prisma.prisma
   code --install-extension rust-lang.rust
   code --install-extension sburg.vscode-javascript-booster
-  code --install-extension shyykoserhiy.vscode-spotify
   code --install-extension stkb.rewrap
   code --install-extension Tyriar.lorem-ipsum
-  code --install-extension VisualStudioExptTeam.vscodeintellicode
-  code --install-extension WakaTime.vscode-wakatime
   code --install-extension wmaurer.change-case
 
   # Configure VS Code
