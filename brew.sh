@@ -137,7 +137,6 @@ if [ "$INSTALL_VS_CODE_EXTENSIONS" = "y" ]; then
   # (Re)install
   code --install-extension andys8.jest-snippets
   code --install-extension annsk.alignment
-  code --install-extension ardenivanov.svelte-intellisense
   code --install-extension Asuka.insertnumbers
   code --install-extension auiworks.amvim
   code --install-extension bibhasdn.unique-lines
@@ -147,18 +146,26 @@ if [ "$INSTALL_VS_CODE_EXTENSIONS" = "y" ]; then
   code --install-extension cssho.vscode-svgviewer
   code --install-extension dakara.transformer
   code --install-extension dbaeumer.vscode-eslint
+  code --install-extension deerawan.vscode-dash
+  code --install-extension DigitalBrainstem.javascript-ejs-support
   code --install-extension dsznajder.es7-react-js-snippets
   code --install-extension eamodio.gitlens
   code --install-extension esbenp.prettier-vscode
-  code --install-extension JamesBirtles.svelte-vscode
+  code --install-extension Gruntfuggly.todo-tree
+  code --install-extension heybourn.headwind
   code --install-extension jaredkent.laserwave
   code --install-extension kumar-harsh.graphql-for-vscode
   code --install-extension msjsdiag.debugger-for-chrome
   code --install-extension PKief.material-icon-theme
+  code --install-extension pnp.polacode
+  code --install-extension ronnidc.nunjucks
   code --install-extension rust-lang.rust
   code --install-extension sburg.vscode-javascript-booster
   code --install-extension stkb.rewrap
+  code --install-extension svelte.svelte-vscode
   code --install-extension Tyriar.lorem-ipsum
+  code --install-extension VisualStudioExptTeam.vscodeintellicode
+  code --install-extension WakaTime.vscode-wakatime
   code --install-extension wmaurer.change-case
 
   # Configure VS Code
