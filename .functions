@@ -279,7 +279,7 @@ function gh() {
   if [ -f "$PWD/package.json" ]; then
     yarn install
   fi
-  subl .
+  code .
 }
 
 # Clone a specific branch of a GitHub project and cd to it
@@ -297,7 +297,7 @@ function ghb() {
   if [ -f "$PWD/package.json" ]; then
     yarn install
   fi
-  subl .
+  code .
 }
 
 # Run a local https://danger.systems/js/ script against a remote PR
