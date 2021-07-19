@@ -94,38 +94,38 @@ if [ "$INSTALL_NPM_DEPS" = "y" ]; then
 fi
 
 if [ "$INSTALL_CASKS" = "y" ]; then
-  brew cask install alfred
-  brew cask install bitbar
-  brew cask install caffeine
-  brew cask install charles
-  brew cask install cheatsheet
-  brew cask install cleanmymac
-  brew cask install dash
-  brew cask install discord
-  brew cask install firefox
-  brew cask install flux
-  brew cask install gitup
-  brew cask install google-chrome
-  brew cask install imagealpha
-  brew cask install imageoptim
-  brew cask install istumbler
-  brew cask install iterm2
-  brew cask install kap
-  brew cask install keycastr
-  brew cask install libreoffice
-  brew cask install postman
-  brew cask install slack
-  brew cask install spectacle
-  brew cask install spotify
-  brew cask install sublime-text-dev
-  brew cask install tower
-  brew cask install visual-studio-code
+  brew install alfred
+  brew install bitbar
+  brew install caffeine
+  brew install charles
+  brew install cheatsheet
+  brew install cleanmymac
+  brew install dash
+  brew install discord
+  brew install firefox
+  brew install flux
+  brew install gitup
+  brew install google-chrome
+  brew install imagealpha
+  brew install imageoptim
+  brew install istumbler
+  brew install iterm2
+  brew install kap
+  brew install keycastr
+  brew install libreoffice
+  brew install postman
+  brew install slack
+  brew install spectacle
+  brew install spotify
+  brew install sublime-text-dev
+  brew install tower
+  brew install visual-studio-code
 
   # Cask version of Dashlane is buggy
   open https://www.dashlane.com/download
 
   # Remove outdated versions from the cask cellar.
-  brew cask cleanup
+  brew cleanup
 fi
 
 if [ "$INSTALL_VS_CODE_EXTENSIONS" = "y" ]; then
