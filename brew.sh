@@ -141,31 +141,32 @@ if [ "$INSTALL_VS_CODE_EXTENSIONS" = "y" ]; then
   code --install-extension auiworks.amvim
   code --install-extension bibhasdn.unique-lines
   code --install-extension bierner.markdown-preview-github-styles
-  code --install-extension cmstead.jsrefactor
-  code --install-extension CoenraadS.bracket-pair-colorizer
+  code --install-extension bungcip.better-toml
+  code --install-extension cmstead.js-codeformer
   code --install-extension cssho.vscode-svgviewer
   code --install-extension dakara.transformer
   code --install-extension dbaeumer.vscode-eslint
-  code --install-extension deerawan.vscode-dash
-  code --install-extension DigitalBrainstem.javascript-ejs-support
   code --install-extension dsznajder.es7-react-js-snippets
   code --install-extension eamodio.gitlens
   code --install-extension esbenp.prettier-vscode
+  code --install-extension firefox-devtools.vscode-firefox-debug
   code --install-extension Gruntfuggly.todo-tree
   code --install-extension heybourn.headwind
+  code --install-extension idleberg.applescript
   code --install-extension jaredkent.laserwave
-  code --install-extension kumar-harsh.graphql-for-vscode
-  code --install-extension msjsdiag.debugger-for-chrome
+  code --install-extension mattpocock.xstate-vscode
+  code --install-extension mohd-akram.vscode-html-format
   code --install-extension PKief.material-icon-theme
   code --install-extension pnp.polacode
-  code --install-extension ronnidc.nunjucks
+  code --install-extension redhat.vscode-yaml
   code --install-extension rust-lang.rust
   code --install-extension sburg.vscode-javascript-booster
+  code --install-extension silvenon.mdx
   code --install-extension stkb.rewrap
-  code --install-extension svelte.svelte-vscode
   code --install-extension Tyriar.lorem-ipsum
   code --install-extension VisualStudioExptTeam.vscodeintellicode
   code --install-extension WakaTime.vscode-wakatime
+  code --install-extension wix.glean
   code --install-extension wmaurer.change-case
 
   # Configure VS Code
