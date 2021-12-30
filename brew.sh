@@ -208,7 +208,6 @@ if [ "$INSTALL_VS_CODE_EXTENSIONS" = "y" ]; then
   duti -s com.microsoft.VSCode .idx all
   duti -s com.microsoft.VSCode .info all
   duti -s com.microsoft.VSCode .inputrc all
-  duti -s com.microsoft.VSCode .itermcolors all
   duti -s com.microsoft.VSCode .js all
   duti -s com.microsoft.VSCode .jshintrc all
   duti -s com.microsoft.VSCode .json all
