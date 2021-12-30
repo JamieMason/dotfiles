@@ -11,6 +11,9 @@ read -p "Install useful global npm packages? (Enter y or n) " INSTALL_NPM_DEPS
 read -p "Install useful casks? (Enter y or n) " INSTALL_CASKS
 read -p "Install Rust? (Enter y or n) " INSTALL_RUST
 
+# install dependency of https://packagecontrol.io/packages/SublimeCodeIntel
+pip install --upgrade --pre CodeIntel
+
 if [ "$INSTALL_BREW" = "y" ]; then
   # install homebrew
   ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
