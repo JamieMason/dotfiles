@@ -9,7 +9,6 @@ read -p "Install useful brew formulas? (Enter y or n) " INSTALL_BREW_FORMALAS
 read -p "Install nvm, Node.js, and npm? (Enter y or n) " INSTALL_NODE_LTS
 read -p "Install useful global npm packages? (Enter y or n) " INSTALL_NPM_DEPS
 read -p "Install useful casks? (Enter y or n) " INSTALL_CASKS
-read -p "Install VS Code Extensions? (Enter y or n) " INSTALL_VS_CODE_EXTENSIONS
 read -p "Install Rust? (Enter y or n) " INSTALL_RUST
 
 if [ "$INSTALL_BREW" = "y" ]; then
@@ -89,6 +88,7 @@ if [ "$INSTALL_NPM_DEPS" = "y" ]; then
     organize-imports-cli \
     prettier \
     svgo \
+    shrinkpack \
     syncpack \
     yarn
 fi
@@ -128,138 +128,92 @@ if [ "$INSTALL_CASKS" = "y" ]; then
   brew cleanup
 fi
 
-if [ "$INSTALL_VS_CODE_EXTENSIONS" = "y" ]; then
-  # Crudely remove any not in this list by removing all
-  for i in $(code --list-extensions); do
-    echo "code --uninstall-extension $i"
-  done
-
-  # (Re)install
-  code --install-extension andys8.jest-snippets
-  code --install-extension annsk.alignment
-  code --install-extension Asuka.insertnumbers
-  code --install-extension auiworks.amvim
-  code --install-extension bibhasdn.unique-lines
-  code --install-extension bierner.markdown-preview-github-styles
-  code --install-extension bungcip.better-toml
-  code --install-extension cmstead.js-codeformer
-  code --install-extension cssho.vscode-svgviewer
-  code --install-extension dakara.transformer
-  code --install-extension dbaeumer.vscode-eslint
-  code --install-extension dsznajder.es7-react-js-snippets
-  code --install-extension eamodio.gitlens
-  code --install-extension esbenp.prettier-vscode
-  code --install-extension firefox-devtools.vscode-firefox-debug
-  code --install-extension Gruntfuggly.todo-tree
-  code --install-extension heybourn.headwind
-  code --install-extension idleberg.applescript
-  code --install-extension jaredkent.laserwave
-  code --install-extension mattpocock.xstate-vscode
-  code --install-extension mohd-akram.vscode-html-format
-  code --install-extension PKief.material-icon-theme
-  code --install-extension pnp.polacode
-  code --install-extension redhat.vscode-yaml
-  code --install-extension rust-lang.rust
-  code --install-extension sburg.vscode-javascript-booster
-  code --install-extension silvenon.mdx
-  code --install-extension stkb.rewrap
-  code --install-extension Tyriar.lorem-ipsum
-  code --install-extension VisualStudioExptTeam.vscodeintellicode
-  code --install-extension WakaTime.vscode-wakatime
-  code --install-extension wix.glean
-  code --install-extension wmaurer.change-case
-
-  # Configure VS Code
-  cp -f ./init/settings.json "$HOME/Library/Application Support/Code/User/settings.json"
-  cp -f ./init/JamieMason.code-snippets "$HOME/Library/Application Support/Code/User/snippets/JamieMason.code-snippets"
-
-  duti -s com.microsoft.VSCode .aliases all
-  duti -s com.microsoft.VSCode .babelrc all
-  duti -s com.microsoft.VSCode .bash_profile all
-  duti -s com.microsoft.VSCode .bash_prompt all
-  duti -s com.microsoft.VSCode .bashrc all
-  duti -s com.microsoft.VSCode .cfignore all
-  duti -s com.microsoft.VSCode .compilerc all
-  duti -s com.microsoft.VSCode .crt all
-  duti -s com.microsoft.VSCode .csr all
-  duti -s com.microsoft.VSCode .css all
-  duti -s com.microsoft.VSCode .curlrc all
-  duti -s com.microsoft.VSCode .dockerignore all
-  duti -s com.microsoft.VSCode .editorconfig all
-  duti -s com.microsoft.VSCode .ejs all
-  duti -s com.microsoft.VSCode .env all
-  duti -s com.microsoft.VSCode .eot all
-  duti -s com.microsoft.VSCode .eslintignore all
-  duti -s com.microsoft.VSCode .eslintrc all
-  duti -s com.microsoft.VSCode .example all
-  duti -s com.microsoft.VSCode .exports all
-  duti -s com.microsoft.VSCode .extra all
-  duti -s com.microsoft.VSCode .functions all
-  duti -s com.microsoft.VSCode .gdbinit all
-  duti -s com.microsoft.VSCode .git-commit-template all
-  duti -s com.microsoft.VSCode .gitattributes all
-  duti -s com.microsoft.VSCode .gitconfig all
-  duti -s com.microsoft.VSCode .gitignore all
-  duti -s com.microsoft.VSCode .graphql all
-  duti -s com.microsoft.VSCode .gvimrc all
-  duti -s com.microsoft.VSCode .hgignore all
-  duti -s com.microsoft.VSCode .hushlogin all
-  duti -s com.microsoft.VSCode .huskyrc all
-  duti -s com.microsoft.VSCode .ico all
-  duti -s com.microsoft.VSCode .idx all
-  duti -s com.microsoft.VSCode .info all
-  duti -s com.microsoft.VSCode .inputrc all
-  duti -s com.microsoft.VSCode .js all
-  duti -s com.microsoft.VSCode .jshintrc all
-  duti -s com.microsoft.VSCode .json all
-  duti -s com.microsoft.VSCode .jsx all
-  duti -s com.microsoft.VSCode .key all
-  duti -s com.microsoft.VSCode .lintstagedrc all
-  duti -s com.microsoft.VSCode .local all
-  duti -s com.microsoft.VSCode .lock all
-  duti -s com.microsoft.VSCode .log all
-  duti -s com.microsoft.VSCode .macos all
-  duti -s com.microsoft.VSCode .mailmap all
-  duti -s com.microsoft.VSCode .map all
-  duti -s com.microsoft.VSCode .md all
-  duti -s com.microsoft.VSCode .mdx all
-  duti -s com.microsoft.VSCode .nimbus all
-  duti -s com.microsoft.VSCode .node-version all
-  duti -s com.microsoft.VSCode .npmignore all
-  duti -s com.microsoft.VSCode .npmrc all
-  duti -s com.microsoft.VSCode .nvmrc all
-  duti -s com.microsoft.VSCode .nycrc all
-  duti -s com.microsoft.VSCode .opts all
-  duti -s com.microsoft.VSCode .osx all
-  duti -s com.microsoft.VSCode .otf all
-  duti -s com.microsoft.VSCode .pack all
-  duti -s com.microsoft.VSCode .pem all
-  duti -s com.microsoft.VSCode .placeholder all
-  duti -s com.microsoft.VSCode .prettierignore all
-  duti -s com.microsoft.VSCode .prettierrc all
-  duti -s com.microsoft.VSCode .sample all
-  duti -s com.microsoft.VSCode .screenrc all
-  duti -s com.microsoft.VSCode .scss all
-  duti -s com.microsoft.VSCode .sh all
-  duti -s com.microsoft.VSCode .sketch all
-  duti -s com.microsoft.VSCode .snap all
-  duti -s com.microsoft.VSCode .stylelintrc all
-  duti -s com.microsoft.VSCode .svg all
-  duti -s com.microsoft.VSCode .template all
-  duti -s com.microsoft.VSCode .terminal all
-  duti -s com.microsoft.VSCode .test all
-  duti -s com.microsoft.VSCode .toml all
-  duti -s com.microsoft.VSCode .ts all
-  duti -s com.microsoft.VSCode .tsx all
-  duti -s com.microsoft.VSCode .ttf all
-  duti -s com.microsoft.VSCode .txt all
-  duti -s com.microsoft.VSCode .vim all
-  duti -s com.microsoft.VSCode .vimrc all
-  duti -s com.microsoft.VSCode .wgetrc all
-  duti -s com.microsoft.VSCode .xml all
-  duti -s com.microsoft.VSCode .yarnrc all
-  duti -s com.microsoft.VSCode .yml all
-fi
+duti -s com.microsoft.VSCode .aliases all
+duti -s com.microsoft.VSCode .babelrc all
+duti -s com.microsoft.VSCode .bash_profile all
+duti -s com.microsoft.VSCode .bash_prompt all
+duti -s com.microsoft.VSCode .bashrc all
+duti -s com.microsoft.VSCode .cfignore all
+duti -s com.microsoft.VSCode .compilerc all
+duti -s com.microsoft.VSCode .crt all
+duti -s com.microsoft.VSCode .csr all
+duti -s com.microsoft.VSCode .css all
+duti -s com.microsoft.VSCode .curlrc all
+duti -s com.microsoft.VSCode .dockerignore all
+duti -s com.microsoft.VSCode .editorconfig all
+duti -s com.microsoft.VSCode .ejs all
+duti -s com.microsoft.VSCode .env all
+duti -s com.microsoft.VSCode .eot all
+duti -s com.microsoft.VSCode .eslintignore all
+duti -s com.microsoft.VSCode .eslintrc all
+duti -s com.microsoft.VSCode .example all
+duti -s com.microsoft.VSCode .exports all
+duti -s com.microsoft.VSCode .extra all
+duti -s com.microsoft.VSCode .functions all
+duti -s com.microsoft.VSCode .gdbinit all
+duti -s com.microsoft.VSCode .git-commit-template all
+duti -s com.microsoft.VSCode .gitattributes all
+duti -s com.microsoft.VSCode .gitconfig all
+duti -s com.microsoft.VSCode .gitignore all
+duti -s com.microsoft.VSCode .graphql all
+duti -s com.microsoft.VSCode .gvimrc all
+duti -s com.microsoft.VSCode .hgignore all
+duti -s com.microsoft.VSCode .hushlogin all
+duti -s com.microsoft.VSCode .huskyrc all
+duti -s com.microsoft.VSCode .ico all
+duti -s com.microsoft.VSCode .idx all
+duti -s com.microsoft.VSCode .info all
+duti -s com.microsoft.VSCode .inputrc all
+duti -s com.microsoft.VSCode .js all
+duti -s com.microsoft.VSCode .jshintrc all
+duti -s com.microsoft.VSCode .json all
+duti -s com.microsoft.VSCode .jsx all
+duti -s com.microsoft.VSCode .key all
+duti -s com.microsoft.VSCode .lintstagedrc all
+duti -s com.microsoft.VSCode .local all
+duti -s com.microsoft.VSCode .lock all
+duti -s com.microsoft.VSCode .log all
+duti -s com.microsoft.VSCode .macos all
+duti -s com.microsoft.VSCode .mailmap all
+duti -s com.microsoft.VSCode .map all
+duti -s com.microsoft.VSCode .md all
+duti -s com.microsoft.VSCode .mdx all
+duti -s com.microsoft.VSCode .nimbus all
+duti -s com.microsoft.VSCode .node-version all
+duti -s com.microsoft.VSCode .npmignore all
+duti -s com.microsoft.VSCode .npmrc all
+duti -s com.microsoft.VSCode .nvmrc all
+duti -s com.microsoft.VSCode .nycrc all
+duti -s com.microsoft.VSCode .opts all
+duti -s com.microsoft.VSCode .osx all
+duti -s com.microsoft.VSCode .otf all
+duti -s com.microsoft.VSCode .pack all
+duti -s com.microsoft.VSCode .pem all
+duti -s com.microsoft.VSCode .placeholder all
+duti -s com.microsoft.VSCode .prettierignore all
+duti -s com.microsoft.VSCode .prettierrc all
+duti -s com.microsoft.VSCode .sample all
+duti -s com.microsoft.VSCode .screenrc all
+duti -s com.microsoft.VSCode .scss all
+duti -s com.microsoft.VSCode .sh all
+duti -s com.microsoft.VSCode .sketch all
+duti -s com.microsoft.VSCode .snap all
+duti -s com.microsoft.VSCode .stylelintrc all
+duti -s com.microsoft.VSCode .svg all
+duti -s com.microsoft.VSCode .template all
+duti -s com.microsoft.VSCode .terminal all
+duti -s com.microsoft.VSCode .test all
+duti -s com.microsoft.VSCode .toml all
+duti -s com.microsoft.VSCode .ts all
+duti -s com.microsoft.VSCode .tsx all
+duti -s com.microsoft.VSCode .ttf all
+duti -s com.microsoft.VSCode .txt all
+duti -s com.microsoft.VSCode .vim all
+duti -s com.microsoft.VSCode .vimrc all
+duti -s com.microsoft.VSCode .wgetrc all
+duti -s com.microsoft.VSCode .xml all
+duti -s com.microsoft.VSCode .yarnrc all
+duti -s com.microsoft.VSCode .yml all
 
 if [ "$INSTALL_RUST" = "y" ]; then
   curl https://sh.rustup.rs -sSf | sh -s -- -y
