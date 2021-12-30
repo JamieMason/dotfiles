@@ -3,7 +3,7 @@
   "editor.codeLens": false,
   "editor.defaultFormatter": "esbenp.prettier-vscode",
   "editor.fontFamily": "'Operator Mono', Menlo, Monaco, 'Courier New', monospace",
-  "editor.fontSize": 16,
+  "editor.fontSize": 14,
   "editor.formatOnPaste": false,
   "editor.formatOnSave": true,
   "editor.formatOnType": false,
@@ -15,7 +15,6 @@
   "editor.snippetSuggestions": "top",
   "editor.suggestSelection": "first",
   "editor.tabSize": 2,
-  "eslint.autoFixOnSave": true,
   "explorer.autoReveal": true,
   "explorer.confirmDelete": false,
   "explorer.confirmDragAndDrop": false,
@@ -26,7 +25,8 @@
     ".lintstagedrc": "json",
     ".stylelintrc": "json",
     ".tylerrc": "json",
-    ".prettierrc": "json"
+    ".prettierrc": "json",
+    ".extra": "shellscript"
   },
   "files.defaultLanguage": "typescript",
   "files.insertFinalNewline": true,
@@ -37,9 +37,7 @@
     "suppressFileNotUnderSourceControlWarning": false,
     "suppressGitVersionWarning": false,
     "suppressLineUncommittedWarning": false,
-    "suppressNoRepositoryWarning": false,
-    "suppressResultsExplorerNotice": false,
-    "suppressShowKeyBindingsNotice": true
+    "suppressNoRepositoryWarning": false
   },
   "javascript.preferences.importModuleSpecifier": "relative",
   "javascript.updateImportsOnFileMove.enabled": "always",
@@ -56,6 +54,7 @@
     "**/.yarn-integrity": true,
     "**/*.log": true,
     "**/*.min.*": true,
+    "**/*.snap": true,
     "**/allure-reports": true,
     "**/bower_components": true,
     "**/build": true,
@@ -75,11 +74,32 @@
   "typescript.updateImportsOnFileMove.enabled": "always",
   "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
   "window.title": "${rootName} ${separator} ${activeEditorMedium} ${dirty}",
-  "window.zoomLevel": 0,
-  "workbench.colorTheme": "LaserWave",
+  "workbench.colorTheme": "LaserWave High Contrast",
   "workbench.editor.labelFormat": "long",
   "workbench.editor.showTabs": true,
   "workbench.iconTheme": "material-icon-theme",
   "workbench.sideBar.location": "left",
-  "workbench.startupEditor": "newUntitledFile"
+  "workbench.startupEditor": "newUntitledFile",
+  "editor.codeActionsOnSave": {
+    "source.organizeImports": true,
+    "source.fixAll.eslint": true
+  },
+  "yaml.format.printWidth": 120,
+  "yaml.format.enable": false,
+  "workbench.editor.pinnedTabSizing": "shrink",
+  "workbench.editor.tabSizing": "shrink",
+  "files.restoreUndoStack": false,
+  "rust.rustfmt_path": "/Users/jmason/.cargo/bin/rustfmt",
+  "eslint.packageManager": "yarn",
+  "todo-tree.general.tags": [
+    "BUG",
+    "HACK",
+    "FIXME",
+    "TODO",
+    "XXX",
+    "[ ]",
+    "[x]"
+  ],
+  "todo-tree.regex.regex": "(//|#|<!--|;|/\\*|^|^\\s*(-|\\d+.))\\s*($TAGS)",
+  "redhat.telemetry.enabled": false
 }
