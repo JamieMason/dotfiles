@@ -18,10 +18,8 @@ GIT_COMMITTER_EMAIL="$USER_EMAIL"
 git config --global user.email "$USER_EMAIL"
 git config --global core.editor "code --wait"
 
-# nvm
-export NVM_DIR="$HOME/.nvm"
-. "$(brew --prefix nvm)/nvm.sh"
-[ -s "$NVM_DIR/nvm.sh"  ] && . "$NVM_DIR/nvm.sh"
+# fnm
+eval "$(fnm env)"
 
 # npm
 npm config set --global init-author-email "$USER_EMAIL"

@@ -12,7 +12,7 @@ These dotfiles will:
 - Set some sensible default settings for a new Mac.
 - Install [`brew`](http://brew.sh/) and some useful formulae including
   [`git`](https://git-scm.com/), [`node`](https://nodejs.org/),
-  [`nvm`](https://github.com/creationix/nvm), and
+  [`fnm`](https://github.com/Schniz/fnm), and
   [`npm`](https://www.npmjs.com/).
 - Install [`brew cask`](https://github.com/Homebrew/homebrew-cask) and some
   useful Mac Apps such as VS Code, Spotify, Firefox, Chrome, Alfred etc.

@@ -6,7 +6,7 @@ killall Dock
 
 read -p "Install brew? (Enter y or n) " INSTALL_BREW
 read -p "Install useful brew formulas? (Enter y or n) " INSTALL_BREW_FORMALAS
-read -p "Install nvm, Node.js, and npm? (Enter y or n) " INSTALL_NODE_LTS
+read -p "Install fnm, Node.js, and npm? (Enter y or n) " INSTALL_NODE_LTS
 read -p "Install useful global npm packages? (Enter y or n) " INSTALL_NPM_DEPS
 read -p "Install useful casks? (Enter y or n) " INSTALL_CASKS
 read -p "Install Rust? (Enter y or n) " INSTALL_RUST
@@ -70,14 +70,10 @@ if [ "$INSTALL_BREW_FORMALAS" = "y" ]; then
 fi
 
 if [ "$INSTALL_NODE_LTS" = "y" ]; then
-  brew install nvm
+  brew install fnm
   # install latest LTS node
-  export NVM_DIR="$HOME/.nvm"
-  . "$(brew --prefix nvm)/nvm.sh"
-  [ -s "$NVM_DIR/nvm.sh"  ] && . "$NVM_DIR/nvm.sh"
-
-  nvm install --lts --latest-npm
-  nvm alias default "$(node -v)"
+  fnm install --lts
+  fnm alias default "$(node -v)"
   sudo chown -R $(whoami) $(npm config get prefix)/{lib/node_modules,bin,share}
 fi
 
@@ -123,9 +119,6 @@ if [ "$INSTALL_CASKS" = "y" ]; then
   brew install sublime-text-dev
   brew install tower
   brew install visual-studio-code
-
-  # Cask version of Dashlane is buggy
-  open https://www.dashlane.com/download
 
   # Remove outdated versions from the cask cellar.
   brew cleanup
