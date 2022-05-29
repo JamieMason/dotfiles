@@ -22,9 +22,9 @@ git config --global core.editor "code --wait"
 eval "$(fnm env)"
 
 # npm
-npm config set --global init-author-email "$USER_EMAIL"
-npm config set --global init-author-name "$USER_NAME"
-npm config set --global init-author-url "$USER_URL"
+npm config set --location=global init-author-email "$USER_EMAIL"
+npm config set --location=global init-author-name "$USER_NAME"
+npm config set --location=global init-author-url "$USER_URL"
 
 # rust
 source $HOME/.cargo/env
