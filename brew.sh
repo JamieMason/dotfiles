@@ -85,6 +85,7 @@ if [ "$INSTALL_NPM_DEPS" = "y" ]; then
     lebab \
     npm-check-updates \
     organize-imports-cli \
+    pnpm \
     prettier \
     svgo \
     shrinkpack \
@@ -95,23 +96,22 @@ fi
 if [ "$INSTALL_CASKS" = "y" ]; then
   brew install alfred
   brew install bitbar
+  brew install brave
   brew install caffeine
   brew install charles
-  brew install cheatsheet
   brew install cleanmymac
   brew install dash
   brew install discord
   brew install firefox
   brew install flux
   brew install gitup
-  brew install google-chrome
   brew install imagealpha
   brew install imageoptim
-  brew install istumbler
   brew install iterm2
   brew install kap
   brew install keycastr
   brew install libreoffice
+  brew install neovim
   brew install postman
   brew install slack
   brew install spectacle
