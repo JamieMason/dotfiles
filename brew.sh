@@ -213,5 +213,6 @@ duti -s com.microsoft.VSCode .yml all
 
 if [ "$INSTALL_RUST" = "y" ]; then
   curl https://sh.rustup.rs -sSf | sh -s -- -y
+  source "$HOME/.cargo/env"
   rustup update
 fi
