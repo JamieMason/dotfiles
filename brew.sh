@@ -49,10 +49,10 @@ if [ "$INSTALL_BREW_FORMALAS" = "y" ]; then
   fi;
 
   # Install `wget` with IRI support.
-  brew install wget --with-iri
+  brew install wget
 
   # Install more recent versions of some macOS tools.
-  brew install vim --override-system-vi
+  brew install vim
 
   # Install other useful binaries.
   brew install duti
@@ -63,7 +63,6 @@ if [ "$INSTALL_BREW_FORMALAS" = "y" ]; then
   brew install git-cal
   brew install pup
   brew install tree
-  brew install nektos/tap/act
 
   # Remove outdated versions from the cellar.
   brew cleanup
