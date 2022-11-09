@@ -19,7 +19,7 @@ git config --global user.email "$USER_EMAIL"
 git config --global core.editor "code --wait"
 
 # fnm
-eval "$(fnm env)"
+eval "$(fnm env --use-on-cd)"
 
 # npm
 npm config set --location=global init-author-email "$USER_EMAIL"
