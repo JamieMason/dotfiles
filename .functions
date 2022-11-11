@@ -267,7 +267,7 @@ function mkfile() {
 }
 
 # Clone a GitHub project and cd to it
-function gh() {
+function ghclone() {
   user_name="$1"
   repo_name="$2"
   if [ -z "$repo_name" ]; then
@@ -283,7 +283,7 @@ function gh() {
 }
 
 # Clone a specific branch of a GitHub project and cd to it
-function ghb() {
+function ghcloneb() {
   user_name="$1"
   repo_name="$2"
   branch_name="$3"
