@@ -64,6 +64,8 @@ if [ "$INSTALL_BREW_FORMALAS" = "y" ]; then
   brew install git-cal
   brew install pup
   brew install tree
+  brew install ripgrep
+  brew install neovim
 
   # Remove outdated versions from the cellar.
   brew cleanup

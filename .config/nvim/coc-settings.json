@@ -1,0 +1,11 @@
+{
+  "coc.preferences.formatOnSave": true,
+  "eslint.autoFixOnSave": true,
+  "javascript.validate.enable": false,
+  "prettier.documentSelectors": ["**/*.astro"],
+  "prettier.printWidth": 100,
+  "prettier.proseWrap": "never",
+  "prettier.singleQuote": true,
+  "suggest.noselect": false,
+  "typescript.updateImportsOnFileMove.enabled": "always"
+}
