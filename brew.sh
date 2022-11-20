@@ -36,6 +36,7 @@ if [ "$INSTALL_BREW_FORMALAS" = "y" ]; then
   brew install findutils
   # Install GNU `sed`, overwriting the built-in `sed`.
   brew install gnu-sed
+  PATH="/usr/local/opt/gnu-sed/libexec/gnubin:$PATH"
   # Install Bash 4.
   # Note: don’t forget to add `/usr/local/bin/bash` to `/etc/shells` before
   # running `chsh`.
