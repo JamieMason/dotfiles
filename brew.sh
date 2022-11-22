@@ -66,6 +66,7 @@ if [ "$INSTALL_BREW_FORMALAS" = "y" ]; then
   brew install tree
   brew install ripgrep
   brew install neovim
+  brew install universal-ctags
 
   # Remove outdated versions from the cellar.
   brew cleanup
