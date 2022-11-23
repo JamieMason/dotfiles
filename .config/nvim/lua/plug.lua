@@ -51,7 +51,7 @@ return require('packer').startup(function(use)
   -- ts enhancements eg. rename file and update its imports
   use('jose-elias-alvarez/typescript.nvim')
 
-  --[[ Theme ]]
+  --[[ theme ]]
   -- start screen
   use({ 'mhinz/vim-startify' })
   -- a custom status line at the bottom of the editor
@@ -63,13 +63,15 @@ return require('packer').startup(function(use)
     },
   })
   -- colour theme
-  use({ 'Shatur/neovim-ayu' })
-  -- Highlight other instances of word under cursor
-  use({ 'RRethy/vim-illuminate' })
+  use({ 'shatur/neovim-ayu' })
+  -- highlight other instances of word under cursor
+  use({ 'rrethy/vim-illuminate' })
   -- icons
   use('kyazdani42/nvim-web-devicons')
 
   --[[ Editing ]]
+  -- multiple cursors
+  use({ 'mg979/vim-visual-multi', branch = 'master' })
   -- plugin for splitting/joining blocks of code
   use({
     'Wansmer/treesj',

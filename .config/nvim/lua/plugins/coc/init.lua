@@ -20,4 +20,3 @@ vim.cmd([[
 ]])
 
 -- Use K to show documentation in preview window.
-
