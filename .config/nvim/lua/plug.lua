@@ -16,6 +16,8 @@ return require('packer').startup(function(use)
   })
   -- load extensions like VSCode and host language servers
   use({ 'neoclide/coc.nvim', branch = 'release' })
+
+  --[[ Language Server Protocol ]]
   use({
     -- install and manage LSP servers, debuggers and linters.
     'williamboman/mason.nvim',
@@ -23,7 +25,8 @@ return require('packer').startup(function(use)
     'williamboman/mason-lspconfig.nvim',
     -- a collection of LSP configs
     'neovim/nvim-lspconfig',
-    --
+    -- "Use Neovim as a language server to inject LSP diagnostics,
+    -- code actions, and more via Lua"
     'jose-elias-alvarez/null-ls.nvim',
     'jayp0521/mason-null-ls.nvim',
   })
@@ -47,26 +50,10 @@ return require('packer').startup(function(use)
   })
   -- ts enhancements eg. rename file and update its imports
   use('jose-elias-alvarez/typescript.nvim')
-  -- add icons to autocomplete window
-  use('onsails/lspkind.nvim')
-  -- git integration
-  -- show line modifications on left hand side
-  use('lewis6991/gitsigns.nvim')
-  -- plugin for splitting/joining blocks of code
-  use({
-    'Wansmer/treesj',
-    requires = { 'nvim-treesitter' },
-    config = function()
-      require('treesj').setup({--[[ your config ]]
-      })
-    end,
-  })
 
   --[[ Theme ]]
   -- start screen
   use({ 'mhinz/vim-startify' })
-  -- cursor jump
-  use({ 'DanilaMihailov/beacon.nvim' })
   -- a custom status line at the bottom of the editor
   use({
     'nvim-lualine/lualine.nvim',
@@ -81,18 +68,34 @@ return require('packer').startup(function(use)
   use({ 'RRethy/vim-illuminate' })
   -- icons
   use('kyazdani42/nvim-web-devicons')
-  --[[ Dev ]]
+
+  --[[ Editing ]]
+  -- plugin for splitting/joining blocks of code
+  use({
+    'Wansmer/treesj',
+    requires = { 'nvim-treesitter' },
+    config = function()
+      require('treesj').setup({--[[ your config ]]
+      })
+    end,
+  })
   -- ys+motion == wrap words with ',',[ etc
   -- ds+motion == remove characters surrounding
   -- ysaW' == surround word with single quotes
   -- dsaW' == remove double quotes from around word
   use('tpope/vim-surround')
+  -- MixedCase (crm)
+  -- Title Case (crt)
+  -- UPPER_CASE (cru)
+  -- camelCase (crc)
+  -- dash-case (cr-)
+  -- dot.case (cr.)
+  -- snake_case (crs)
+  -- snake_case (crs)
+  -- space case (cr<space>)
+  use('tpope/vim-abolish')
   -- toggle comments with gc+motion
   use('numToStr/Comment.nvim')
-  -- navigate symbols within a file (vars, functions etc)
-  use({ 'majutsushi/tagbar' })
-  -- make indentation characters visible
-  use({ 'Yggdroot/indentLine' })
   -- autocomplete closing parens etc
   use({
     'windwp/nvim-autopairs',
@@ -100,14 +103,28 @@ return require('packer').startup(function(use)
       require('nvim-autopairs').setup({})
     end,
   })
+  -- autocomplete closing HTML tags
   use('windwp/nvim-ts-autotag')
+  -- trim trailing whitespace
+  use('cappyzawa/trim.nvim')
+
+  --[[ UI ]]
+  -- add icons to autocomplete window
+  use('onsails/lspkind.nvim')
+  -- show git line modifications on left hand side
+  use('lewis6991/gitsigns.nvim')
+  -- cursor jump
+  use({ 'DanilaMihailov/beacon.nvim' })
+  -- make indentation characters visible
+  use({ 'Yggdroot/indentLine' })
+  -- navigate symbols within a file (vars, functions etc)
+  use({ 'majutsushi/tagbar' })
   -- show errors and warnings
   use({
     'folke/trouble.nvim',
     requires = 'kyazdani42/nvim-web-devicons',
   })
-  -- trim trailing whitespace
-  use('cappyzawa/trim.nvim')
+
   --[[ Navigation ]]
   -- maximise a split pane to be full size
   use('szw/vim-maximizer')

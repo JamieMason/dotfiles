@@ -32,6 +32,7 @@ require('keys')
 require('plug')
 
 -- Setup
+--require('vim-abolish').setup()
 require('Comment').setup()
 require('nvim-web-devicons').setup()
 require('plugins/coc/init')
