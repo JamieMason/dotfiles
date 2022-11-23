@@ -32,14 +32,18 @@ return require('packer').startup(function(use)
   -- LSP completion source
   use 'hrsh7th/cmp-nvim-lsp'
   -- Useful completion sources:
-  use 'hrsh7th/cmp-nvim-lua'
-  use 'hrsh7th/cmp-nvim-lsp-signature-help'
-  use 'hrsh7th/cmp-vsnip'
-  use 'hrsh7th/cmp-path'
   use 'hrsh7th/cmp-buffer'
+  use 'hrsh7th/cmp-nvim-lsp-signature-help'
+  use 'hrsh7th/cmp-nvim-lua'
+  use 'hrsh7th/cmp-path'
+  use 'hrsh7th/cmp-vsnip'
   use 'hrsh7th/vim-vsnip'
+  use {
+    'kosayoda/nvim-lightbulb',
+    requires = 'antoinemadec/FixCursorHold.nvim',
+  }
 
-  --[[ Theme ]]
+--[[ Theme ]]
   -- start screen
   use { 'mhinz/vim-startify' }
   -- cursor jump
@@ -59,10 +63,10 @@ return require('packer').startup(function(use)
   -- icons
   use 'kyazdani42/nvim-web-devicons'
   --[[ Dev ]]
-  -- ys+motion == wrap words with ',",[ etc
+  -- ys+motion == wrap words with ',',[ etc
   -- ds+motion == remove characters surrounding
   -- ysaW' == surround word with single quotes
-  -- dsaW" == remove double quotes from around word
+  -- dsaW' == remove double quotes from around word
   use 'tpope/vim-surround'
   -- toggle comments with gc+motion
   use 'numToStr/Comment.nvim'
@@ -77,8 +81,8 @@ return require('packer').startup(function(use)
   }
   -- show errors and warnings
   use {
-    "folke/trouble.nvim",
-    requires = "kyazdani42/nvim-web-devicons"
+    'folke/trouble.nvim',
+    requires = 'kyazdani42/nvim-web-devicons'
   }
   -- trim trailing whitespace
   use 'cappyzawa/trim.nvim'

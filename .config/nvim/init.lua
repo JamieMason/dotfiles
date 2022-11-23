@@ -32,19 +32,17 @@ require('keys')
 require('plug')
 
 -- Setup
+require('Comment').setup()
+require('nvim-web-devicons').setup()
+require('plugins/cmp/init')
 require('plugins/coc/init')
+require('plugins/hop/init')
 require('plugins/lualine/init')
+require('plugins/mason/init')
 require('plugins/neovim-ayu/init')
 require('plugins/nvim-autopairs/init')
 require('plugins/nvim-tree/init')
 require('plugins/nvim-treesitter/init')
-require('plugins/hop/init')
+require('plugins/rust-tools/init')
 require('plugins/telescope/init')
 require('plugins/trouble/init')
-require('Comment').setup()
-require('nvim-web-devicons').setup()
-require('trim').setup({
-  trim_trailing = true,
-  trim_last_line = false,
-  trim_first_line = true,
-})

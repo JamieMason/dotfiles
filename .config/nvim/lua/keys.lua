@@ -32,8 +32,7 @@ map('n', '<leader>tn', ':tabn<CR>', {})
 map('n', '<leader>tp', ':tabp<CR>', {})
 
 -- [[ nvim-tree ]]
-map('n', '<leader>bt', ':NvimTreeToggle<CR>', {})
-map('n', '<leader>bf', ':NvimTreeFocus<CR>', {})
+map('n', '<leader>b', ':NvimTreeToggle<CR>', {})
 
 -- [[ Tagbar ]]
 map('n', '<leader>tt', ':TagbarToggle<CR>', {})
@@ -58,8 +57,12 @@ end, {remap = true})
 
 -- [[ Telescope ]]
 local builtin = require('telescope.builtin')
+-- search for files in the project
 vim.keymap.set('n', '<leader>ff', builtin.find_files, {})
+-- search file contents in the project
 vim.keymap.set('n', '<leader>fg', builtin.live_grep, {})
+-- search contents in open files
 vim.keymap.set('n', '<leader>fb', builtin.buffers, {})
+-- search text within help
 vim.keymap.set('n', '<leader>fh', builtin.help_tags, {})
 

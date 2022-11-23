@@ -16,7 +16,7 @@ git config --global user.name "$USER_NAME"
 GIT_AUTHOR_EMAIL="$USER_EMAIL"
 GIT_COMMITTER_EMAIL="$USER_EMAIL"
 git config --global user.email "$USER_EMAIL"
-git config --global core.editor "code --wait"
+git config --global core.editor "nvim"
 
 # fnm
 eval "$(fnm env --use-on-cd)"
