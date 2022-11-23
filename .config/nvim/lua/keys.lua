@@ -4,6 +4,9 @@ local hop = require('hop')
 local directions = require('hop.hint').HintDirection
 local map = vim.api.nvim_set_keymap
 
+-- [[ Source ]]
+-- toggle single/multi-line wrapping of blocks of code
+map('n', '<leader>w', ':TSJToggle<CR>', {})
 -- increment number
 map('n', '<leader>+', '<C-a>', {})
 -- decrement number

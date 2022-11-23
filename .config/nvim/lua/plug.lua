@@ -52,6 +52,15 @@ return require('packer').startup(function(use)
   -- git integration
   -- show line modifications on left hand side
   use('lewis6991/gitsigns.nvim')
+  -- plugin for splitting/joining blocks of code
+  use({
+    'Wansmer/treesj',
+    requires = { 'nvim-treesitter' },
+    config = function()
+      require('treesj').setup({--[[ your config ]]
+      })
+    end,
+  })
 
   --[[ Theme ]]
   -- start screen
