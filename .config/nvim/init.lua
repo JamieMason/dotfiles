@@ -13,8 +13,8 @@ local g = vim.g
 -- It's a good idea to set these leader keys before any other variables to
 -- ensure that they're mapped correctly and are ready to work with any plugins
 -- you install
-vim.g.mapleader = ","
-vim.g.localleader = "\\"
+vim.g.mapleader = ','
+vim.g.localleader = '\\'
 
 -- disable netrw at the very start of your init.lua (strongly advised)
 -- (https://github.com/nvim-tree/nvim-tree.lua#setup)
@@ -35,6 +35,7 @@ require('plug')
 require('Comment').setup()
 require('nvim-web-devicons').setup()
 require('plugins/coc/init')
+require('plugins/gitsigns/init')
 require('plugins/hop/init')
 require('plugins/lsp/cmp/init')
 require('plugins/lsp/lspconfig/init')
@@ -48,4 +49,5 @@ require('plugins/nvim-tree/init')
 require('plugins/nvim-treesitter/init')
 require('plugins/rust-tools/init')
 require('plugins/telescope/init')
+require('plugins/trim/init')
 require('plugins/trouble/init')

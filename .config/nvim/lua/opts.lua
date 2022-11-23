@@ -14,7 +14,7 @@ opt.relativenumber = true
 -- int: Min num lines of context
 opt.scrolloff = 4
 -- str: Show the sign column
-opt.signcolumn = "yes"
+opt.signcolumn = 'yes'
 
 -- [[ Filetypes ]]
 -- str: String encoding to use
@@ -24,7 +24,7 @@ opt.fileencoding = 'utf8'
 
 -- [[ Theme ]]
 -- str: Allow syntax highlighting
-opt.syntax = "ON"
+opt.syntax = 'ON'
 -- bool: If term supports ui color then enable
 opt.termguicolors = true
 -- Set the colour scheme
@@ -105,4 +105,3 @@ vim.cmd([[
 -- [[ Input Delay ]]
 -- how long to wait before submitting a key sequence
 opt.timeoutlen = 500
-

@@ -44,16 +44,16 @@ map('n', '<leader>hw', ':HopWord<CR>', {})
 vim.keymap.set('', '<leader>hf', function()
   hop.hint_char1({
     direction = directions.AFTER_CURSOR,
-    current_line_only = true
+    current_line_only = true,
   })
-end, {remap = true})
+end, { remap = true })
 -- F, but with Hop
 vim.keymap.set('', '<leader>hF', function()
   hop.hint_char1({
     direction = directions.BEFORE_CURSOR,
-    current_line_only = true
+    current_line_only = true,
   })
-end, {remap = true})
+end, { remap = true })
 
 -- [[ Telescope ]]
 local builtin = require('telescope.builtin')
@@ -65,4 +65,3 @@ vim.keymap.set('n', '<leader>fg', builtin.live_grep, {})
 vim.keymap.set('n', '<leader>fb', builtin.buffers, {})
 -- search text within help
 vim.keymap.set('n', '<leader>fh', builtin.help_tags, {})
-

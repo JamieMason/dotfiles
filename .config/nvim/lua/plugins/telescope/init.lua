@@ -11,9 +11,8 @@ require('telescope').setup({
       '%.webp',
       '%.woff',
       '%.woff2',
-    }
-  }
+    },
+  },
 })
 
 require('telescope').load_extension('fzf')
-

@@ -1,9 +1,9 @@
-require("mason").setup()
+require('mason').setup()
 
-require("mason-lspconfig").setup({
+require('mason-lspconfig').setup({
   -- auto-install configured servers (with lspconfig)
   -- not the same as ensure_installed
-  automatic_installation = true, 
+  automatic_installation = true,
   -- list of servers for mason to install
   ensure_installed = {
     -- https://astro.build
@@ -42,7 +42,7 @@ require("mason-lspconfig").setup({
     'yamlls',
     -- Markdown
     'zk',
-  }
+  },
 })
 
 require('mason-null-ls').setup({
@@ -50,8 +50,8 @@ require('mason-null-ls').setup({
   automatic_installation = true,
   -- list of formatters & linters for mason to install
   ensure_installed = {
-    "prettier", -- ts/js formatter
-    "stylua", -- lua formatter
-    "eslint_d", -- ts/js linter
+    'prettier', -- ts/js formatter
+    'stylua', -- lua formatter
+    'eslint_d', -- ts/js linter
   },
 })

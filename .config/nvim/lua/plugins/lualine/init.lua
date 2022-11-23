@@ -1,4 +1,4 @@
-require('lualine').setup {
+require('lualine').setup({
   options = {
     theme = 'ayu_dark',
     component_separators = '|',
@@ -26,4 +26,4 @@ require('lualine').setup {
   },
   tabline = {},
   extensions = {},
-}
+})
