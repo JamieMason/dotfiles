@@ -77,6 +77,10 @@ opt.splitbelow = true
 -- [[ IndentLine Plugin ]]
 g.indentLine_char = '┆'
 g.indentLine_leadingSpaceEnabled = 1
+-- Disable conceal for json/md without disabling indentLine plugin
+-- see: https://github.com/Yggdroot/indentLine/tree/d15d63bf9c4a74a02470d4bc8ecce53df13e3a75#customization
+g.vim_json_conceal = 0
+g.markdown_syntax_conceal = 0
 
 -- [[ TagBar Plugin ]]
 g.tagbar_ctags_bin = '/usr/local/bin/ctags'

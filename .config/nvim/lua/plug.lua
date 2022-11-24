@@ -76,10 +76,6 @@ return require('packer').startup(function(use)
   use({
     'Wansmer/treesj',
     requires = { 'nvim-treesitter' },
-    config = function()
-      require('treesj').setup({--[[ your config ]]
-      })
-    end,
   })
   -- ys+motion == wrap words with ',',[ etc
   -- ds+motion == remove characters surrounding
@@ -101,9 +97,6 @@ return require('packer').startup(function(use)
   -- autocomplete closing parens etc
   use({
     'windwp/nvim-autopairs',
-    config = function()
-      require('nvim-autopairs').setup({})
-    end,
   })
   -- autocomplete closing HTML tags
   use('windwp/nvim-ts-autotag')

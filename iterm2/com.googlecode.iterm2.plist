@@ -572,7 +572,7 @@
 	<key>Default Bookmark Guid</key>
 	<string>2994E28C-D105-4F96-BED6-D5DF58EA58C1</string>
 	<key>DimInactiveSplitPanes</key>
-	<true/>
+	<false/>
 	<key>DimOnlyText</key>
 	<false/>
 	<key>EnableDivisionView</key>

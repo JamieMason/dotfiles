@@ -7,6 +7,7 @@ end
 -- configure autopairs
 autopairs.setup({
   check_ts = true, -- enable treesitter
+  close_triple_quotes = true,
   ts_config = {
     lua = { 'string' }, -- don't add pairs in lua string treesitter nodes
     javascript = { 'template_string' }, -- don't add pairs in javscript template_string treesitter nodes
