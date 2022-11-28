@@ -24,12 +24,12 @@ vim.g.loaded_netrwPlugin = 1
 -- IMPORTS
 -- Variables
 require('vars')
+-- Plugins
+require('plug')
 -- Options
 require('opts')
 -- Keymaps
 require('keys')
--- Plugins
-require('plug')
 
 -- Setup
 --require('vim-abolish').setup()
