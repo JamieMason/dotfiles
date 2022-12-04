@@ -27,6 +27,8 @@ opt.cursorline = true -- highlight the current cursor line
 
 -- appearance
 
+opt.guifont = { "FiraCode Nerd Font Mono Regular", ":h14" }
+
 -- turn on termguicolors for colorscheme to work
 -- (have to use iterm2 or any other true color terminal)
 opt.termguicolors = true
