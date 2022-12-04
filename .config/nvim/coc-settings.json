@@ -1,8 +1,0 @@
-{
-  "coc.preferences.formatOnSave": true,
-  "eslint.autoFixOnSave": true,
-  "prettier.printWidth": 100,
-  "prettier.proseWrap": "never",
-  "prettier.singleQuote": true,
-  "typescript.updateImportsOnFileMove.enabled": "always"
-}

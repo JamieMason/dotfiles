@@ -1,5 +1,5 @@
 -- import gitsigns plugin safely
-local setup, gitsigns = pcall(require, 'gitsigns')
+local setup, gitsigns = pcall(require, "gitsigns")
 if not setup then
   return
 end
