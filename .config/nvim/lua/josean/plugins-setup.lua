@@ -55,6 +55,14 @@ return packer.startup(function(use)
   -- make indentation characters visible
   use({ "Yggdroot/indentLine" })
 
+  -- display popup with possible key bindings of the command you started typing
+  use({
+    "folke/which-key.nvim",
+    config = function()
+      require("which-key").setup({})
+    end,
+  })
+
   -- statusline
   use("nvim-lualine/lualine.nvim")
 
