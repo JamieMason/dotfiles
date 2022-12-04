@@ -15,7 +15,13 @@ vim.cmd([[ highlight NvimTreeIndentMarker guifg=#3FC5FF ]])
 nvimtree.setup({
   -- change folder arrow icons
   renderer = {
+    highlight_opened_files = "name",
+    highlight_git = true,
+    group_empty = true,
     icons = {
+      show = {
+        git = true,
+      },
       glyphs = {
         folder = {
           arrow_closed = "", -- arrow when folder is closed
@@ -37,4 +43,28 @@ nvimtree.setup({
   -- 	git = {
   -- 		ignore = false,
   -- 	},
+
+  view = {
+    float = {
+      enable = true,
+      open_win_config = {
+        relative = "cursor",
+        border = "rounded",
+        row = 1,
+        col = 1,
+      },
+    },
+  },
+
+  diagnostics = {
+    enable = true,
+    show_on_dirs = false,
+    debounce_delay = 50,
+    icons = {
+      hint = "",
+      info = "",
+      warning = "",
+      error = "",
+    },
+  },
 })
