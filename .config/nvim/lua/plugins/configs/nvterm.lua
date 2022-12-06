@@ -1,25 +1,25 @@
-local present, nvterm = pcall(require, "nvterm")
+local present, nvterm = pcall(require, 'nvterm')
 
 if not present then
   return
 end
 
-require "base46.term"
+require('base46.term')
 
 local options = {
   terminals = {
     list = {},
     type_opts = {
       float = {
-        relative = "editor",
+        relative = 'editor',
         row = 0.3,
         col = 0.25,
         width = 0.5,
         height = 0.4,
-        border = "single",
+        border = 'single',
       },
-      horizontal = { location = "rightbelow", split_ratio = 0.3 },
-      vertical = { location = "rightbelow", split_ratio = 0.5 },
+      horizontal = { location = 'rightbelow', split_ratio = 0.3 },
+      vertical = { location = 'rightbelow', split_ratio = 0.5 },
     },
   },
   behavior = {
@@ -29,6 +29,6 @@ local options = {
   enable_new_mappings = true,
 }
 
-options = require("core.utils").load_override(options, "NvChad/nvterm")
+options = require('core.utils').load_override(options, 'NvChad/nvterm')
 
 nvterm.setup(options)
