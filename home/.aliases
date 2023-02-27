@@ -1,0 +1,148 @@
+#!/usr/bin/env bash
+
+# Easier navigation
+alias ..="cd .."
+alias ...="cd ../.."
+alias ....="cd ../../.."
+alias .....="cd ../../../.."
+
+# Shortcuts
+alias dev="cd ~/Dev"
+
+# List contents of tarball
+alias lstgz="tar -tvf"
+
+# Always enable colored `grep` output
+alias grep='grep --color=auto'
+
+# [Y]arn
+alias y="yarn"
+# [Y]arn [C]lean (delete generated artefacts not stored in Git, and lockfiles)
+alias yc="rm -f ./package-lock.json ./yarn.lock; git clean -dfX"
+# [Y]arn [C]lean [I]nstall (delete everything, then reinstall)
+alias yci="yc; yi"
+# [Y]arn [D]ependency (install dependency)
+alias yd="yarn add -EW"
+# [Y]arn [D]ev [D]ependency (install dev dependency)
+alias ydd="yarn add -DEW"
+# [Y]arn [U]ninstall (uninstall dependency)
+alias yu="yarn remove -W"
+# [Y]arn [G]lobal install
+alias yg="npm install -g"
+# [Y]arn [G]lobal [U]ninstall
+alias ygu="npm uninstall -g"
+# [Y]arn [H]ome
+alias yh="npm home"
+# [Y]arn [I]nstall
+alias yi="yarn install"
+# [Y]arn [LS] (list all immediate dependencies)
+alias yls="npm ls --s --depth=0"
+# [Y]arn [R]un
+alias yr="yarn run"
+# [Y]arn [B]uild
+alias yb="yr build"
+# [Y]arn [F]ormat
+alias yf="yr format"
+# [Y]arn [L]int
+alias yl="yr lint"
+# [Y]arn [S]tart
+alias ys="yr start"
+# [Y]arn [T]est
+alias yt="yr test"
+# [Y]arn [W]atch
+alias yw="yr watch"
+# [B]uild [L]int [T]est
+alias blt="yarn build && yarn lint && yarn test"
+# [B]uild [L]int
+alias bl="yarn build && yarn lint"
+# [B]uild [S]tart
+alias bs="yarn build && yarn start"
+# [B]uild [T]est
+alias bt="yarn build && yarn test"
+# [I]nstall [B]uild
+alias ib="yarn && yarn build"
+# [I]nstall [B]uild [L]int [T]est
+alias iblt="yarn && yarn build && yarn lint && yarn test"
+# [I]nstall [B]uild [L]int
+alias ibl="yarn && yarn build && yarn lint"
+# [I]nstall [B]uild [S]tart
+alias ibs="yarn && yarn build && yarn start"
+# [I]nstall [B]uild [T]est
+alias ibt="yarn && yarn build && yarn test"
+
+# stage files
+alias ga='git add -A'
+# list local branches
+alias gb='git branch'
+# list all local and remote branches
+alias gba='git fetch && git branch -a'
+# delete local branch, eg. `gbd quicktest`
+alias gbd='git branch -D'
+# delete remote branch, eg. `gbdr quicktest`
+alias gbdr='git push origin --delete --no-verify'
+# delete local and remote branch
+alias gbda='gbd && gbdr'
+# list latest remote branches
+alias gbl='git for-each-ref --sort=-committerdate refs/remotes/ --format="%(HEAD) %(committerdate:relative)|%(objectname:short)|%(refname:short)|%(authorname) %(authoremail)" | column -t -s "|"'
+# create a new branch, eg. `gbn feature_pmpsht`
+alias gbn='git checkout -b'
+# eg `gc master`
+alias gc='git checkout'
+# amend previous commit
+alias gca='git commit --amend'
+# get name of current branch
+alias gcb='git branch | grep \* | cut -d " " -f2'
+# eg `gcm 'fixed stuff'`
+alias gcm='git commit -m'
+# look for changes to remote branches
+alias gf='git fetch --prune'
+# search code in git history
+alias git-search='git log -p | grep --context=4'
+# show the commit history
+alias gl="git log --use-mailmap --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%aN>%Creset'"
+# git list contributors
+alias glc="git log --use-mailmap --no-merges --pretty=format:'%aN <%aE>' | sort | uniq"
+# grep git log
+alias glfm="gl | grep"
+# parseable git log
+alias glp="git log --pretty=format:'%h|%s|%an' --abbrev-commit"
+# short commit history
+alias gls="gl --max-count=15 --no-merges"
+# eg `gm develop`
+alias gm='git merge --no-ff'
+# git pull
+alias gpl='git pull origin --tags'
+# git pull current branch
+alias gplc='gpl $(gcb)'
+# git pull develop
+alias gpld='gpl develop'
+# git pull master
+alias gplm='gpl master'
+# git push
+alias gps='git push origin --tags'
+# git push current branch
+alias gpsc='gps $(gcb)'
+# git push develop
+alias gpsd='gps develop'
+# git push master
+alias gpsm='gps master'
+# eg `gr develop`
+alias gr='git rebase'
+alias grd='gr develop'
+alias grm='gr master'
+# show all (un)staged and untracked files
+alias gs='git status -sb'
+# undo
+alias gu='git reset --hard && git clean -df'
+# update from master
+alias gufm='git checkout master && git fetch && git reset --hard origin/master && git checkout - && git rebase master'
+
+# because I can *never* remember this
+alias shebang="echo '#!/usr/bin/env bash'"
+
+# Rust/Cargo
+alias cr="cargo run"
+alias ct="cargo test"
+alias cb="cargo bench"
+alias cf="cargo fmt"
+

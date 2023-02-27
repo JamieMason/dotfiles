@@ -1,31 +1,10 @@
 #!/usr/bin/env bash
 
-cd "$(dirname "${BASH_SOURCE}")";
-
-git pull origin master;
-
-function doIt() {
-	rsync --exclude ".git/" \
-		--exclude ".DS_Store" \
-		--exclude ".osx" \
-		--exclude "LICENSE-MIT.txt" \
-		--exclude "README.md" \
-		--exclude "bootstrap.sh" \
-		--exclude "iterm2" \
-		--exclude "wallpapers" \
-		-avh --no-perms . ~;
-  ./brew.sh && \
-  ./.macos && \
-  source ~/.bash_profile;
-}
-
-if [ "$1" == "--force" -o "$1" == "-f" ]; then
-	doIt;
-else
-	read -p "This may overwrite existing files in your home directory. Are you sure? (y/n) " -n 1;
-	echo "";
-	if [[ $REPLY =~ ^[Yy]$ ]]; then
-		doIt;
-	fi;
-fi;
-unset doIt;
+./01-configure-mac.sh
+./02-install-binaries.sh
+./03-install-apps.sh
+./04-install-node.sh
+./05-install-rust.sh
+./06-install-npm-binaries.sh
+./07-set-default-apps.sh
+./08-copy-dotfiles.sh

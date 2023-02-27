@@ -1,9 +1,5 @@
 #!/usr/bin/env bash
 
-# ------------------------------------
-# EXPORTS
-# ------------------------------------
-
 GITHUB_HANDLE="JamieMason"
 USER_NAME="Jamie Mason"
 USER_EMAIL="jamie@foldleft.io"
@@ -20,11 +16,6 @@ git config --global core.editor "nvim"
 
 # fnm
 eval "$(fnm env --use-on-cd)"
-
-# npm
-npm config set --location=global init-author-email "$USER_EMAIL"
-npm config set --location=global init-author-name "$USER_NAME"
-npm config set --location=global init-author-url "$USER_URL"
 
 # rust
 source $HOME/.cargo/env

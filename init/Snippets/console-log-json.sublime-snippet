@@ -1,7 +1,0 @@
-<snippet>
-  <content><![CDATA[
-console.log(JSON.stringify(${1:value}, null, 2));
-]]></content>
-  <tabTrigger>loj</tabTrigger>
-  <scope>source.js,source.jsx,source.ts,source.tsx</scope>
-</snippet>
