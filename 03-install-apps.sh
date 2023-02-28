@@ -2,7 +2,6 @@
 
 # Install Casks
 brew install alfred
-brew install bitbar
 brew install brave
 brew install caffeine
 brew install charles
@@ -19,6 +18,7 @@ brew install spotify
 brew install sublime-text-dev
 brew install tower
 brew install visual-studio-code
+brew install xbar
 
 # Remove outdated versions from the cask cellar.
 brew cleanup
