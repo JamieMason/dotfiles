@@ -1,0 +1,8 @@
+{
+  "alfredsnippet" : {
+    "snippet" : "#!\/usr\/bin\/env bash\n",
+    "uid" : "19F414E0-BA79-4872-8F3E-EE6C60BF699E",
+    "name" : "shebang",
+    "keyword" : "sh"
+  }
+}
