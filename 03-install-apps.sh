@@ -9,7 +9,7 @@ brew install cleanmymac
 brew install dash
 brew install firefox
 brew install flux
-brew install gitup
+brew install --cask gitup
 brew install imageoptim
 brew install iterm2
 brew install keycastr
