@@ -7,10 +7,12 @@
 		<string>features.websearch.custom.B5737EA2-7394-4899-B502-A3486E3A7E61.fallback</string>
 		<string>features.websearch.custom.59C07BBB-B3BD-4396-B3B2-DAE7470CA3D5.fallback</string>
 		<string>features.websearch.custom.D47468E5-230E-43BA-8243-8BF8BAD790E4.fallback</string>
+		<string>features.websearch.custom.9957495A-3C55-4C3D-B52D-DB1FC18619A9.fallback</string>
+		<string>features.websearch.custom.F1088E1E-2E6C-4801-B953-C3557662FB7C.fallback</string>
 		<string>features.websearch.custom.6A71B22F-8019-4DFC-9541-2321ED710C88.fallback</string>
 		<string>features.websearch.custom.E3D6EA29-411B-4C00-890A-4B90A74EA094.fallback</string>
 		<string>features.websearch.youtube.fallback</string>
-		<string>features.websearch.custom.9957495A-3C55-4C3D-B52D-DB1FC18619A9.fallback</string>
+		<string>features.websearch.custom.4B1B22C4-1DAF-48C0-89F5-C4FDE707D26B.fallback</string>
 		<string>features.websearch.custom.2FBC59E9-5622-4446-8540-839CD18C58C2.fallback</string>
 	</array>
 	<key>showContacts</key>

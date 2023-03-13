@@ -15,6 +15,19 @@
 			<key>url</key>
 			<string>https://caniuse.com/?search={query}</string>
 		</dict>
+		<key>4B1B22C4-1DAF-48C0-89F5-C4FDE707D26B</key>
+		<dict>
+			<key>enabled</key>
+			<true/>
+			<key>keyword</key>
+			<string>stars</string>
+			<key>spaces</key>
+			<string>+</string>
+			<key>text</key>
+			<string>GitHub Stars</string>
+			<key>url</key>
+			<string>https://github.com/JamieMason?tab=stars&amp;q={query}</string>
+		</dict>
 		<key>59C07BBB-B3BD-4396-B3B2-DAE7470CA3D5</key>
 		<dict>
 			<key>enabled</key>
@@ -55,11 +68,11 @@
 			<key>enabled</key>
 			<true/>
 			<key>keyword</key>
-			<string>repo</string>
+			<string>git</string>
 			<key>spaces</key>
 			<string>+</string>
 			<key>text</key>
-			<string>Repo</string>
+			<string>GitHub</string>
 			<key>url</key>
 			<string>https://github.com/search?q={query}&amp;type=repositories</string>
 		</dict>
@@ -110,6 +123,17 @@
 			<string>Amazon</string>
 			<key>url</key>
 			<string>https://smile.amazon.co.uk/s?k={query}</string>
+		</dict>
+		<key>F1088E1E-2E6C-4801-B953-C3557662FB7C</key>
+		<dict>
+			<key>enabled</key>
+			<true/>
+			<key>keyword</key>
+			<string>cs</string>
+			<key>text</key>
+			<string>Code Search</string>
+			<key>url</key>
+			<string>https://cs.github.com/?language%3ATypeScript&amp;q={query}</string>
 		</dict>
 	</dict>
 	<key>onlyShowEnabledInPrefs</key>
