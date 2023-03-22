@@ -76,6 +76,17 @@
 			<key>url</key>
 			<string>https://github.com/search?q={query}&amp;type=repositories</string>
 		</dict>
+		<key>9B292DF1-96B6-46E7-8A79-1B41D50F79C6</key>
+		<dict>
+			<key>enabled</key>
+			<true/>
+			<key>keyword</key>
+			<string>thes</string>
+			<key>text</key>
+			<string>Thesaurus</string>
+			<key>url</key>
+			<string>https://www.thesaurus.com/browse/{query}</string>
+		</dict>
 		<key>ABA03F9B-560C-4FCF-843F-97674E1F15AA</key>
 		<dict>
 			<key>enabled</key>
@@ -97,6 +108,19 @@
 			<string>Web</string>
 			<key>url</key>
 			<string>https://search.brave.com/search?q={query}</string>
+		</dict>
+		<key>D304743B-A4B5-43AC-A68D-A870E6FD184B</key>
+		<dict>
+			<key>enabled</key>
+			<true/>
+			<key>keyword</key>
+			<string>tw</string>
+			<key>spaces</key>
+			<string>+</string>
+			<key>text</key>
+			<string>Tailwind Docs</string>
+			<key>url</key>
+			<string>https://search.brave.com/search?q=site%3Ahttps%3A%2F%2Ftailwindcss.com%2Fdocs+{query}</string>
 		</dict>
 		<key>D47468E5-230E-43BA-8243-8BF8BAD790E4</key>
 		<dict>
