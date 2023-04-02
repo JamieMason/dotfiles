@@ -154,10 +154,12 @@
 			<true/>
 			<key>keyword</key>
 			<string>cs</string>
+			<key>spaces</key>
+			<string>+</string>
 			<key>text</key>
 			<string>Code Search</string>
 			<key>url</key>
-			<string>https://cs.github.com/?language%3ATypeScript&amp;q={query}</string>
+			<string>https://github.com/search?type=code&amp;l=TypeScript&amp;q={query}+language%3ATypeScript</string>
 		</dict>
 	</dict>
 	<key>onlyShowEnabledInPrefs</key>
