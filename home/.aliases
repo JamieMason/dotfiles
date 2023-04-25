@@ -51,6 +51,8 @@ alias ys="nr start"
 alias yt="nr test"
 # [Y]arn [W]atch
 alias yw="nr watch"
+# [Y]arn [D]e[V]
+alias ydv="nr dev"
 # [B]uild [L]int [T]est
 alias blt="yb && yl && yt"
 # [B]uild [L]int
