@@ -15,18 +15,18 @@ alias lstgz="tar -tvf"
 # Always enable colored `grep` output
 alias grep='grep --color=auto'
 
-# [Y]arn
-alias y="yarn"
+# [Y]arn (left as y because muscle memory, but now using https://github.com/antfu/ni)
+alias y="nr"
 # [Y]arn [C]lean (delete generated artefacts not stored in Git, and lockfiles)
 alias yc="rm -f ./package-lock.json ./yarn.lock; git clean -dfX"
 # [Y]arn [C]lean [I]nstall (delete everything, then reinstall)
-alias yci="yc; yi"
+alias yci="yc; ni"
 # [Y]arn [D]ependency (install dependency)
-alias yd="yarn add -EW"
+alias yd="ni"
 # [Y]arn [D]ev [D]ependency (install dev dependency)
-alias ydd="yarn add -DEW"
+alias ydd="ni -D"
 # [Y]arn [U]ninstall (uninstall dependency)
-alias yu="yarn remove -W"
+alias yu="nun"
 # [Y]arn [G]lobal install
 alias yg="npm install -g"
 # [Y]arn [G]lobal [U]ninstall
@@ -34,41 +34,41 @@ alias ygu="npm uninstall -g"
 # [Y]arn [H]ome
 alias yh="npm home"
 # [Y]arn [I]nstall
-alias yi="yarn install"
+alias yi="ni"
 # [Y]arn [LS] (list all immediate dependencies)
 alias yls="npm ls --s --depth=0"
 # [Y]arn [R]un
-alias yr="yarn run"
+alias yr="nr"
 # [Y]arn [B]uild
-alias yb="yr build"
+alias yb="nr build"
 # [Y]arn [F]ormat
-alias yf="yr format"
+alias yf="nr format"
 # [Y]arn [L]int
-alias yl="yr lint"
+alias yl="nr lint"
 # [Y]arn [S]tart
-alias ys="yr start"
+alias ys="nr start"
 # [Y]arn [T]est
-alias yt="yr test"
+alias yt="nr test"
 # [Y]arn [W]atch
-alias yw="yr watch"
+alias yw="nr watch"
 # [B]uild [L]int [T]est
-alias blt="yarn build && yarn lint && yarn test"
+alias blt="yb && yl && yt"
 # [B]uild [L]int
-alias bl="yarn build && yarn lint"
+alias bl="yb && yl"
 # [B]uild [S]tart
-alias bs="yarn build && yarn start"
+alias bs="yb && ys"
 # [B]uild [T]est
-alias bt="yarn build && yarn test"
+alias bt="yb && yt"
 # [I]nstall [B]uild
-alias ib="yarn && yarn build"
+alias ib="ni && yb"
 # [I]nstall [B]uild [L]int [T]est
-alias iblt="yarn && yarn build && yarn lint && yarn test"
+alias iblt="ni && yb && yl && yt"
 # [I]nstall [B]uild [L]int
-alias ibl="yarn && yarn build && yarn lint"
+alias ibl="ni && yb && yl"
 # [I]nstall [B]uild [S]tart
-alias ibs="yarn && yarn build && yarn start"
+alias ibs="ni && yb && ys"
 # [I]nstall [B]uild [T]est
-alias ibt="yarn && yarn build && yarn test"
+alias ibt="ni && yb && yt"
 
 # stage files
 alias ga='git add -A'
@@ -145,4 +145,3 @@ alias cr="cargo run"
 alias ct="cargo test"
 alias cb="cargo bench"
 alias cf="cargo fmt"
-
