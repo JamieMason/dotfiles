@@ -63,6 +63,17 @@
 			<key>url</key>
 			<string>https://search.brave.com/search?q=developer.mozilla.org+{query}&amp;source=web</string>
 		</dict>
+		<key>91CD1126-E7A2-4CFF-812C-6FEA2C82B27B</key>
+		<dict>
+			<key>enabled</key>
+			<true/>
+			<key>keyword</key>
+			<string>vscode</string>
+			<key>text</key>
+			<string>VS Code Docs</string>
+			<key>url</key>
+			<string>https://code.visualstudio.com/Search?q={query}</string>
+		</dict>
 		<key>9957495A-3C55-4C3D-B52D-DB1FC18619A9</key>
 		<dict>
 			<key>enabled</key>
