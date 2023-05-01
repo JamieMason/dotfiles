@@ -14,9 +14,11 @@ brew upgrade
 
 # Install binaries
 brew install duti
+brew install fd
 brew install git
 brew install hub
 brew install neovim
+brew install ripgrep
 brew install tree
 brew install vim
 brew install wget
