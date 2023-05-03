@@ -1,0 +1,6 @@
+# focus brave
+cmd + lshift - space : open -a Brave\ Browser
+
+# focus iTerm
+alt + lshift - space : open -a iTerm2
+
