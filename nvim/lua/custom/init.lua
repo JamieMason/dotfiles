@@ -25,7 +25,7 @@ opt.fixeol = true
 opt.cursorline = true -- highlight the current cursor line
 
 -- appearance
-opt.guifont = { 'FiraCode Nerd Font Mono Regular', ':h14' }
+opt.guifont = { 'FiraCode Nerd Font Mono Regular', ':h13' }
 
 -- indentLine plugin
 g.indentLine_char = '┆'
