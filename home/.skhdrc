@@ -2,5 +2,5 @@
 cmd + lshift - space : open -a Brave\ Browser
 
 # focus iTerm
-alt + lshift - space : open -a iTerm2
+alt + lshift - space : open -a iTerm
 
