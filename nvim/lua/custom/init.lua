@@ -25,9 +25,18 @@ opt.fixeol = true
 opt.cursorline = true -- highlight the current cursor line
 
 -- appearance
-opt.guifont = { 'FiraCode Nerd Font Mono Regular', ':h13' }
+opt.guifont = { 'FiraCode Nerd Font Mono Retina', ':h13' }
 
 -- indentLine plugin
 g.indentLine_char = '┆'
 g.indentLine_leadingSpaceEnabled = 1
+
+-- Neovide.app
+if g.neovide then
+  vim.o.guifont = 'FiraCode Nerd Font Mono:h13'
+  vim.g.neovide_cursor_vfx_mode = 'railgun'
+  vim.g.neovide_cursor_vfx_opacity = 200.0
+  vim.g.neovide_cursor_vfx_particle_lifetime = 1.2
+  vim.g.neovide_cursor_vfx_particle_density = 7.0
+end
 
