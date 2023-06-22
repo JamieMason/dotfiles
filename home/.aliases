@@ -88,7 +88,7 @@ alias gbda='gbd && gbdr'
 alias gbl='git for-each-ref --sort=-committerdate refs/remotes/ --format="%(HEAD) %(committerdate:relative)|%(objectname:short)|%(refname:short)|%(authorname) %(authoremail)" | column -t -s "|"'
 # create a new branch, eg. `gbn feature_pmpsht`
 alias gbn='git checkout -b'
-# eg `gc master`
+# eg `gc main`
 alias gc='git checkout'
 # amend previous commit
 alias gca='git commit --amend'
@@ -118,26 +118,26 @@ alias gpl='git pull origin --tags'
 alias gplc='gpl $(gcb)'
 # git pull develop
 alias gpld='gpl develop'
-# git pull master
-alias gplm='gpl master'
+# git pull main
+alias gplm='gpl main'
 # git push
 alias gps='git push origin --tags'
 # git push current branch
 alias gpsc='gps $(gcb)'
 # git push develop
 alias gpsd='gps develop'
-# git push master
-alias gpsm='gps master'
+# git push main
+alias gpsm='gps main'
 # eg `gr develop`
 alias gr='git rebase'
 alias grd='gr develop'
-alias grm='gr master'
+alias grm='gr main'
 # show all (un)staged and untracked files
 alias gs='git status -sb'
 # undo
 alias gu='git reset --hard && git clean -df'
-# update from master
-alias gufm='git checkout master && git fetch && git reset --hard origin/master && git checkout - && git rebase master'
+# update from main
+alias gufm='git checkout main && git fetch && git reset --hard origin/main && git checkout - && git rebase main'
 
 # because I can *never* remember this
 alias shebang="echo '#!/usr/bin/env bash'"
