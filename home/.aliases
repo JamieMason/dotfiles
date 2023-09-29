@@ -113,7 +113,7 @@ alias gls="gl --max-count=15 --no-merges"
 # eg `gm develop`
 alias gm='git merge --no-ff'
 # git pull
-alias gpl='git pull origin --tags'
+alias gpl='gf && git pull origin --tags'
 # git pull current branch
 alias gplc='gpl $(gcb)'
 # git pull develop
@@ -121,7 +121,7 @@ alias gpld='gpl develop'
 # git pull main
 alias gplm='gpl main'
 # git push
-alias gps='git push origin --tags'
+alias gps='gf && git push origin --tags'
 # git push current branch
 alias gpsc='gps $(gcb)'
 # git push develop
