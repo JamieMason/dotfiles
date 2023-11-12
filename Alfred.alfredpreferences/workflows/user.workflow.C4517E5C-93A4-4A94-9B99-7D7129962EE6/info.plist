@@ -957,9 +957,9 @@ That said, you can edit anything else within this workflow (including adding new
 				<key>script</key>
 				<string>./dashAlfredWorkflow "github:{query}"</string>
 				<key>subtext</key>
-				<string>Search nju33/dash--fp-ts and 8 others for "{query}"</string>
+				<string>Search Effect-TS/cli and 8 others for "{query}"</string>
 				<key>title</key>
-				<string>Search nju33/dash--fp-ts</string>
+				<string>Search Effect-TS/cli</string>
 				<key>type</key>
 				<integer>0</integer>
 				<key>withspace</key>
@@ -1015,9 +1015,9 @@ That said, you can edit anything else within this workflow (including adding new
 				<key>script</key>
 				<string>./dashAlfredWorkflow "http:{query}"</string>
 				<key>subtext</key>
-				<string>Search HTTP Status Codes and 1 other for "{query}"</string>
+				<string>Search HTTP Header Fields and 1 other for "{query}"</string>
 				<key>title</key>
-				<string>Search HTTP Status Codes</string>
+				<string>Search HTTP Header Fields</string>
 				<key>type</key>
 				<integer>0</integer>
 				<key>withspace</key>
