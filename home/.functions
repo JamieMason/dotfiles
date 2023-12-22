@@ -38,3 +38,10 @@ function test_danger() {
   DANGER_GITHUB_API_TOKEN=$GCA_ACCESS_TOKEN DANGER_FAKE_CI=YEP DANGER_TEST_REPO=$REPO yarn danger pr https://github.com/$REPO/pull/$PR_NUMBER
 }
 
+# run `fnm use` with the provided version
+function nodev() {
+  echo "Setting Node version to $1"
+  fnm use $1
+  echo "Installing npm binaries..."
+  ~/Dev/dotfiles/06-install-npm-binaries.sh
+}
