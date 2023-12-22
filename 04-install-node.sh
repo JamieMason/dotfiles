@@ -10,4 +10,4 @@ eval "$(fnm env --use-on-cd)"
 fnm install --lts
 
 # Set this Node version as the default
-fnm alias default "$(node -v)"
+fnm default "$(node -v)"
