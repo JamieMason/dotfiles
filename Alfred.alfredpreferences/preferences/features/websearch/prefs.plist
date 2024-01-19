@@ -4,6 +4,17 @@
 <dict>
 	<key>customSites</key>
 	<dict>
+		<key>2F6E6B1F-AF56-4345-8887-300CE7C2CD76</key>
+		<dict>
+			<key>enabled</key>
+			<true/>
+			<key>keyword</key>
+			<string>cr</string>
+			<key>text</key>
+			<string>Crates</string>
+			<key>url</key>
+			<string>https://crates.io/search?q={query}</string>
+		</dict>
 		<key>2FBC59E9-5622-4446-8540-839CD18C58C2</key>
 		<dict>
 			<key>enabled</key>
