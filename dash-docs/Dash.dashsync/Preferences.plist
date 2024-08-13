@@ -393,7 +393,7 @@
 			<key>Tailwind_CSS</key>
 			<dict>
 				<key>date</key>
-				<date>2024-01-11T18:14:43Z</date>
+				<date>2024-08-11T10:36:15Z</date>
 				<key>entry</key>
 				<dict>
 					<key>aliases</key>
@@ -636,16 +636,19 @@
 				</dict>
 			</dict>
 			<key>http://kapeli.com/feeds/Rust.xml</key>
+			<dict/>
+		</dict>
+		<key>uninstalled</key>
+		<dict>
+			<key>http://kapeli.com/feeds/Rust.xml</key>
 			<dict>
 				<key>1.69.0</key>
 				<dict>
 					<key>date</key>
-					<date>2023-06-27T17:55:40Z</date>
+					<date>2024-08-11T14:52:07Z</date>
 				</dict>
 			</dict>
 		</dict>
-		<key>uninstalled</key>
-		<dict/>
 	</dict>
 	<key>webSearches</key>
 	<array>
