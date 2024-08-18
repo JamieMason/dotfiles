@@ -1,0 +1,53 @@
+{
+  "base_keymap": "VSCode",
+  "buffer_font_features": {
+    "calt": false
+  },
+  "buffer_font_size": 15,
+  "code_actions_on_format": {
+    "source.organizeImports.biome": true,
+    "source.fixAll.biome": true
+  },
+  "confirm_quit": true,
+  "ensure_final_newline_on_save": true,
+  "format_on_save": {
+    "enabled": false
+  },
+  "formatter": {
+    "language_server": {
+      "name": "biome"
+    }
+  },
+  "lsp": {
+    "biome": {
+      "settings": {
+        "require_config_file": true
+      }
+    }
+  },
+  "preview_tabs": {
+    "enabled": true,
+    "enable_preview_from_file_finder": false
+  },
+  "relative_line_numbers": true,
+  "remove_trailing_whitespace_on_save": true,
+  "show_whitespaces": "all",
+  "terminal": {
+    "copy_on_select": true,
+    "dock": "right",
+    "toolbar": {
+      "title": false
+    }
+  },
+  "theme": {
+    "mode": "system",
+    "dark": "Ayu Dark",
+    "light": "Ayu Light"
+  },
+  "ui_font_family": "FiraCode Nerd Font Mono",
+  "ui_font_size": 15,
+  "vim": {
+    "use_system_clipboard": "on_yank"
+  },
+  "wrap_guides": [80, 100, 120]
+}

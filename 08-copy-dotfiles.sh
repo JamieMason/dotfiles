@@ -12,3 +12,6 @@ cp -r ./nvim/lua/custom ~/.config/nvim/lua
 
 # Replace all dotfiles in $HOME
 cp -R ./home/ ~
+
+# Copy Zed settings
+cp ./zed/settings.json ~/.config/zed/settings.json
