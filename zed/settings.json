@@ -10,8 +10,11 @@
   },
   "confirm_quit": true,
   "ensure_final_newline_on_save": true,
-  "format_on_save": {
-    "enabled": false
+  "experimental.theme_overrides": {
+    "editor.active_line_number": "#D889FF",
+    "editor.active_wrap_guide": "#FFFFFF30",
+    "editor.line_number": "#FFFFFF66",
+    "editor.wrap_guide": "#FFFFFF30"
   },
   "formatter": {
     "language_server": {
@@ -46,8 +49,13 @@
   },
   "ui_font_family": "FiraCode Nerd Font Mono",
   "ui_font_size": 15,
+  "vim_mode": true,
   "vim": {
     "use_system_clipboard": "on_yank"
   },
-  "wrap_guides": [80, 100, 120]
+  "wrap_guides": [
+    80,
+    100,
+    120
+  ]
 }
