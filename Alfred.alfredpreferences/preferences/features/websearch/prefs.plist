@@ -4,6 +4,19 @@
 <dict>
 	<key>customSites</key>
 	<dict>
+		<key>0AA94BA0-FA70-471A-881C-5720FD470DAB</key>
+		<dict>
+			<key>enabled</key>
+			<true/>
+			<key>keyword</key>
+			<string>gmd</string>
+			<key>spaces</key>
+			<string>+</string>
+			<key>text</key>
+			<string>Code Search: Markdown</string>
+			<key>url</key>
+			<string>https://github.com/search?type=code&amp;q=language%3AMarkdown+{query}</string>
+		</dict>
 		<key>2F6E6B1F-AF56-4345-8887-300CE7C2CD76</key>
 		<dict>
 			<key>enabled</key>
@@ -25,6 +38,19 @@
 			<string>Can I Use</string>
 			<key>url</key>
 			<string>https://caniuse.com/?search={query}</string>
+		</dict>
+		<key>34F3F9A0-014B-4A84-9936-0CDA00D121D1</key>
+		<dict>
+			<key>enabled</key>
+			<true/>
+			<key>keyword</key>
+			<string>gjson</string>
+			<key>spaces</key>
+			<string>+</string>
+			<key>text</key>
+			<string>Code Search: JSON</string>
+			<key>url</key>
+			<string>https://github.com/search?type=code&amp;q=language%3AJSON+{query}</string>
 		</dict>
 		<key>4B1B22C4-1DAF-48C0-89F5-C4FDE707D26B</key>
 		<dict>
@@ -49,6 +75,19 @@
 			<string>Docs</string>
 			<key>url</key>
 			<string>https://devdocs.io/#q={query}</string>
+		</dict>
+		<key>67BF10EE-C8A7-4DCF-A985-442A88024839</key>
+		<dict>
+			<key>enabled</key>
+			<true/>
+			<key>keyword</key>
+			<string>grs</string>
+			<key>spaces</key>
+			<string>+</string>
+			<key>text</key>
+			<string>Code Search: Rust</string>
+			<key>url</key>
+			<string>https://github.com/search?type=code&amp;q=language%3ARust+{query}</string>
 		</dict>
 		<key>6A71B22F-8019-4DFC-9541-2321ED710C88</key>
 		<dict>
@@ -175,13 +214,13 @@
 			<key>enabled</key>
 			<true/>
 			<key>keyword</key>
-			<string>cs</string>
+			<string>gts</string>
 			<key>spaces</key>
 			<string>+</string>
 			<key>text</key>
-			<string>Code Search</string>
+			<string>Code Search: TypeScript</string>
 			<key>url</key>
-			<string>https://github.com/search?type=code&amp;l=TypeScript&amp;q={query}+language%3ATypeScript</string>
+			<string>https://github.com/search?type=code&amp;q=language%3ATypeScript+{query}</string>
 		</dict>
 	</dict>
 	<key>onlyShowEnabledInPrefs</key>
