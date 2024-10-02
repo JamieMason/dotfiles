@@ -72,7 +72,7 @@
 			<key>keyword</key>
 			<string>docs</string>
 			<key>text</key>
-			<string>Docs</string>
+			<string>Dev Docs</string>
 			<key>url</key>
 			<string>https://devdocs.io/#q={query}</string>
 		</dict>
@@ -99,6 +99,17 @@
 			<string>Stack Overflow</string>
 			<key>url</key>
 			<string>https://stackoverflow.com/search?q={query}</string>
+		</dict>
+		<key>8264F87A-D9CC-441B-9BE6-BC76960E9ECD</key>
+		<dict>
+			<key>enabled</key>
+			<true/>
+			<key>keyword</key>
+			<string>gcs</string>
+			<key>text</key>
+			<string>Code Search: Any</string>
+			<key>url</key>
+			<string>https://github.com/search?type=code&amp;q={query}</string>
 		</dict>
 		<key>87CC9B31-F4A3-4AA8-B54C-447ED2B1C49F</key>
 		<dict>
