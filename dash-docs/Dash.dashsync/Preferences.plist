@@ -629,10 +629,10 @@
 		<dict>
 			<key>http://kapeli.com/feeds/NodeJS.xml</key>
 			<dict>
-				<key>18.11.0</key>
+				<key>22.9.0</key>
 				<dict>
 					<key>date</key>
-					<date>2023-07-03T12:14:09Z</date>
+					<date>2024-11-11T13:02:42Z</date>
 				</dict>
 			</dict>
 			<key>http://kapeli.com/feeds/Rust.xml</key>
@@ -640,6 +640,14 @@
 		</dict>
 		<key>uninstalled</key>
 		<dict>
+			<key>http://kapeli.com/feeds/NodeJS.xml</key>
+			<dict>
+				<key>18.11.0</key>
+				<dict>
+					<key>date</key>
+					<date>2024-11-11T13:03:20Z</date>
+				</dict>
+			</dict>
 			<key>http://kapeli.com/feeds/Rust.xml</key>
 			<dict>
 				<key>1.69.0</key>
