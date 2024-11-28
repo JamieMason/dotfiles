@@ -393,7 +393,7 @@
 			<key>Tailwind_CSS</key>
 			<dict>
 				<key>date</key>
-				<date>2024-10-01T16:13:43Z</date>
+				<date>2024-11-18T13:52:25Z</date>
 				<key>entry</key>
 				<dict>
 					<key>aliases</key>
@@ -488,6 +488,11 @@
 			<dict>
 				<key>date</key>
 				<date>2023-06-27T17:55:49Z</date>
+			</dict>
+			<key>http://kapeli.com/feeds/jQuery.xml</key>
+			<dict>
+				<key>date</key>
+				<date>2024-11-18T09:43:59Z</date>
 			</dict>
 		</dict>
 		<key>uninstalled</key>
