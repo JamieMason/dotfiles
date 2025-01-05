@@ -9,7 +9,7 @@
 			<key>enabled</key>
 			<true/>
 			<key>keyword</key>
-			<string>gmd</string>
+			<string>gsm</string>
 			<key>spaces</key>
 			<string>+</string>
 			<key>text</key>
@@ -44,7 +44,7 @@
 			<key>enabled</key>
 			<true/>
 			<key>keyword</key>
-			<string>gjson</string>
+			<string>gsj</string>
 			<key>spaces</key>
 			<string>+</string>
 			<key>text</key>
@@ -81,7 +81,7 @@
 			<key>enabled</key>
 			<true/>
 			<key>keyword</key>
-			<string>grs</string>
+			<string>gsr</string>
 			<key>spaces</key>
 			<string>+</string>
 			<key>text</key>
@@ -105,7 +105,7 @@
 			<key>enabled</key>
 			<true/>
 			<key>keyword</key>
-			<string>gcs</string>
+			<string>gsa</string>
 			<key>text</key>
 			<string>Code Search: Any</string>
 			<key>url</key>
@@ -122,7 +122,7 @@
 			<key>text</key>
 			<string>MDN</string>
 			<key>url</key>
-			<string>https://search.brave.com/search?q=developer.mozilla.org+{query}&amp;source=web</string>
+			<string>https://developer.mozilla.org/en-US/search?q={query}</string>
 		</dict>
 		<key>91CD1126-E7A2-4CFF-812C-6FEA2C82B27B</key>
 		<dict>
@@ -140,7 +140,7 @@
 			<key>enabled</key>
 			<true/>
 			<key>keyword</key>
-			<string>git</string>
+			<string>gh</string>
 			<key>spaces</key>
 			<string>+</string>
 			<key>text</key>
@@ -159,16 +159,16 @@
 			<key>url</key>
 			<string>https://www.thesaurus.com/browse/{query}</string>
 		</dict>
-		<key>ABA03F9B-560C-4FCF-843F-97674E1F15AA</key>
+		<key>9FD6A9B3-D1FB-4E8B-B1E8-B4A9835B81E5</key>
 		<dict>
 			<key>enabled</key>
 			<true/>
 			<key>keyword</key>
-			<string>maps</string>
+			<string>yh</string>
 			<key>text</key>
-			<string>Maps</string>
+			<string>npm package</string>
 			<key>url</key>
-			<string>https://www.google.co.uk/maps?q={query}</string>
+			<string>https://www.npmjs.com/package/{query}</string>
 		</dict>
 		<key>B5737EA2-7394-4899-B502-A3486E3A7E61</key>
 		<dict>
@@ -203,7 +203,7 @@
 			<key>spaces</key>
 			<string>+</string>
 			<key>text</key>
-			<string>npm</string>
+			<string>npm search</string>
 			<key>url</key>
 			<string>https://npms.io/search?q={query}</string>
 		</dict>
@@ -220,12 +220,25 @@
 			<key>url</key>
 			<string>https://smile.amazon.co.uk/s?k={query}</string>
 		</dict>
+		<key>EE9DFA38-FDBA-4375-9361-E6C02D297573</key>
+		<dict>
+			<key>enabled</key>
+			<true/>
+			<key>keyword</key>
+			<string>map</string>
+			<key>spaces</key>
+			<string>+</string>
+			<key>text</key>
+			<string>Google Maps</string>
+			<key>url</key>
+			<string>https://www.google.co.uk/maps/search/{query}</string>
+		</dict>
 		<key>F1088E1E-2E6C-4801-B953-C3557662FB7C</key>
 		<dict>
 			<key>enabled</key>
 			<true/>
 			<key>keyword</key>
-			<string>gts</string>
+			<string>gst</string>
 			<key>spaces</key>
 			<string>+</string>
 			<key>text</key>
