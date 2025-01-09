@@ -138,6 +138,10 @@ alias gs='git status -sb'
 alias gu='git reset --hard && git clean -df'
 # update from main
 alias gufm='git checkout main && git fetch && git reset --hard origin/main && git checkout - && git rebase main'
+# Jane Doe <jane@doe.io>
+alias authors="git log --pretty=format:'%an <%ae>' | sort | uniq"
+# Jane Doe
+alias authornames="git log --pretty=format:'%an' | sort | uniq"
 
 # because I can *never* remember this
 alias shebang="echo '#!/usr/bin/env bash'"
