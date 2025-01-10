@@ -19,3 +19,10 @@ eval "$(fnm env --use-on-cd)"
 
 # rust
 source $HOME/.cargo/env
+
+# postgres
+export PATH="/usr/local/opt/postgresql@17/bin:$PATH"
+
+# For compilers to find postgresql@17 you may need to set:
+export LDFLAGS="-L/usr/local/opt/postgresql@17/lib"
+export CPPFLAGS="-I/usr/local/opt/postgresql@17/include"
