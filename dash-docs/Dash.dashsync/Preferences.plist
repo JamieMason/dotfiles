@@ -367,6 +367,26 @@
 	<dict>
 		<key>installed</key>
 		<dict>
+			<key>Google_Maps</key>
+			<dict>
+				<key>date</key>
+				<date>2025-01-16T12:01:45Z</date>
+				<key>entry</key>
+				<dict>
+					<key>aliases</key>
+					<array/>
+					<key>authorLinkHref</key>
+					<string>https://github.com/Kapeli/Dash-User-Contributions/tree/master/docsets/Google_Maps#readme</string>
+					<key>authorLinkText</key>
+					<string>Jeroen Knoef</string>
+					<key>name</key>
+					<string>Google Maps</string>
+					<key>platform</key>
+					<string>usercontribGoogle_Maps</string>
+					<key>uniqueIdentifier</key>
+					<string>Google_Maps</string>
+				</dict>
+			</dict>
 			<key>Neovim</key>
 			<dict>
 				<key>date</key>
