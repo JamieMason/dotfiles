@@ -1,0 +1,23 @@
+[
+  {
+    "context": "Editor",
+    "bindings": {
+      "alt-q": "editor::Rewrap",
+      "alt-s": "editor::SortLinesCaseInsensitive",
+      "alt-shift-down": "editor::DuplicateLineDown",
+      "alt-shift-f": "editor::Format",
+      "alt-shift-i": "editor::SplitSelectionIntoLines",
+      "alt-shift-up": "editor::DuplicateLineUp",
+      "alt-u": "editor::UniqueLinesCaseSensitive",
+      "cmd cmd": "editor::ShowCompletions",
+      "cmd-\\": "pane::SplitRight"
+    }
+  },
+  {
+    "context": "Pane",
+    "bindings": {
+      // We use "Pane" as this is "Send" in the Assistant
+      "cmd-enter": "editor::NewlineBelow"
+    }
+  }
+]
