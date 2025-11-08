@@ -151,3 +151,9 @@ alias cr="cargo run"
 alias ct="cargo test"
 alias cb="cargo bench"
 alias cf="cargo fmt"
+
+# Just
+alias jf="just format"
+alias jl="just lint"
+alias jt="just test"
+alias jw="just watch"
