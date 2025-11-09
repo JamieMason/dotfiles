@@ -147,10 +147,10 @@ alias authornames="git log --pretty=format:'%an' | sort | uniq"
 alias shebang="echo '#!/usr/bin/env bash'"
 
 # Rust/Cargo
+alias cb="cargo build"
+alias cbr="cargo build --release"
 alias cr="cargo run"
 alias ct="cargo test"
-alias cb="cargo bench"
-alias cf="cargo fmt"
 
 # Just
 alias jf="just format"
