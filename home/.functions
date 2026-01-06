@@ -45,3 +45,12 @@ function nodev() {
   echo "Installing npm binaries..."
   ~/Dev/dotfiles/06-install-npm-binaries.sh
 }
+
+# Function to set tab title to current directory name
+function set_terminal_title() {
+  # Use ${PWD##*/} to get only the folder name, or $PWD for the full path
+  echo -ne "\e]1;${PWD##*/}\a"
+}
+
+# Execute the function before every prompt
+add-zsh-hook precmd set_terminal_title
