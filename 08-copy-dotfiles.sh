@@ -17,4 +17,5 @@ cp -R ./home/ ~
 cp ./zed/settings.json ~/.config/zed/settings.json
 
 # Copy CLI
+rm -rf ~/cli
 cp -R ./cli ~/cli
