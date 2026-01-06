@@ -15,3 +15,6 @@ cp -R ./home/ ~
 
 # Copy Zed settings
 cp ./zed/settings.json ~/.config/zed/settings.json
+
+# Copy CLI
+cp -R ./cli ~/cli

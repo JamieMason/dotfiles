@@ -75,7 +75,9 @@ alias ibt="ni && yb && yt"
 # stage files
 alias ga='git add -A'
 # list local branches
-alias gb='git branch'
+alias gb='~/cli/gb'
+# list remote branches
+alias gbr='~/cli/gbr'
 # list all local and remote branches
 alias gba='git fetch && git branch -a'
 # delete local branch, eg. `gbd quicktest`
@@ -103,7 +105,7 @@ alias gf='git fetch --prune'
 # search code in git history
 alias git-search='git log -p | grep --context=4'
 # show the commit history
-alias gl="git log --use-mailmap --graph --date=format:'%a %d %b %H:%M' --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen%cd (%cr) %C(bold blue)<%aN>%Creset'"
+alias gl="~/cli/gl"
 # git list contributors
 alias glc="git log --use-mailmap --no-merges --pretty=format:'%aN <%aE>' | sort | uniq"
 # grep git log
@@ -111,7 +113,7 @@ alias glfm="gl | grep"
 # parseable git log
 alias glp="git log --pretty=format:'%h|%s|%an' --abbrev-commit"
 # short commit history
-alias gls="gl --max-count=15 --no-merges"
+alias gls="~/cli/gl"
 # eg `gm develop`
 alias gm='git merge --no-ff'
 # git pull
@@ -135,7 +137,7 @@ alias gr='git rebase'
 alias grd='gr develop'
 alias grm='gr main'
 # show all (un)staged and untracked files
-alias gs='git status -sb'
+alias gs="~/cli/gs"
 # undo
 alias gu='git reset --hard && git clean -df'
 # update from main
