@@ -228,15 +228,15 @@ gplm:
 
 # [G]it [P]u[S]h origin tags
 # Modified to accept an optional branch argument
-gps branch="":
+gps branch *args:
     git fetch --prune
-    git push origin {{branch}} --tags
+    git push origin {{branch}} --tags {{args}}
 
 # [G]it [P]u[S]h [C]urrent branch
 gpsc *args:
     @BRANCH=$(git branch --show-current); \
     if [ -z "$BRANCH" ]; then echo "Error: Not in a git repo"; exit 1; fi; \
-    {{self}} gps "$BRANCH" {{args}}
+    git push origin "$BRANCH" --tags {{args}}
 
 # [G]it [P]u[S]h [M]ain
 gpsm:
