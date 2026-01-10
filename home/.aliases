@@ -30,11 +30,11 @@ if [ -f ~/justfile ]; then
   done
 fi
 
-################################################################################
 # Enable Vi Mode for the shell
-################################################################################
-
 bindkey -v
+
+# Re-bind standard history search to Ctrl+R
+bindkey '^R' history-incremental-search-backward
 
 # Change cursor shape for different vi modes
 function zle-keymap-select {
