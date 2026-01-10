@@ -1,3 +1,5 @@
+set working-directory := "."
+
 # List all available commands
 default:
     @just --justfile ~/justfile --list
@@ -203,7 +205,7 @@ gm branch:
 # [G]it [P]ul[L] origin tags
 # Modified to accept an optional branch argument
 gpl branch="":
-    just -f ~/justfile gf
+    git fetch --prune
     git pull origin {{branch}} --tags
 
 # [G]it [P]ul[L] [C]urrent branch
@@ -216,14 +218,15 @@ gplc:
 gpld:
     just -f ~/justfile gpl develop
 
-# [G]it [P]ul[L] [M]ain
+# [G]it [P]ul[L] Main or Master
 gplm:
-    just -f ~/justfile gpl main
+    @MAIN_BRANCH=$(git rev-parse --verify main >/dev/null 2>&1 && echo "main" || echo "master"); \
+    just -f ~/justfile gpl "$MAIN_BRANCH"
 
 # [G]it [P]u[S]h origin tags
 # Modified to accept an optional branch argument
 gps branch="":
-    just -f ~/justfile gf
+    git fetch --prune
     git push origin {{branch}} --tags
 
 # [G]it [P]u[S]h [C]urrent branch
@@ -238,7 +241,8 @@ gpsd:
 
 # [G]it [P]u[S]h [M]ain
 gpsm:
-    just -f ~/justfile gps main
+    @MAIN_BRANCH=$(git rev-parse --verify main >/dev/null 2>&1 && echo "main" || echo "master"); \
+    just -f ~/justfile gps "$MAIN_BRANCH"
 
 # [G]it [R]ebase
 gr branch:
@@ -250,7 +254,8 @@ grd:
 
 # [G]it [R]ebase [M]ain
 grm:
-    just -f ~/justfile gr main
+    @MAIN_BRANCH=$(git rev-parse --verify main >/dev/null 2>&1 && echo "main" || echo "master"); \
+    just -f ~/justfile gr "$MAIN_BRANCH"
 
 # [G]it [S]tatus (custom script)
 gs *args:
@@ -263,11 +268,12 @@ gu:
 
 # [G]it [U]pdate [F]rom [M]ain
 gufm:
-    git checkout main
+    @MAIN_BRANCH=$(git rev-parse --verify main >/dev/null 2>&1 && echo "main" || echo "master"); \
+    git checkout "$MAIN_BRANCH"
     git fetch
-    git reset --hard origin/main
+    git reset --hard "origin/$MAIN_BRANCH"
     git checkout -
-    git rebase main
+    git rebase "$MAIN_BRANCH"
 
 # List Authors
 authors:
