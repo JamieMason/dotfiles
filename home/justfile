@@ -1,8 +1,11 @@
 set working-directory := "."
 
+# Internal helper to call this Justfile from within recipes while maintaining context
+self := just_executable() + " -f " + justfile() + " --working-directory " + invocation_directory()
+
 # List all available commands
 default:
-    @just --justfile ~/justfile --list
+    @{{self}} --list
 
 ################################################################################
 # Node & npm
@@ -143,8 +146,8 @@ gbdr branch:
 
 # [G]it [B]ranch [D]elete [A]ll (local and remote)
 gbda branch:
-    just -f ~/justfile gbd {{branch}}
-    just -f ~/justfile gbdr {{branch}}
+    {{self}} gbd {{branch}}
+    {{self}} gbdr {{branch}}
 
 # [G]it [B]ranch [L]atest local
 gbl:
@@ -188,7 +191,7 @@ glc:
 
 # [G]it [L]og [F]ilter [M]atch
 glfm term:
-    just -f ~/justfile gl | grep {{term}}
+    {{self}} gl | grep {{term}}
 
 # [G]it [L]og [P]arseable
 glp:
@@ -212,16 +215,16 @@ gpl branch="":
 gplc:
     @BRANCH=$(git branch --show-current); \
     if [ -z "$BRANCH" ]; then echo "Error: Not in a git repo"; exit 1; fi; \
-    just -f ~/justfile gpl "$BRANCH"
+    {{self}} gpl "$BRANCH"
 
 # [G]it [P]ul[L] [D]evelop
 gpld:
-    just -f ~/justfile gpl develop
+    {{self}} gpl develop
 
 # [G]it [P]ul[L] Main or Master
 gplm:
     @MAIN_BRANCH=$(git rev-parse --verify main >/dev/null 2>&1 && echo "main" || echo "master"); \
-    just -f ~/justfile gpl "$MAIN_BRANCH"
+    {{self}} gpl "$MAIN_BRANCH"
 
 # [G]it [P]u[S]h origin tags
 # Modified to accept an optional branch argument
@@ -233,16 +236,16 @@ gps branch="":
 gpsc:
     @BRANCH=$(git branch --show-current); \
     if [ -z "$BRANCH" ]; then echo "Error: Not in a git repo"; exit 1; fi; \
-    just -f ~/justfile gps "$BRANCH"
+    {{self}} gps "$BRANCH"
 
 # [G]it [P]u[S]h [D]evelop
 gpsd:
-    just -f ~/justfile gps develop
+    {{self}} gps develop
 
 # [G]it [P]u[S]h [M]ain
 gpsm:
     @MAIN_BRANCH=$(git rev-parse --verify main >/dev/null 2>&1 && echo "main" || echo "master"); \
-    just -f ~/justfile gps "$MAIN_BRANCH"
+    {{self}} gps "$MAIN_BRANCH"
 
 # [G]it [R]ebase
 gr branch:
@@ -250,12 +253,12 @@ gr branch:
 
 # [G]it [R]ebase [D]evelop
 grd:
-    just -f ~/justfile gr develop
+    {{self}} gr develop
 
 # [G]it [R]ebase [M]ain
 grm:
     @MAIN_BRANCH=$(git rev-parse --verify main >/dev/null 2>&1 && echo "main" || echo "master"); \
-    just -f ~/justfile gr "$MAIN_BRANCH"
+    {{self}} gr "$MAIN_BRANCH"
 
 # [G]it [S]tatus (custom script)
 gs *args:

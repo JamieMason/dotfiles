@@ -16,7 +16,7 @@ alias lstgz="tar -tvf"
 alias grep='grep --color=auto'
 
 # [J]ust (run global justfile)
-alias j='just --justfile ~/justfile --working-directory .'
+alias j='just --justfile ~/justfile --working-directory "$PWD"'
 
 # Generate aliases for all recipes in the global justfile
 if [ -f ~/justfile ]; then
