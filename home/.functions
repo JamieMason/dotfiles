@@ -47,24 +47,50 @@ function set-node-version() {
   fi
 }
 
-# Function to set tab title and a one-time random tab color
 function set_terminal_appearance() {
-  # 1. Set the Title (Current directory)
+  # 1. Set the Title
   echo -ne "\e]1;${PWD##*/}\a"
 
-  # 2. Set a Unique Color (Only if not already set for this session)
+  # 2. Set a Unique Color once per session
   if [[ -z "$TAB_COLOR_SET" ]]; then
-    # Generate random values between 0-255
-    local r=$(( RANDOM % 256 ))
-    local g=$(( RANDOM % 256 ))
-    local b=$(( RANDOM % 256 ))
+    local colors=(
+      "244 67 54"   # Red 500
+      "233 30 99"   # Pink 500
+      "156 39 176"  # Purple 500
+      "103 58 183"  # Deep Purple 500
+      "63 81 181"   # Indigo 500
+      "33 150 243"  # Blue 500
+      "3 169 244"   # Light Blue 500
+      "0 188 212"   # Cyan 500
+      "0 150 136"   # Teal 500
+      "76 175 80"   # Green 500
+      "139 195 74"  # Light Green 500
+      "205 220 57"  # Lime 500
+      "255 235 59"  # Yellow 500
+      "255 193 7"   # Amber 500
+      "255 152 0"   # Orange 500
+      "255 87 34"   # Deep Orange 500
+    )
 
-    # Apply iTerm2 escape sequences
+    # Get number of colors
+    local count=${#colors[@]}
+
+    # Generate random index between 1 and count
+    # Zsh arrays MUST start at 1
+    local idx=$(( (RANDOM % count) + 1 ))
+
+    # Extract the string and split into an temporary array
+    local picked=($=colors[$idx])
+
+    local r=${picked[1]}
+    local g=${picked[2]}
+    local b=${picked[3]}
+
+    # Send to iTerm2
     echo -ne "\033]6;1;bg;red;brightness;$r\a"
     echo -ne "\033]6;1;bg;green;brightness;$g\a"
     echo -ne "\033]6;1;bg;blue;brightness;$b\a"
 
-    # Mark as set so it doesn't change every time you cd
     export TAB_COLOR_SET=1
   fi
 }
