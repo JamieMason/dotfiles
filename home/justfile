@@ -337,3 +337,12 @@ shebang:
 # [TAR]ball [LS] (list contents of tarball)
 tarls *args:
     tar -tvf {{args}}
+
+# Update global system dependencies
+update:
+    brew update
+    brew upgrade
+    brew cleanup
+    $ZSH/tools/upgrade.sh
+    rustup update
+    ncu -g
