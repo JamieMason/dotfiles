@@ -202,8 +202,8 @@ gls *args:
     ~/cli/gl {{args}}
 
 # [G]it [M]erge (no fast-forward)
-gm branch:
-    git merge --no-ff {{branch}}
+gm *args:
+    git merge --no-ff {{args}}
 
 # [G]it [P]ul[L] origin tags
 # Modified to accept an optional branch argument
@@ -233,14 +233,10 @@ gps branch="":
     git push origin {{branch}} --tags
 
 # [G]it [P]u[S]h [C]urrent branch
-gpsc:
+gpsc *args:
     @BRANCH=$(git branch --show-current); \
     if [ -z "$BRANCH" ]; then echo "Error: Not in a git repo"; exit 1; fi; \
-    {{self}} gps "$BRANCH"
-
-# [G]it [P]u[S]h [D]evelop
-gpsd:
-    {{self}} gps develop
+    {{self}} gps "$BRANCH" {{args}}
 
 # [G]it [P]u[S]h [M]ain
 gpsm:
@@ -250,10 +246,6 @@ gpsm:
 # [G]it [R]ebase
 gr branch:
     git rebase {{branch}}
-
-# [G]it [R]ebase [D]evelop
-grd:
-    {{self}} gr develop
 
 # [G]it [R]ebase [M]ain
 grm:
