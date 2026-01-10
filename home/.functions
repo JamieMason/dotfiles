@@ -46,11 +46,28 @@ function nodev() {
   ~/Dev/dotfiles/06-install-npm-binaries.sh
 }
 
-# Function to set tab title to current directory name
-function set_terminal_title() {
-  # Use ${PWD##*/} to get only the folder name, or $PWD for the full path
+# Function to set tab title and a one-time random tab color
+function set_terminal_appearance() {
+  # 1. Set the Title (Current directory)
   echo -ne "\e]1;${PWD##*/}\a"
+
+  # 2. Set a Unique Color (Only if not already set for this session)
+  if [[ -z "$TAB_COLOR_SET" ]]; then
+    # Generate random values between 0-255
+    local r=$(( RANDOM % 256 ))
+    local g=$(( RANDOM % 256 ))
+    local b=$(( RANDOM % 256 ))
+
+    # Apply iTerm2 escape sequences
+    echo -ne "\033]6;1;bg;red;brightness;$r\a"
+    echo -ne "\033]6;1;bg;green;brightness;$g\a"
+    echo -ne "\033]6;1;bg;blue;brightness;$b\a"
+
+    # Mark as set so it doesn't change every time you cd
+    export TAB_COLOR_SET=1
+  fi
 }
 
-# Execute the function before every prompt
-add-zsh-hook precmd set_terminal_title
+# Execute before every prompt
+autoload -Uz add-zsh-hook
+add-zsh-hook precmd set_terminal_appearance
