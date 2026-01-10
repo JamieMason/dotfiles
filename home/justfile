@@ -1,0 +1,330 @@
+# List all available commands
+default:
+    @just --justfile ~/justfile --list
+
+################################################################################
+# Node & npm
+################################################################################
+
+# [Y]arn (muscle memory for nr)
+y *args:
+    nr {{args}}
+
+# [Y]arn [C]lean (delete lockfiles and git-ignored artifacts)
+yc:
+    rm -f ./package-lock.json ./yarn.lock
+    git clean -dfX
+
+# [Y]arn [C]lean [I]nstall
+yci: yc
+    ni
+
+# [Y]arn [D]ependency / [I]nstall
+yd *args:
+    ni {{args}}
+
+# [Y]arn [D]ev [D]ependency
+ydd *args:
+    ni -D {{args}}
+
+# [Y]arn [U]ninstall
+yu *args:
+    nun {{args}}
+
+# [Y]arn [G]lobal install
+yg *args:
+    npm install -g {{args}}
+
+# [Y]arn [G]lobal [U]ninstall
+ygu *args:
+    npm uninstall -g {{args}}
+
+# [Y]arn [H]ome
+yh *args:
+    npm home {{args}}
+
+# [Y]arn [I]nstall
+yi *args:
+    ni {{args}}
+
+# [Y]arn [LS] (list all immediate dependencies)
+yls *args:
+    npm ls --s --depth=0 {{args}}
+
+# [Y]arn [R]un
+yr *args:
+    nr {{args}}
+
+# [Y]arn [B]uild
+yb *args:
+    nr build {{args}}
+
+# [Y]arn [F]ormat
+yf *args:
+    nr format {{args}}
+
+# [Y]arn [L]int
+yl *args:
+    nr lint {{args}}
+
+# [Y]arn [S]tart
+ys *args:
+    nr start {{args}}
+
+# [Y]arn [T]est
+yt *args:
+    nr test {{args}}
+
+# [Y]arn [W]atch
+yw *args:
+    nr watch {{args}}
+
+# [Y]arn [D]e[V]
+ydv *args:
+    nr dev {{args}}
+
+# [B]uild [L]int [T]est
+blt: yb yl yt
+
+# [B]uild [L]int
+bl: yb yl
+
+# [B]uild [S]tart
+bs: yb ys
+
+# [B]uild [T]est
+bt: yb yt
+
+# [I]nstall [B]uild
+ib: yi yb
+
+# [I]nstall [B]uild [L]int [T]est
+iblt: yi yb yl yt
+
+# [I]nstall [B]uild [L]int
+ibl: yi yb yl
+
+# [I]nstall [B]uild [S]tart
+ibs: yi yb ys
+
+# [I]nstall [B]uild [T]est
+ibt: yi yb yt
+
+################################################################################
+# Git
+################################################################################
+
+# [G]it [A]dd all
+ga *args:
+    git add -A {{args}}
+
+# [G]it [B]ranch (custom script)
+gb *args:
+    ~/cli/gb {{args}}
+
+# [G]it [B]ranch [R]emote (custom script)
+gbr *args:
+    ~/cli/gbr {{args}}
+
+# [G]it [B]ranch [A]ll
+gba:
+    git fetch
+    git branch -a
+
+# [G]it [B]ranch [D]elete local
+gbd branch:
+    git branch -D {{branch}}
+
+# [G]it [B]ranch [D]elete [R]emote
+gbdr branch:
+    git push origin --delete --no-verify {{branch}}
+
+# [G]it [B]ranch [D]elete [A]ll (local and remote)
+gbda branch:
+    just -f ~/justfile gbd {{branch}}
+    just -f ~/justfile gbdr {{branch}}
+
+# [G]it [B]ranch [L]atest local
+gbl:
+    git for-each-ref --sort=-committerdate refs/heads/ --format="%(HEAD) %(committerdate:relative)|%(objectname:short)|%(refname:short)|%(authorname) %(authoremail)" | column -t -s "|"
+
+# [G]it [B]ranch [L]atest [R]emote
+gblr:
+    git for-each-ref --sort=-committerdate refs/remotes/ --format="%(HEAD) %(committerdate:relative)|%(objectname:short)|%(refname:short)|%(authorname) %(authoremail)" | column -t -s "|"
+
+# [G]it [B]ranch [N]ew
+gbn branch:
+    git checkout -b {{branch}}
+
+# [G]it [C]heckout
+gc branch:
+    git checkout {{branch}}
+
+# [G]it [C]ommit [A]mend
+gca *args:
+    git commit --amend {{args}}
+
+# [G]it [C]ommit [M]essage
+gcm msg:
+    git commit -m {{quote(msg)}}
+
+# [G]it [F]etch prune
+gf:
+    git fetch --prune
+
+# [G]it Search history
+git-search term:
+    git log -p | grep --context=4 {{term}}
+
+# [G]it [L]og (custom script)
+gl *args:
+    ~/cli/gl {{args}}
+
+# [G]it [L]ist [C]ontributors
+glc:
+    git log --use-mailmap --no-merges --pretty=format:'%aN <%aE>' | sort | uniq
+
+# [G]it [L]og [F]ilter [M]atch
+glfm term:
+    just -f ~/justfile gl | grep {{term}}
+
+# [G]it [L]og [P]arseable
+glp:
+    git log --pretty=format:'%h|%s|%an' --abbrev-commit
+
+# [G]it [L]og [S]hort
+gls *args:
+    ~/cli/gl {{args}}
+
+# [G]it [M]erge (no fast-forward)
+gm branch:
+    git merge --no-ff {{branch}}
+
+# [G]it [P]ul[L] origin tags
+# Modified to accept an optional branch argument
+gpl branch="":
+    just -f ~/justfile gf
+    git pull origin {{branch}} --tags
+
+# [G]it [P]ul[L] [C]urrent branch
+gplc:
+    @BRANCH=$(git branch --show-current); \
+    if [ -z "$BRANCH" ]; then echo "Error: Not in a git repo"; exit 1; fi; \
+    just -f ~/justfile gpl "$BRANCH"
+
+# [G]it [P]ul[L] [D]evelop
+gpld:
+    just -f ~/justfile gpl develop
+
+# [G]it [P]ul[L] [M]ain
+gplm:
+    just -f ~/justfile gpl main
+
+# [G]it [P]u[S]h origin tags
+# Modified to accept an optional branch argument
+gps branch="":
+    just -f ~/justfile gf
+    git push origin {{branch}} --tags
+
+# [G]it [P]u[S]h [C]urrent branch
+gpsc:
+    @BRANCH=$(git branch --show-current); \
+    if [ -z "$BRANCH" ]; then echo "Error: Not in a git repo"; exit 1; fi; \
+    just -f ~/justfile gps "$BRANCH"
+
+# [G]it [P]u[S]h [D]evelop
+gpsd:
+    just -f ~/justfile gps develop
+
+# [G]it [P]u[S]h [M]ain
+gpsm:
+    just -f ~/justfile gps main
+
+# [G]it [R]ebase
+gr branch:
+    git rebase {{branch}}
+
+# [G]it [R]ebase [D]evelop
+grd:
+    just -f ~/justfile gr develop
+
+# [G]it [R]ebase [M]ain
+grm:
+    just -f ~/justfile gr main
+
+# [G]it [S]tatus (custom script)
+gs *args:
+    ~/cli/gs {{args}}
+
+# [G]it [U]ndo (Hard reset and clean)
+gu:
+    git reset --hard
+    git clean -df
+
+# [G]it [U]pdate [F]rom [M]ain
+gufm:
+    git checkout main
+    git fetch
+    git reset --hard origin/main
+    git checkout -
+    git rebase main
+
+# List Authors
+authors:
+    git log --pretty=format:'%an <%ae>' | sort | uniq
+
+# List Author Names
+authornames:
+    git log --pretty=format:'%an' | sort | uniq
+
+################################################################################
+# Rust / Cargo
+################################################################################
+
+# [C]argo [B]uild
+cb *args:
+    cargo build {{args}}
+
+# [C]argo [B]uild [R]elease
+cbr *args:
+    cargo build --release {{args}}
+
+# [C]argo [R]un
+cr *args:
+    cargo run {{args}}
+
+# [C]argo [T]est
+ct *args:
+    cargo test {{args}}
+
+################################################################################
+# Just projects
+################################################################################
+
+# [J]ust [F]ormat (targets local justfile)
+jf *args:
+    just format {{args}}
+
+# [J]ust [L]int (targets local justfile)
+jl *args:
+    just lint {{args}}
+
+# [J]ust [T]est (targets local justfile)
+jt *args:
+    just test {{args}}
+
+# [J]ust [W]atch (targets local justfile)
+jw *args:
+    just watch {{args}}
+
+################################################################################
+# Misc
+################################################################################
+
+# Print a bash shebang
+shebang:
+    @echo '#!/usr/bin/env bash'
+
+# [TAR]ball [LS] (list contents of tarball)
+tarls *args:
+    tar -tvf {{args}}

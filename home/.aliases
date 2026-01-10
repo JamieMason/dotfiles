@@ -15,149 +15,17 @@ alias lstgz="tar -tvf"
 # Always enable colored `grep` output
 alias grep='grep --color=auto'
 
-# [Y]arn (left as y because muscle memory, but now using https://github.com/antfu/ni)
-alias y="nr"
-# [Y]arn [C]lean (delete generated artefacts not stored in Git, and lockfiles)
-alias yc="rm -f ./package-lock.json ./yarn.lock; git clean -dfX"
-# [Y]arn [C]lean [I]nstall (delete everything, then reinstall)
-alias yci="yc; ni"
-# [Y]arn [D]ependency (install dependency)
-alias yd="ni"
-# [Y]arn [D]ev [D]ependency (install dev dependency)
-alias ydd="ni -D"
-# [Y]arn [U]ninstall (uninstall dependency)
-alias yu="nun"
-# [Y]arn [G]lobal install
-alias yg="npm install -g"
-# [Y]arn [G]lobal [U]ninstall
-alias ygu="npm uninstall -g"
-# [Y]arn [H]ome
-alias yh="npm home"
-# [Y]arn [I]nstall
-alias yi="ni"
-# [Y]arn [LS] (list all immediate dependencies)
-alias yls="npm ls --s --depth=0"
-# [Y]arn [R]un
-alias yr="nr"
-# [Y]arn [B]uild
-alias yb="nr build"
-# [Y]arn [F]ormat
-alias yf="nr format"
-# [Y]arn [L]int
-alias yl="nr lint"
-# [Y]arn [S]tart
-alias ys="nr start"
-# [Y]arn [T]est
-alias yt="nr test"
-# [Y]arn [W]atch
-alias yw="nr watch"
-# [Y]arn [D]e[V]
-alias ydv="nr dev"
-# [B]uild [L]int [T]est
-alias blt="yb && yl && yt"
-# [B]uild [L]int
-alias bl="yb && yl"
-# [B]uild [S]tart
-alias bs="yb && ys"
-# [B]uild [T]est
-alias bt="yb && yt"
-# [I]nstall [B]uild
-alias ib="ni && yb"
-# [I]nstall [B]uild [L]int [T]est
-alias iblt="ni && yb && yl && yt"
-# [I]nstall [B]uild [L]int
-alias ibl="ni && yb && yl"
-# [I]nstall [B]uild [S]tart
-alias ibs="ni && yb && ys"
-# [I]nstall [B]uild [T]est
-alias ibt="ni && yb && yt"
+# [J]ust (run global justfile)
+alias j='just --justfile ~/justfile --working-directory .'
 
-# stage files
-alias ga='git add -A'
-# list local branches
-alias gb='~/cli/gb'
-# list remote branches
-alias gbr='~/cli/gbr'
-# list all local and remote branches
-alias gba='git fetch && git branch -a'
-# delete local branch, eg. `gbd quicktest`
-alias gbd='git branch -D'
-# delete remote branch, eg. `gbdr quicktest`
-alias gbdr='git push origin --delete --no-verify'
-# delete local and remote branch
-alias gbda='gbd && gbdr'
-# list latest local branches
-alias gbl='git for-each-ref --sort=-committerdate refs/heads/ --format="%(HEAD) %(committerdate:relative)|%(objectname:short)|%(refname:short)|%(authorname) %(authoremail)" | column -t -s "|"'
-# list latest remote branches
-alias gblr='git for-each-ref --sort=-committerdate refs/remotes/ --format="%(HEAD) %(committerdate:relative)|%(objectname:short)|%(refname:short)|%(authorname) %(authoremail)" | column -t -s "|"'
-# create a new branch, eg. `gbn feature_pmpsht`
-alias gbn='git checkout -b'
-# eg `gc main`
-alias gc='git checkout'
-# amend previous commit
-alias gca='git commit --amend'
-# get name of current branch
-alias gcb='git branch | grep \* | cut -d " " -f2'
-# eg `gcm 'fixed stuff'`
-alias gcm='git commit -m'
-# look for changes to remote branches
-alias gf='git fetch --prune'
-# search code in git history
-alias git-search='git log -p | grep --context=4'
-# show the commit history
-alias gl="~/cli/gl"
-# git list contributors
-alias glc="git log --use-mailmap --no-merges --pretty=format:'%aN <%aE>' | sort | uniq"
-# grep git log
-alias glfm="gl | grep"
-# parseable git log
-alias glp="git log --pretty=format:'%h|%s|%an' --abbrev-commit"
-# short commit history
-alias gls="~/cli/gl"
-# eg `gm develop`
-alias gm='git merge --no-ff'
-# git pull
-alias gpl='gf && git pull origin --tags'
-# git pull current branch
-alias gplc='gpl $(gcb)'
-# git pull develop
-alias gpld='gpl develop'
-# git pull main
-alias gplm='gpl main'
-# git push
-alias gps='gf && git push origin --tags'
-# git push current branch
-alias gpsc='gps $(gcb)'
-# git push develop
-alias gpsd='gps develop'
-# git push main
-alias gpsm='gps main'
-# eg `gr develop`
-alias gr='git rebase'
-alias grd='gr develop'
-alias grm='gr main'
-# show all (un)staged and untracked files
-alias gs="~/cli/gs"
-# undo
-alias gu='git reset --hard && git clean -df'
-# update from main
-alias gufm='git checkout main && git fetch && git reset --hard origin/main && git checkout - && git rebase main'
-# Jane Doe <jane@doe.io>
-alias authors="git log --pretty=format:'%an <%ae>' | sort | uniq"
-# Jane Doe
-alias authornames="git log --pretty=format:'%an' | sort | uniq"
-
-# because I can *never* remember this
-alias shebang="echo '#!/usr/bin/env bash'"
-
-# Rust/Cargo
-alias cb="cargo build"
-alias cbr="cargo build --release"
-alias cr="cargo run"
-alias ct="cargo test"
-
-# Just
-alias jf="just format"
-alias jl="just lint"
-alias jt="just test"
-alias jw="just watch"
+# Generate aliases for all recipes in the global justfile
+if [ -f ~/justfile ]; then
+  # 1. Get the list of recipe names (ignoring internal ones starting with _)
+  # 2. Exclude 'default'
+  # 3. Create an alias for each: alias <recipe>='j <recipe>'
+  for recipe in $(just --justfile ~/justfile --summary); do
+    if [[ "$recipe" != "default" ]]; then
+      alias "$recipe"="j $recipe"
+    fi
+  done
+fi
