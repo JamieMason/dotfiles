@@ -18,6 +18,13 @@ alias grep='grep --color=auto'
 # [J]ust (run global justfile)
 alias j='just --justfile ~/justfile --working-directory "$PWD"'
 
+# show the commit history
+alias ggl="git log --use-mailmap --graph --date=format:'%a %d %b %H:%M' --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen%cd (%cr) %C(bold blue)<%aN>%Creset'"
+alias ggls="gl --max-count=15 --no-merges"
+
+# show all (un)staged and untracked files
+alias ggs='git status -sb'
+
 # Generate aliases for all recipes in the global justfile
 if [ -f ~/justfile ]; then
   # 1. Get the list of recipe names (ignoring internal ones starting with _)
