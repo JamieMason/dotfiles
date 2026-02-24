@@ -5,7 +5,6 @@ brew install alfred
 brew install brave
 brew install caffeine
 brew install charles
-brew install cleanmymac
 brew install dash
 brew install firefox
 brew install flux
