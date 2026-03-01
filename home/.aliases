@@ -20,7 +20,7 @@ alias j='just --justfile ~/justfile --working-directory "$PWD"'
 
 # show the commit history
 alias ggl="git log --use-mailmap --graph --date=format:'%a %d %b %H:%M' --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen%cd (%cr) %C(bold blue)<%aN>%Creset'"
-alias ggls="gl --max-count=15 --no-merges"
+alias ggls="ggl --max-count=15 --no-merges"
 
 # show all (un)staged and untracked files
 alias ggs='git status -sb'
