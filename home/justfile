@@ -223,7 +223,9 @@ gpld:
 
 # [G]it [P]ul[L] Main or Master
 gplm:
-    @MAIN_BRANCH=$(git rev-parse --verify main >/dev/null 2>&1 && echo "main" || echo "master"); \
+    #!/usr/bin/env bash
+    set -euxo pipefail
+    MAIN_BRANCH=$(git rev-parse --verify main >/dev/null 2>&1 && echo "main" || echo "master"); \
     {{self}} gpl "$MAIN_BRANCH"
 
 # [G]it [P]u[S]h origin tags
@@ -240,7 +242,9 @@ gpsc *args:
 
 # [G]it [P]u[S]h [M]ain
 gpsm:
-    @MAIN_BRANCH=$(git rev-parse --verify main >/dev/null 2>&1 && echo "main" || echo "master"); \
+    #!/usr/bin/env bash
+    set -euxo pipefail
+    MAIN_BRANCH=$(git rev-parse --verify main >/dev/null 2>&1 && echo "main" || echo "master"); \
     {{self}} gps "$MAIN_BRANCH"
 
 # [G]it [R]ebase
@@ -249,7 +253,9 @@ gr branch:
 
 # [G]it [R]ebase [M]ain
 grm:
-    @MAIN_BRANCH=$(git rev-parse --verify main >/dev/null 2>&1 && echo "main" || echo "master"); \
+    #!/usr/bin/env bash
+    set -euxo pipefail
+    MAIN_BRANCH=$(git rev-parse --verify main >/dev/null 2>&1 && echo "main" || echo "master"); \
     {{self}} gr "$MAIN_BRANCH"
 
 # [G]it [S]tatus (custom script)
@@ -263,10 +269,12 @@ gu:
 
 # [G]it [U]pdate [F]rom [M]ain
 gufm:
-    @MAIN_BRANCH=$(git rev-parse --verify main >/dev/null 2>&1 && echo "main" || echo "master"); \
+    #!/usr/bin/env bash
+    set -euxo pipefail
+    MAIN_BRANCH=$(git rev-parse --verify main >/dev/null 2>&1 && echo "main" || echo "master"); \
     git checkout "$MAIN_BRANCH"
     git fetch
-    git reset --hard "origin/$MAIN_BRANCH"
+    git pull origin "$MAIN_BRANCH"
     git checkout -
     git rebase "$MAIN_BRANCH"
 
