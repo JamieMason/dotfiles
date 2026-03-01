@@ -67,6 +67,7 @@ duti -s dev.zed.Zed .pem all
 duti -s dev.zed.Zed .placeholder all
 duti -s dev.zed.Zed .prettierignore all
 duti -s dev.zed.Zed .prettierrc all
+duti -s dev.zed.Zed .rs all
 duti -s dev.zed.Zed .sample all
 duti -s dev.zed.Zed .screenrc all
 duti -s dev.zed.Zed .scss all
@@ -89,3 +90,4 @@ duti -s dev.zed.Zed .wgetrc all
 duti -s dev.zed.Zed .xml all
 duti -s dev.zed.Zed .yarnrc all
 duti -s dev.zed.Zed .yml all
+duti -s dev.zed.Zed justfile all
