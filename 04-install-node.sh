@@ -1,8 +1,6 @@
 #!/usr/bin/env bash
 
-# Install Node Version Manager
-brew install fnm
-
+# fnm is installed via the Brewfile
 # Instantiate FNM
 eval "$(fnm env --use-on-cd)"
 

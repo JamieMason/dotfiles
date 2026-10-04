@@ -54,3 +54,10 @@ function zle-keymap-select {
 zle -N zle-keymap-select
 # Ensure beam cursor on startup
 echo -ne '\e[5 q'
+
+# bat / eza
+alias cat='bat --paging=never'
+alias ls='eza'
+alias ll='eza -l --git --group-directories-first'
+alias la='eza -la --git --group-directories-first'
+alias lt='eza --tree --level=2'

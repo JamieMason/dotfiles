@@ -1,38 +1,26 @@
 # Jamie’s dotfiles
 
-![Screenshot of my shell prompt](https://i.imgur.com/ItNUSFe.png)
+> Review the code and remove what you don’t need before running anything.
 
-> **Warning:** If you want to give these dotfiles a try, you should first fork
-> this repository, review the code, and remove things you don’t want or need.
-> Don’t blindly use my settings unless you know what that entails. Use at your
-> own risk!
+## What it does
 
-These dotfiles will:
+1. `01-configure-mac.sh`: macOS `defaults` tweaks.
+2. `02-install-binaries.sh`: Homebrew, oh-my-zsh, zsh-syntax-highlighting.
+3. `03-install-apps.sh`: `brew bundle` from [`Brewfile`](Brewfile) (CLI tools
+   and apps, incl. Zed, iTerm2, Alfred, Rectangle, bat, eza, delta).
+4. `04-install-node.sh`: Node LTS via `fnm`.
+5. `05-install-rust.sh`: Rust via `rustup`.
+6. `06-install-npm-binaries.sh`: global npm tools (biome, pnpm, tsx, etc.).
+7. `07-set-default-apps.sh`: open text/code file types in Zed.
+8. `08-copy-dotfiles.sh`: NvChad (if missing), `home/*`, Zed settings, `cli/`.
 
-- Set some sensible default settings for a new Mac.
-- Install [`brew`](http://brew.sh/) and some useful formulae including
-  [`git`](https://git-scm.com/), [`node`](https://nodejs.org/),
-  [`fnm`](https://github.com/Schniz/fnm), and
-  [`npm`](https://www.npmjs.com/).
-- Install [`brew cask`](https://github.com/Homebrew/homebrew-cask) and some
-  useful Mac Apps such as VS Code, Spotify, Firefox, Chrome, Alfred etc.
-- Install useful Extensions for [VS Code](https://code.visualstudio.com/).
-- Install the [Rust](https://www.rust-lang.org/en-US/) Programming Language.
+## Usage
 
-## Installation/Usage
+```bash
+git clone https://github.com/JamieMason/dotfiles.git ~/Dev/dotfiles
+cd ~/Dev/dotfiles
+# edit USER_NAME / USER_EMAIL in home/.extra
+./bootstrap.sh
+```
 
-1. Clone this project into your home directory:
-
-   ```bash
-   git clone https://github.com/JamieMason/dotfiles.git ~/dotfiles
-   ```
-
-1. Edit `USER_NAME`, `USER_EMAIL`, and `USER_URL` in `~/dotfiles/.extra` to use
-   your own details.
-1. Apply the dotfiles to your system using:
-
-   ```bash
-   cd ~/dotfiles && source bootstrap.sh
-   # Alternatively, to update while avoiding confirmation prompts:
-   # cd ~/dotfiles && set -- -f; source bootstrap.sh
-   ```
+Dotfiles are copied, not symlinked: re-run `08-copy-dotfiles.sh` after edits.

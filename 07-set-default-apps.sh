@@ -1,7 +1,5 @@
 #!/usr/bin/env bash
 
-brew install duti
-
 # Set default apps for file types
 duti -s dev.zed.Zed .aliases all
 duti -s dev.zed.Zed .babelrc all
