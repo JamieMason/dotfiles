@@ -1,5 +1,9 @@
 #!/usr/bin/env bash
 
+export PATH="$HOME/.cargo/bin:$PATH"
+# Ensure brew is on PATH (this script runs in its own shell)
+eval "$("$(test -x /opt/homebrew/bin/brew && echo /opt/homebrew/bin/brew || echo /usr/local/bin/brew)" shellenv)"
+
 npm install -g npm
 
 npm install -g @antfu/ni

@@ -1,5 +1,8 @@
 #!/usr/bin/env bash
 
+# Ensure brew is on PATH (this script runs in its own shell)
+eval "$("$(test -x /opt/homebrew/bin/brew && echo /opt/homebrew/bin/brew || echo /usr/local/bin/brew)" shellenv)"
+
 # Set default apps for file types
 duti -s dev.zed.Zed .aliases all
 duti -s dev.zed.Zed .babelrc all

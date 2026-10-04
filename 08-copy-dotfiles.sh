@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 # Ensure .config exists
-mkdir -p ~/.config
+mkdir -p ~/.config ~/.config/zed
 
 # Set up Neovim (only clone NvChad if missing)
 if [ ! -d ~/.config/nvim ]; then
