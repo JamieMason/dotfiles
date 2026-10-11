@@ -4,15 +4,19 @@ on:
   pull_request:
     branches:
       - main
-      - dev
+    paths:
+      - "cli/**"
+      - ".github/workflows/ci.yaml"
   push:
     branches:
       - main
-      - dev
+    paths:
+      - "cli/**"
+      - ".github/workflows/ci.yaml"
 
 jobs:
   lint-and-test:
-    name: Lint and test
+    name: Lint and test (cli)
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -22,6 +26,6 @@ jobs:
           sudo apt-get update
           sudo apt-get install -y bats shellcheck fzf
       - name: Lint shellcheck
-        run: shellcheck -x -e SC1090,SC1091 bin/* lib/*.sh
+        run: shellcheck -x -e SC1090,SC1091 cli/bin/* cli/lib/*.sh
       - name: Bats test
-        run: bats test
+        run: bats cli/test
