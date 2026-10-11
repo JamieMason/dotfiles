@@ -1,0 +1,5 @@
+{
+  "name": "jamiemason-dotfiles",
+  "owner": { "name": "Jamie Mason" },
+  "plugins": [{ "name": "prompt-sidebar", "source": "./claude-plugins/prompt-sidebar" }]
+}

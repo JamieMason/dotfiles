@@ -1,0 +1,1 @@
+{ "name": "prompt-sidebar", "version": "0.1.0", "description": "Right sidebar listing your messages (first 20 chars); press one to scroll to it", "types": "./types/index.d.ts" }

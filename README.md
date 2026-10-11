@@ -24,3 +24,11 @@ cd ~/Dev/dotfiles
 ```
 
 Dotfiles are copied, not symlinked: re-run `08-copy-dotfiles.sh` after edits.
+
+## Claude Code mods
+
+`prompt-sidebar`: right sidebar listing your messages, select one to jump to it.
+
+```
+/plugin install prompt-sidebar --marketplace JamieMason/dotfiles
+```
