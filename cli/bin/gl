@@ -3,8 +3,10 @@
 # gl — interactive git log helper (bash port of src/bin/gl.rs).
 #
 # Pick commits from the current branch → pick a command → act. The Rust kept a
-# hand-written lazy "load more" pager; fzf scrolls the whole list natively, so
-# we just hand it every commit.
+# hand-written lazy "load more" pager. Here we stream `git log` straight into
+# fzf rather than buffering the whole history first: git emits newest-first and
+# fzf shows the first screenful at once, reading more only as the list is
+# scrolled or searched — so startup no longer walks the entire history.
 
 set -euo pipefail
 
@@ -18,15 +20,17 @@ gl::main() {
   local current
   current=$(git::current_branch) || { echo "Error: detached HEAD" >&2; exit 1; }
 
-  local rows
-  rows=$(git::commit_rows HEAD)
-  if [ -z "$rows" ]; then
+  if ! git rev-parse --verify --quiet HEAD >/dev/null; then
     printf 'git log (%s)\nNo commits found.\n' "$current"
     return 0
   fi
 
+  # Stream commits into fzf; see the file header for why we don't buffer first.
+  # Extra CLI args are forwarded to `git log` (e.g. `gl -n 5`, `gl --author=me`,
+  # `gl v1.0..HEAD`); with none, git log defaults to HEAD as before.
   local picked
-  picked=$(printf '%s\n' "$rows" | commits::render | ui::pick_many "git log $(colour::blue "($current)")") || true
+  picked=$(git::commit_rows "$@" | commits::render \
+    | ui::pick_many "git log $(colour::blue "($current)")") || true
   [ -z "$picked" ] && return 0
   ui::read_items <<< "$picked"
   local -a sel=("${UI_ITEMS[@]}")
@@ -34,7 +38,7 @@ gl::main() {
   # Offer "reset --soft" only when the selection is exactly the newest N commits.
   local commands
   commands=$'open files\ndiff\nview commit on github'
-  if gl::_is_newest_n "$(printf '%s' "$rows" | cut -f2)" "${sel[@]}"; then
+  if gl::_is_newest_n "${sel[@]}"; then
     commands+=$'\nreset --soft'
   fi
 
@@ -48,24 +52,17 @@ gl::main() {
   esac
 }
 
-# True when the selected hashes occupy positions 0..n-1 of the full ordered
-# list (i.e. the most recent commits with no gaps) — the condition the Rust
-# used to enable `reset --soft HEAD~n`.
+# True when the selected hashes are exactly the newest N commits reachable from
+# HEAD, with no gaps — the condition the Rust used to enable `reset --soft
+# HEAD~n`. Comparing against just the newest N (not the whole history) keeps the
+# check cheap now that the list is streamed rather than buffered.
 gl::_is_newest_n() {
-  local all=$1
-  shift
-  local -a pos=()
-  local s idx
-  for s in "$@"; do
-    idx=$(printf '%s\n' "$all" | grep -nxF "$s" | head -1 | cut -d: -f1) || return 1
-    [ -z "$idx" ] && return 1
-    pos+=($((idx - 1)))
-  done
-  local want=0 p
-  while IFS= read -r p; do
-    [ "$p" = "$want" ] || return 1
-    want=$((want + 1))
-  done < <(printf '%s\n' "${pos[@]}" | sort -n)
+  local n=$#
+  [ "$n" -gt 0 ] || return 1
+  local newest selected
+  newest=$(git log -n "$n" --format=%h HEAD | sort) || return 1
+  selected=$(printf '%s\n' "$@" | sort)
+  [ "$newest" = "$selected" ]
 }
 
 gl::open_files() {

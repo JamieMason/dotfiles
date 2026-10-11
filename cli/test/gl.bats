@@ -16,26 +16,28 @@ teardown() { teardown_repo; }
 _hashes() { git::commit_rows HEAD | cut -f2; }
 
 @test "gl _is_newest_n: the newest commit alone is the top 1" {
-  local all newest
-  all=$(_hashes)
-  newest=$(printf '%s\n' "$all" | sed -n 1p)
-  run gl::_is_newest_n "$all" "$newest"
+  run gl::_is_newest_n "$(_hashes | sed -n 1p)"
   [ "$status" -eq 0 ]
 }
 
 @test "gl _is_newest_n: the oldest commit alone is not" {
-  local all oldest
-  all=$(_hashes)
-  oldest=$(printf '%s\n' "$all" | sed -n 3p)
-  run gl::_is_newest_n "$all" "$oldest"
+  run gl::_is_newest_n "$(_hashes | sed -n 3p)"
   [ "$status" -ne 0 ]
 }
 
 @test "gl _is_newest_n: the newest two together are consecutive from the top" {
-  local all
-  all=$(_hashes)
-  run gl::_is_newest_n "$all" "$(printf '%s\n' "$all" | sed -n 1p)" "$(printf '%s\n' "$all" | sed -n 2p)"
+  run gl::_is_newest_n "$(_hashes | sed -n 1p)" "$(_hashes | sed -n 2p)"
   [ "$status" -eq 0 ]
+}
+
+@test "gl _is_newest_n: order within the selection does not matter" {
+  run gl::_is_newest_n "$(_hashes | sed -n 2p)" "$(_hashes | sed -n 1p)"
+  [ "$status" -eq 0 ]
+}
+
+@test "gl _is_newest_n: newest plus a gap to the oldest is not" {
+  run gl::_is_newest_n "$(_hashes | sed -n 1p)" "$(_hashes | sed -n 3p)"
+  [ "$status" -ne 0 ]
 }
 
 @test "gl reset_soft: moves HEAD back and leaves the change staged" {
