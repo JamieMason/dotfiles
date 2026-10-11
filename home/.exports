@@ -31,3 +31,6 @@ export MANPAGER='less -X';
 
 # Go Lang Global Packages
 export PATH="$HOME/go/bin:$PATH"
+
+# User-local binaries (e.g. the native Claude Code installer -> ~/.local/bin/claude)
+export PATH="$HOME/.local/bin:$PATH"
