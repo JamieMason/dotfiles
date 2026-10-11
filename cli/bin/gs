@@ -14,8 +14,10 @@ for mod in colors platform paths status log ui git; do source "$lib/$mod.sh"; do
 gs::main() {
   git::is_repo || { echo "Error: not a git repository" >&2; exit 1; }
 
+  # Extra CLI args are forwarded to `git status` — most usefully a pathspec to
+  # scope the listing, e.g. `gs src/`.
   local items
-  items=$(gs::_status_items "$(git::root)")
+  items=$(gs::_status_items "$(git::root)" "$@")
   if [ -z "$items" ]; then
     echo "No changes found."
     return 0
@@ -45,9 +47,11 @@ gs::main() {
 # worktree status when the index side is clean — matching gs.rs status_to_chars.
 gs::_status_items() {
   local root=$1
-  gs::_porcelain | status::render "$root"
+  shift
+  gs::_porcelain "$@" | status::render "$root"
 }
 
+# Trailing args (e.g. a pathspec) are forwarded to `git status`.
 gs::_porcelain() {
   local line x y path ch
   while IFS= read -r line; do
@@ -57,7 +61,7 @@ gs::_porcelain() {
     ch=$x
     [ "$x" = " " ] && ch=$y
     printf '%s%s%s\n' "$ch" "$TAB" "$path"
-  done < <(git status --porcelain --untracked-files=all) # -uall: list files, not collapsed dirs (git2 recurse_untracked_dirs)
+  done < <(git status --porcelain --untracked-files=all "$@") # -uall: list files, not collapsed dirs (git2 recurse_untracked_dirs)
 }
 
 gs::op_stage()   { git add -- "$1"; }

@@ -11,6 +11,10 @@ from a list, choose an action, done.
 | `gs`  | `git status`   | pick changed files → open / diff / stage / unstage / undo |
 | `gbr` | remote branches | pick remote branches → checkout / rebase / cherry-pick / delete / merge |
 
+Extra arguments are forwarded to the git command each one wraps: `gl` → `git
+log` (`gl -n 5`, `gl --author=me`, `gl v1.0..HEAD`), `gs` → `git status` (a
+pathspec such as `gs src/`), `gb` / `gbr` → `git for-each-ref` (`gb --count=10`).
+
 ## Requirements
 
 - `git` and [`fzf`](https://github.com/junegunn/fzf)

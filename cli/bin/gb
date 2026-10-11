@@ -19,7 +19,8 @@ gb::main() {
   git::is_repo || { echo "Error: not a git repository" >&2; exit 1; }
   local commands
   commands=$'checkout\nrebase\nlist commits\ndelete\nmerge\nrename'
-  branch_list::run "git branch" "No other branches found." "$commands" gb::dispatch
+  # Extra CLI args are forwarded to `git for-each-ref`, e.g. `gb --count=10`.
+  branch_list::run "git branch" "No other branches found." "$commands" gb::dispatch refs/heads/ 1 "$@"
 }
 
 # Fan the chosen command out to its handler. Receives: COMMAND CURRENT NAME...

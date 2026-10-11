@@ -95,6 +95,14 @@ teardown() { teardown_repo; }
   [[ "$output" != *"aliased"* ]]
 }
 
+@test "git::branches_meta: forwards extra args to for-each-ref" {
+  commit a.txt a root
+  git branch one; git branch two; git branch three
+  # --count caps the number of refs for-each-ref emits.
+  run git::branches_meta refs/heads/ --count=1
+  [ "$(printf '%s\n' "$output" | grep -c .)" -eq 1 ]
+}
+
 @test "git::commit_files: lists a root commit's files via --root" {
   commit a.txt a root
   run git::commit_files "$(git rev-parse HEAD)"
@@ -109,4 +117,12 @@ teardown() { teardown_repo; }
   out=$(branch_list::_render_items main refs/heads/ 1 | strip_ansi)
   [[ "$out" == *"other"* ]]
   [[ "$out" != *$'\n'"main"* ]]
+}
+
+@test "branch_list::_render_items: forwards extra args to for-each-ref" {
+  commit a.txt a root
+  git branch one; git branch two
+  # --count=1 limits for-each-ref, so at most one branch is rendered.
+  out=$(branch_list::_render_items main refs/heads/ 0 --count=1 | strip_ansi)
+  [ "$(printf '%s\n' "$out" | grep -c .)" -eq 1 ]
 }

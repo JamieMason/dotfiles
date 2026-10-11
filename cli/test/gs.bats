@@ -20,6 +20,14 @@ teardown() { teardown_repo; }
   [[ "$out" == *"?"$'\t'"n.txt"* ]]
 }
 
+@test "gs _porcelain: forwards a pathspec arg to git status" {
+  echo change >> a.txt          # modified, at the repo root
+  mkdir -p sub && echo x > sub/n.txt
+  out=$(gs::_porcelain sub/)
+  [[ "$out" == *"sub/n.txt"* ]]
+  [[ "$out" != *"a.txt"* ]]     # scoped to sub/, so the root file is excluded
+}
+
 @test "gs _status_items: untracked files under a new dir are listed individually" {
   # regression: without -uall git collapses to the directory
   mkdir -p pkg && echo x > pkg/deep.txt

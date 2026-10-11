@@ -11,13 +11,17 @@ git::current_branch() { git symbolic-ref --quiet --short HEAD; } # fails on deta
 git::root()           { git rev-parse --show-toplevel; }
 
 # Branches under REFS (default refs/heads/), newest commit first. Replaces
-# collect_branch_info + both hand-written date formatters in one call.
+# collect_branch_info + both hand-written date formatters in one call. Any args
+# after REFS are forwarded to `git for-each-ref` (e.g. --count=10, or an extra
+# ref pattern).
 #   name <TAB> subject <TAB> abs-date <TAB> rel-date <TAB> author
 # Symbolic refs (e.g. refs/remotes/origin/HEAD, whose short name is just
 # "origin") emit an empty line, which branch_list skips.
 git::branches_meta() {
-  git for-each-ref --sort=-committerdate "${1:-refs/heads/}" \
-    --format="%(if)%(symref)%(then)%(else)%(refname:short)${TAB}%(contents:subject)${TAB}%(committerdate:format:%a %-d %b %H:%M)${TAB}%(committerdate:relative)${TAB}%(authorname)%(end)"
+  local refs=${1:-refs/heads/}
+  shift 2>/dev/null || true
+  git for-each-ref --sort=-committerdate "$refs" \
+    --format="%(if)%(symref)%(then)%(else)%(refname:short)${TAB}%(contents:subject)${TAB}%(committerdate:format:%a %-d %b %H:%M)${TAB}%(committerdate:relative)${TAB}%(authorname)%(end)" "$@"
 }
 
 # Commit rows for the given revisions/options, in git's order (newest first).

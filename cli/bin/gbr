@@ -17,7 +17,8 @@ gbr::main() {
   git::is_repo || { echo "Error: not a git repository" >&2; exit 1; }
   local commands
   commands=$'checkout\nrebase\ncherry-pick\ndelete\nmerge'
-  branch_list::run "remote branches" "No remote branches found." "$commands" gbr::dispatch refs/remotes/ 0
+  # Extra CLI args are forwarded to `git for-each-ref`, e.g. `gbr --count=10`.
+  branch_list::run "remote branches" "No remote branches found." "$commands" gbr::dispatch refs/remotes/ 0 "$@"
 }
 
 gbr::dispatch() {
