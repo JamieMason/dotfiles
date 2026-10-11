@@ -1,0 +1,135 @@
+#!/usr/bin/env bash
+#
+# gb — interactive git branch helper (bash port of src/bin/gb.rs).
+#
+# Pick local branches → pick a command → act. Everything reusable lives in
+# ../lib; this file is the branch-specific handlers, each small enough that its
+# control flow reads top to bottom.
+
+set -euo pipefail
+
+here="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+lib="$here/../lib"
+# shellcheck source=/dev/null
+for mod in colors platform paths github status files commits log ui git branch_list; do source "$lib/$mod.sh"; done
+
+# ---- entry point -----------------------------------------------------------
+
+gb::main() {
+  git::is_repo || { echo "Error: not a git repository" >&2; exit 1; }
+  local commands
+  commands=$'checkout\nrebase\nlist commits\ndelete\nmerge\nrename'
+  branch_list::run "git branch" "No other branches found." "$commands" gb::dispatch
+}
+
+# Fan the chosen command out to its handler. Receives: COMMAND CURRENT NAME...
+gb::dispatch() {
+  local command=$1 current=$2
+  shift 2
+  case $command in
+    checkout)       gb::checkout "$current" "$@" ;;
+    "list commits") gb::list_commits "$current" "$@" ;;
+    delete)         log::batch_apply "Deleted" "delete" "branch(es)" gb::op_delete log::echo "$@" ;;
+    rebase)         printf 'Rebasing each branch into %s...\n' "$(colour::blue "$current")"
+                    log::batch_apply "Rebased" "rebase" "branch(es)" git::rebase log::echo "$@" ;;
+    merge)          printf 'Merging each branch into %s...\n' "$(colour::blue "$current")"
+                    log::batch_apply "Merged" "merge" "branch(es)" git::merge log::echo "$@" ;;
+    rename)         gb::rename "$@" ;;
+  esac
+}
+
+gb::op_delete() { git branch -D "$1"; } # -D: force, matching git2's Branch::delete
+
+# ---- checkout --------------------------------------------------------------
+
+gb::checkout() {
+  local current=$1
+  shift
+  if [ "$#" -ne 1 ]; then
+    printf '%s Can only checkout one branch at a time\n' "$(colour::red '✗')"
+    return 1
+  fi
+  if git checkout "$1" >/dev/null 2>&1; then
+    printf '%s Checked out %s (was on %s)\n' "$(colour::green '✓')" "$1" "$current"
+  else
+    printf '%s Failed to checkout %s\n' "$(colour::red '✗')" "$1"
+    return 1
+  fi
+}
+
+# ---- rename ----------------------------------------------------------------
+
+gb::rename() {
+  local name new
+  for name in "$@"; do
+    while true; do
+      read -r -e -p "New name for '$name': " new || return 0
+      [ -z "$new" ] && return 0
+      if git branch -m "$name" "$new" 2>/dev/null; then
+        printf '  %s %s → %s\n' "$(colour::green '✓')" "$name" "$new"
+        break
+      fi
+      printf '  %s Failed\n' "$(colour::red '✗')"
+    done
+  done
+}
+
+# ---- list commits ----------------------------------------------------------
+# Second-level flow: pick commits that aren't yet on the current branch, act.
+
+gb::list_commits() {
+  local current=$1
+  shift
+
+  local rows
+  rows=$(gb::_collect_commits "$@")
+  if [ -z "$rows" ]; then
+    printf "No commits found which are not already in '%s'.\n" "$current"
+    return 0
+  fi
+
+  local picked
+  picked=$(printf '%s\n' "$rows" | commits::render | ui::pick_many "Select commits:") || true
+  [ -z "$picked" ] && return 0
+  ui::read_items <<< "$picked"
+  local -a hashes=("${UI_ITEMS[@]}")
+
+  local command
+  command=$(printf '%s\n' "list changed files" "cherry-pick" "view commit on github" |
+    ui::pick_one "Choose command:") || true
+  case $command in
+    "list changed files")    gb::open_changed_files "${hashes[@]}" ;;
+    "cherry-pick")           gb::cherry_pick "$current" "${hashes[@]}" ;;
+    "view commit on github") github::open_commits "${hashes[@]}" ;;
+  esac
+}
+
+# Commits across every selected branch that are not on HEAD, newest first.
+gb::_collect_commits() {
+  local branch
+  for branch in "$@"; do git::commit_rows -n 15 "$branch" --not HEAD; done |
+    grep -v '^[[:space:]]*$' | sort -rn -t"$TAB" -k1,1
+}
+
+gb::open_changed_files() {
+  files::select_changed "$(git::root)" "$@" || return 0
+  log::batch_apply "Opened" "open" "file(s)" platform::open log::echo "${UI_ITEMS[@]}"
+}
+
+gb::cherry_pick() {
+  local current=$1
+  shift
+  local -a ordered=()
+  local h
+  while IFS= read -r h; do ordered+=("$h"); done < <(commits::by_time "$@")
+
+  printf 'Cherry-picking %d commit(s) into %s...\n' "${#ordered[@]}" "$(colour::blue "$current")"
+  log::batch_apply "Cherry-picked" "cherry-pick" "commit(s)" git::cherry_pick gb::_commit_label "${ordered[@]}"
+}
+gb::_commit_label() { git show -s --format='%h - %s' "$1"; }
+
+# Run only when executed directly, not when sourced (tests/dry-runs stub the
+# ui::* pickers). The bash equivalent of the Rust `Ctx::stub(...)` seam.
+if [ "${BASH_SOURCE[0]}" = "${0}" ]; then
+  gb::main "$@"
+fi

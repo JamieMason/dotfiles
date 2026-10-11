@@ -12,7 +12,8 @@
 5. `05-install-rust.sh`: Rust via `rustup`.
 6. `06-install-npm-binaries.sh`: global npm tools (biome, pnpm, tsx, etc.).
 7. `07-set-default-apps.sh`: open text/code file types in Zed.
-8. `08-copy-dotfiles.sh`: NvChad (if missing), `home/*`, Zed settings, `cli/`.
+8. `08-copy-dotfiles.sh`: NvChad (if missing), `home/*`, Zed settings, and the
+   [`cli/`](cli) git helpers (`gb`/`gl`/`gs`/`gbr`) into `~/cli`.
 
 ## Usage
 

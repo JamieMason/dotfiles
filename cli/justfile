@@ -1,0 +1,11 @@
+# List all available commands
+default:
+    just --list
+
+# Lint the scripts with shellcheck
+lint:
+    shellcheck -x -e SC1090,SC1091 bin/* lib/*.sh
+
+# Run the test suite
+test:
+    bats test

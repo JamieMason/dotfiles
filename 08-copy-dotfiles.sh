@@ -15,6 +15,8 @@ cp -R ./home/ ~
 # Copy Zed settings
 cp ./zed/settings.json ~/.config/zed/settings.json
 
-# Copy CLI
+# Copy CLI git helpers (bin/ + lib/ are the deployable runtime; gb/gl/gs/gbr
+# in bin/ resolve lib/ as a sibling, which the global justfile invokes)
 rm -rf ~/cli
-cp -R ./cli ~/cli
+mkdir -p ~/cli
+cp -R ./cli/bin ./cli/lib ~/cli/

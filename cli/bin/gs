@@ -1,0 +1,117 @@
+#!/usr/bin/env bash
+#
+# gs — interactive git status helper (bash port of src/bin/gs.rs).
+#
+# Pick changed files from the working tree → pick a command → act.
+
+set -euo pipefail
+
+here="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+lib="$here/../lib"
+# shellcheck source=/dev/null
+for mod in colors platform paths status log ui git; do source "$lib/$mod.sh"; done
+
+gs::main() {
+  git::is_repo || { echo "Error: not a git repository" >&2; exit 1; }
+
+  local items
+  items=$(gs::_status_items "$(git::root)")
+  if [ -z "$items" ]; then
+    echo "No changes found."
+    return 0
+  fi
+
+  gs::print_branch_status
+
+  local picked
+  picked=$(printf '%s' "$items" | sort -t"$TAB" -k1 | ui::pick_many "Select files:") || true
+  [ -z "$picked" ] && return 0
+  ui::read_items <<< "$picked"
+  local -a paths=("${UI_ITEMS[@]}")
+
+  local command
+  command=$(printf '%s\n' open diff stage unstage undo | ui::pick_one "Choose command:") || true
+  case $command in
+    open)    log::batch_apply "Opened"   "open"    "file(s)" platform::open log::echo "${paths[@]}" ;;
+    diff)    gs::diff "${paths[@]}" ;;
+    stage)   log::batch_apply "Staged"   "stage"   "file(s)" gs::op_stage   log::echo "${paths[@]}" ;;
+    unstage) log::batch_apply "Unstaged" "unstage" "file(s)" gs::op_unstage log::echo "${paths[@]}" ;;
+    undo)    log::batch_apply "Reverted" "revert"  "file(s)" gs::op_undo    log::echo "${paths[@]}" ;;
+  esac
+}
+
+# Working-tree changes as STATUS<TAB>REPO_PATH → status::render (colour + dedupe
+# + cwd-relative paths). The displayed char is the index status, or the
+# worktree status when the index side is clean — matching gs.rs status_to_chars.
+gs::_status_items() {
+  local root=$1
+  gs::_porcelain | status::render "$root"
+}
+
+gs::_porcelain() {
+  local line x y path ch
+  while IFS= read -r line; do
+    [ -z "$line" ] && continue
+    x=${line:0:1} y=${line:1:1} path=${line:3}
+    case $path in *" -> "*) path=${path#* -> } ;; esac # rename: keep the new path
+    ch=$x
+    [ "$x" = " " ] && ch=$y
+    printf '%s%s%s\n' "$ch" "$TAB" "$path"
+  done < <(git status --porcelain --untracked-files=all) # -uall: list files, not collapsed dirs (git2 recurse_untracked_dirs)
+}
+
+gs::op_stage()   { git add -- "$1"; }
+gs::op_unstage() { git reset -q -- "$1"; }
+
+# Discard a change: an untracked file goes to the trash (recoverable, like the
+# Rust `trash` crate); anything tracked is restored from HEAD.
+gs::op_undo() {
+  local xy
+  xy=$(git status --porcelain -- "$1" 2>/dev/null)
+  if [ "${xy:0:2}" = "??" ]; then
+    platform::trash "$1"
+  else
+    git checkout HEAD -- "$1"
+  fi
+}
+
+# Show the diff for each file: staged diff when the index side is dirty, else
+# the working-tree diff. git drives its own pager.
+gs::diff() {
+  local p xy
+  for p in "$@"; do
+    xy=$(git status --porcelain -- "$p" 2>/dev/null)
+    case "${xy:0:1}" in
+      ' ' | '?' | '') git diff -- "$p" ;;
+      *)              git diff --cached -- "$p" ;;
+    esac
+  done
+}
+
+gs::print_branch_status() {
+  local branch
+  branch=$(git::current_branch 2>/dev/null) || branch="HEAD"
+  printf '## %s' "$(colour::green "$branch")"
+
+  local upstream
+  if upstream=$(git rev-parse --abbrev-ref --symbolic-full-name '@{upstream}' 2>/dev/null); then
+    printf '...%s' "$upstream"
+    local counts ahead behind
+    if counts=$(git rev-list --left-right --count "HEAD...$upstream" 2>/dev/null); then
+      ahead=${counts%%"$TAB"*}
+      behind=${counts##*"$TAB"}
+      if [ "${ahead:-0}" -gt 0 ] || [ "${behind:-0}" -gt 0 ]; then
+        printf ' ['
+        [ "$ahead" -gt 0 ] && printf 'ahead %s' "$ahead"
+        { [ "$ahead" -gt 0 ] && [ "$behind" -gt 0 ]; } && printf ', '
+        [ "$behind" -gt 0 ] && printf 'behind %s' "$behind"
+        printf ']'
+      fi
+    fi
+  fi
+  printf '\n'
+}
+
+if [ "${BASH_SOURCE[0]}" = "${0}" ]; then
+  gs::main "$@"
+fi

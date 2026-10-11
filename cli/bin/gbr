@@ -1,0 +1,124 @@
+#!/usr/bin/env bash
+#
+# gbr — interactive remote-branch helper (bash port of src/bin/gbr.rs).
+#
+# Pick remote branches → pick a command → act. Reuses branch_list (pointed at
+# refs/remotes/) and the shared git mutations; only checkout and cherry-pick
+# need remote-specific handling.
+
+set -euo pipefail
+
+here="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+lib="$here/../lib"
+# shellcheck source=/dev/null
+for mod in colors platform paths status commits log ui git branch_list; do source "$lib/$mod.sh"; done
+
+gbr::main() {
+  git::is_repo || { echo "Error: not a git repository" >&2; exit 1; }
+  local commands
+  commands=$'checkout\nrebase\ncherry-pick\ndelete\nmerge'
+  branch_list::run "remote branches" "No remote branches found." "$commands" gbr::dispatch refs/remotes/ 0
+}
+
+gbr::dispatch() {
+  local command=$1 current=$2
+  shift 2
+  case $command in
+    checkout)      gbr::checkout "$current" "$@" ;;
+    "cherry-pick") gbr::cherry_pick "$current" "$@" ;;
+    delete)        log::batch_apply "Deleted" "delete" "remote branch(es)" gbr::op_delete log::echo "$@" ;;
+    rebase)        printf "Rebasing '%s' onto each remote branch...\n" "$current"
+                   log::batch_apply "Rebased" "rebase" "remote branch(es)" git::rebase log::echo "$@" ;;
+    merge)         printf "Merging each remote branch into '%s'...\n" "$current"
+                   log::batch_apply "Merged" "merge" "remote branch(es)" git::merge log::echo "$@" ;;
+  esac
+}
+
+# Delete the local remote-tracking ref (matches git2; does not touch the server).
+gbr::op_delete() { git branch -dr "$1"; }
+
+# Create/track a local branch from the remote one, then check it out.
+gbr::checkout() {
+  local current=$1
+  shift
+  if [ "$#" -ne 1 ]; then
+    printf '%s Can only checkout one branch at a time\n' "$(colour::red '✗')"
+    return 1
+  fi
+
+  local remote=$1 local_name=${1#*/} # strip the remote name (origin/feat -> feat)
+  if [ -z "$local_name" ] || [ "$local_name" = "$remote" ]; then
+    echo "Invalid remote branch name" >&2
+    return 1
+  fi
+
+  git show-ref --verify --quiet "refs/heads/$local_name" ||
+    git branch "$local_name" "$remote" >/dev/null 2>&1 || true
+
+  if git checkout "$local_name" >/dev/null 2>&1; then
+    printf "%s Checked out '%s' from '%s' (was on '%s')\n" \
+      "$(colour::green '✓')" "$local_name" "$remote" "$current"
+  else
+    printf '%s Failed to checkout %s\n' "$(colour::red '✗')" "$local_name"
+    return 1
+  fi
+}
+
+# ---- cherry-pick from remote branches --------------------------------------
+
+gbr::cherry_pick() {
+  local current=$1
+  shift
+
+  local rows
+  rows=$(gbr::_collect_commits "$@")
+  if [ -z "$rows" ]; then
+    printf "No commits found which are not already in '%s'.\n" "$current"
+    return 0
+  fi
+
+  local picked
+  picked=$(printf '%s\n' "$rows" | gbr::_commit_items | ui::pick_many "Select commits to cherry-pick:") || true
+  [ -z "$picked" ] && return 0
+  ui::read_items <<< "$picked"
+
+  local -a ordered=()
+  local h
+  while IFS= read -r h; do ordered+=("$h"); done < <(commits::by_time "${UI_ITEMS[@]}")
+
+  printf "Cherry-picking %d commit(s) into '%s'...\n" "${#ordered[@]}" "$current"
+  GBR_ROWS=$rows # consulted by gbr::_commit_label for the [branch] hash - msg summary
+  log::batch_apply "Cherry-picked" "cherry-pick" "commit(s)" git::cherry_pick gbr::_commit_label "${ordered[@]}"
+}
+
+# Per remote branch: its commits not already on HEAD, newest first overall.
+#   unix-time <TAB> short-hash <TAB> branch <TAB> subject <TAB> author
+gbr::_collect_commits() {
+  local branch
+  for branch in "$@"; do
+    git log -n 15 --format="%ct${TAB}%h${TAB}${branch}${TAB}%s${TAB}%an" "$branch" --not HEAD
+  done | grep -v '^[[:space:]]*$' | sort -rn -t"$TAB" -k1,1
+}
+
+# KEY<TAB>DISPLAY picker lines (KEY = short hash). No date, matching gbr.rs.
+gbr::_commit_items() {
+  local hash branch subject author
+  while IFS="$TAB" read -r _ hash branch subject author || [ -n "$hash" ]; do
+    [ -z "$hash" ] && continue
+    printf '%s%s%s %s - %s %s\n' "$hash" "$TAB" \
+      "$(colour::blue_bold "[$branch]")" "$(colour::green "$hash")" "$subject" "$(colour::blue_bold "<$author>")"
+  done
+}
+
+# Summary label "[branch] hash - subject" for HASH, looked up in GBR_ROWS.
+gbr::_commit_label() {
+  local h br subj
+  while IFS="$TAB" read -r _ h br subj _; do
+    [ "$h" = "$1" ] && { printf '[%s] %s - %s' "$br" "$h" "$subj"; return; }
+  done <<< "$GBR_ROWS"
+  printf '%s' "$1"
+}
+
+if [ "${BASH_SOURCE[0]}" = "${0}" ]; then
+  gbr::main "$@"
+fi

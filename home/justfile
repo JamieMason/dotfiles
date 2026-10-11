@@ -125,11 +125,11 @@ ga *args:
 
 # [G]it [B]ranch (custom script)
 gb *args:
-    ~/cli/gb {{args}}
+    ~/cli/bin/gb {{args}}
 
 # [G]it [B]ranch [R]emote (custom script)
 gbr *args:
-    ~/cli/gbr {{args}}
+    ~/cli/bin/gbr {{args}}
 
 # [G]it [B]ranch [A]ll
 gba:
@@ -183,7 +183,7 @@ git-search term:
 
 # [G]it [L]og (custom script)
 gl *args:
-    ~/cli/gl {{args}}
+    ~/cli/bin/gl {{args}}
 
 # [G]it [L]ist [C]ontributors
 glc:
@@ -199,7 +199,7 @@ glp:
 
 # [G]it [L]og [S]hort
 gls *args:
-    ~/cli/gl {{args}}
+    ~/cli/bin/gl {{args}}
 
 # [G]it [M]erge (no fast-forward)
 gm *args:
@@ -260,7 +260,7 @@ grm:
 
 # [G]it [S]tatus (custom script)
 gs *args:
-    ~/cli/gs {{args}}
+    ~/cli/bin/gs {{args}}
 
 # [G]it [U]ndo (Hard reset and clean)
 gu:
